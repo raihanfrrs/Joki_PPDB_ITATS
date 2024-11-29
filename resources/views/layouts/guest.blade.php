@@ -72,7 +72,7 @@
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Menu -->
-                    @include('partials.guest.sidebar')
+                    @include('partials.guest.bottombar')
                     <!-- / Menu -->
 
                     <!-- Content -->
