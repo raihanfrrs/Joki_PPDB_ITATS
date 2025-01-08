@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('section-guest')
+@section('section-authentication')
     <div class="card">
         <div class="card-body">
             <!-- Logo -->
@@ -45,6 +45,15 @@
                                 {{ $message }}
                             </div>
                         @enderror
+                    </div>
+                </div>
+                <div class="mb-3 form-password-toggle">
+                    <label class="form-label" for="confirm-password">Password</label>
+                    <div class="input-group input-group-merge">
+                        <input type="password" id="confirm-password" name="confirm-password" class="form-control"
+                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                            aria-describedby="confirm-password" />
+                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
                     </div>
                 </div>
 

@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('section-guest')
+@section('section-authentication')
     <div class="card">
         <div class="card-body">
             <!-- Logo -->
