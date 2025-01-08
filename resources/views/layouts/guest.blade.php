@@ -46,7 +46,10 @@
         href="{{ asset('assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css') }}" />
 
     <!-- Page CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-advance.css') }}" />
+    @if (request()->routeIs('signin') || request()->routeIs('signup'))
+        <link rel="stylesheet" href="../../assets/vendor/css/pages/page-auth.css" />
+    @endif
+    {{-- <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-advance.css') }}" /> --}}
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
@@ -59,39 +62,61 @@
 
 <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
-        <div class="layout-container">
-            <!-- Navbar -->
+    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
+        <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
+            <div class="layout-container">
+            @else
+                <div class="container-xxl">
+                    <div class="authentication-wrapper authentication-basic container-p-y">
+                        <div class="authentication-inner py-4">
+    @endif
 
-            @include('partials.guest.navbar')
+    <!-- Navbar -->
+    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
+        @include('partials.guest.navbar')
+    @endif
 
-            <!-- / Navbar -->
+    <!-- / Navbar -->
 
-            <!-- Layout container -->
-            <div class="layout-page">
-                <!-- Content wrapper -->
-                <div class="content-wrapper">
-                    <!-- Menu -->
-                    @include('partials.guest.bottombar')
-                    <!-- / Menu -->
+    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
+        <!-- Layout container -->
+        <div class="layout-page">
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Menu -->
 
-                    <!-- Content -->
+                @include('partials.guest.bottombar')
+    @endif
+    <!-- / Menu -->
 
-                    @yield('section-guest')
-                    <!--/ Content -->
+    <!-- Content -->
 
-                    <!-- Footer -->
-                    @include('partials.guest.footer')
-                    <!-- / Footer -->
+    @yield('section-guest')
+    <!--/ Content -->
 
-                    <div class="content-backdrop fade"></div>
-                </div>
-                <!--/ Content wrapper -->
-            </div>
+    <!-- Footer -->
+    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
+        @include('partials.guest.footer')
+    @endif
+    <!-- / Footer -->
 
-            <!--/ Layout container -->
+    <div class="content-backdrop fade"></div>
+
+    <!--/ Content wrapper -->
+
+
+    <!--/ Layout container -->
+    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
         </div>
-    </div>
+        </div>
+
+        </div>
+        </div>
+    @else
+        </div>
+        </div>
+        </div>
+    @endif
 
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>

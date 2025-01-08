@@ -18,13 +18,12 @@ Route::middleware('guest')->group(function () {
 
     Route::controller(RegisterController::class)->group(function () {
         Route::get('sign-up', 'index')->name('signup');
+        Route::post('sign-up', 'store')->name('signup.store');
     });
 
     Route::controller(LoginController::class)->group(function () {
         Route::get('sign-in', 'index')->name('signin');
-        Route::get('admin', 'admin');
-        Route::get('principle', 'principle');
-        Route::post('sign-in/{level}', 'store')->name('signin.store');
+        Route::post('sign-in', 'store')->name('signin.store');
     });
 });
 
