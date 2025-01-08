@@ -7,8 +7,9 @@
     <meta charset="utf-8" />
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Dashboard - Analytics | Vuexy - Bootstrap Admin Template</title>
+    <title>@yield('title')</title>
 
     <meta name="description" content="" />
 
@@ -37,86 +38,80 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/node-waves/node-waves.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/swiper/swiper.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
     <link rel="stylesheet"
         href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/dropzone/dropzone.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/swiper/swiper.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/tagify/tagify.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/flatpickr/flatpickr.css') }}" />
+
+    @guest
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
+    @endguest
 
     <!-- Page CSS -->
-    @if (request()->routeIs('signin') || request()->routeIs('signup'))
-        <link rel="stylesheet" href="../../assets/vendor/css/pages/page-auth.css" />
+    @if (request()->routeIs('/'))
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-help-center.css') }}" />
+    @else
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />
     @endif
-    {{-- <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-advance.css') }}" /> --}}
+
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
     <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
+
+    @stack('styles')
+
+    <style>
+        #template-customizer {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Layout wrapper -->
+    @include('components.flasher.sweetalert')
+
     @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
         <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
             <div class="layout-container">
-            @else
-                <div class="container-xxl">
-                    <div class="authentication-wrapper authentication-basic container-p-y">
-                        <div class="authentication-inner py-4">
-    @endif
+                @include('partials.guest.navbar')
 
-    <!-- Navbar -->
-    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
-        @include('partials.guest.navbar')
-    @endif
+                <div class="layout-page">
+                    <div class="content-wrapper">
 
-    <!-- / Navbar -->
+                        @include('partials.guest.bottombar')
 
-    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
-        <!-- Layout container -->
-        <div class="layout-page">
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
-                <!-- Menu -->
+                        @yield('section-guest')
 
-                @include('partials.guest.bottombar')
-    @endif
-    <!-- / Menu -->
+                        @include('partials.guest.footer')
 
-    <!-- Content -->
+                        <div class="content-backdrop fade"></div>
+                    </div>
+                </div>
 
-    @yield('section-guest')
-    <!--/ Content -->
-
-    <!-- Footer -->
-    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
-        @include('partials.guest.footer')
-    @endif
-    <!-- / Footer -->
-
-    <div class="content-backdrop fade"></div>
-
-    <!--/ Content wrapper -->
-
-
-    <!--/ Layout container -->
-    @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
-        </div>
-        </div>
-
-        </div>
+            </div>
         </div>
     @else
-        </div>
-        </div>
+        <div class="container-xxl">
+            <div class="authentication-wrapper authentication-basic container-p-y">
+                <div class="authentication-inner py-4">
+                    @yield('section-authentication')
+                </div>
+            </div>
         </div>
     @endif
+
 
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
@@ -127,7 +122,6 @@
     <!--/ Layout wrapper -->
 
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
     <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
@@ -139,18 +133,45 @@
     <script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
 
     <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
-    <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/cleavejs/cleave.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/cleavejs/cleave-phone.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.js') }}"></script>
+    @auth
+        <script src="{{ asset('assets/vendor/libs/swiper/swiper.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/moment/moment.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/tagify/tagify.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/bloodhound/bloodhound.js') }}"></script>
+    @else
+        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
+    @endauth
+    <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/swiper/swiper.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
 
     <!-- Main JS -->
+    <script src="{{ asset('assets/js/prev-image.js') }}"></script>
+    <script src="{{ asset('assets/js/script-customer.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <!-- Page JS -->
-    <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+    @if (request()->routeIs('signin') || request()->routeIs('signup'))
+        <script src="{{ asset('assets/js/pages-auth.js') }}"></script>
+    @else
+        <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+    @endif
+
+    @stack('scripts')
 </body>
 
 </html>
