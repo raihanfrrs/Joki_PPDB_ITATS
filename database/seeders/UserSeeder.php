@@ -20,19 +20,19 @@ class UserSeeder extends Seeder
             [
                 'id' => Uuid::uuid4()->toString(),
                 'role_id' => Role::where('role', 'admin')->first()->id,
-                'username' => 'admin',
+                'username' => 'adminppdb',
                 'password' => bcrypt('admin123'),
             ],
             [
                 'id' => Uuid::uuid4()->toString(),
                 'role_id' => Role::where('role', 'student')->first()->id,
-                'username' => 'student',
+                'username' => 'studentppdb',
                 'password' => bcrypt('student123'),
             ],
             [
                 'id' => Uuid::uuid4()->toString(),
                 'role_id' => Role::where('role', 'principle')->first()->id,
-                'username' => 'principle',
+                'username' => 'principleppdb',
                 'password' => bcrypt('principle123'),
             ]
         ];

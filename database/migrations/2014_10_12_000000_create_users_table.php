@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignIdFor(Role::class);
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
             $table->timestamps();
         });
