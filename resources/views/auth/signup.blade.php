@@ -15,7 +15,7 @@
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                        name="username" placeholder="Enter your username" autofocus />
+                        name="username" placeholder="Enter your username" autofocus value="{{ old('username') }}" />
                     @error('username')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -25,7 +25,7 @@
                 <div class="mb-3">
                     <label for="nisn" class="form-label">NISN (Nomor Induk Siswa Nasional)</label>
                     <input type="text" class="form-control @error('nisn') is-invalid @enderror" id="nisn"
-                        name="nisn" placeholder="Enter your NISN" />
+                        name="nisn" placeholder="Enter your NISN" value="{{ old('nisn') }}" />
                     @error('nisn')
                         <div class="invalid-feedback">
                             {{ $message }}
