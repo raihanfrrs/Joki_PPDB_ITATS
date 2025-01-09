@@ -5,7 +5,7 @@
                 ©
                 <script>
                     document.write(new Date().getFullYear());
-                </script>
+                </script>2025
                 , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="fw-semibold">Pixinvent</a>
             </div>
             <div>

@@ -54,18 +54,10 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/flatpickr/flatpickr.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/trix-editor/css/trix.css') }}" />
 
-    @guest
-        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
-    @endguest
-
     <!-- Page CSS -->
-    @auth
-        @if (request()->is('/'))
-            <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-advance.css') }}" />
-        @endif
-    @else
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />
-    @endauth
+    @if (request()->is('/'))
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-advance.css') }}" />
+    @endif
 
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
@@ -131,27 +123,21 @@
     <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
 
     <!-- Vendors JS -->
-    @auth
-        <script src="{{ asset('assets/vendor/libs/swiper/swiper.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/moment/moment.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/tagify/tagify.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/cleavejs/cleave.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/cleavejs/cleave-phone.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/bloodhound/bloodhound.js') }}"></script>
-    @else
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
-    @endauth
+    <script src="{{ asset('assets/vendor/libs/swiper/swiper.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/moment/moment.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/tagify/tagify.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/cleavejs/cleave.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/cleavejs/cleave-phone.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/bloodhound/bloodhound.js') }}"></script>
     <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 
@@ -161,14 +147,10 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <!-- Page JS -->
-    @auth
-        @if (request()->is('/'))
-            <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
-            <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
-        @endif
-    @else
-        <script src="{{ asset('assets/js/pages-auth.js') }}"></script>
-    @endauth
+    @if (request()->is('/'))
+        <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+        <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
+    @endif
 
     @stack('scripts')
 </body>
