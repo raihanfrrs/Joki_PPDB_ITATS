@@ -32,6 +32,7 @@ class RegisterRepository
             Student::create([
                 'id' => Uuid::uuid4()->toString(),
                 'user_id' => $user_id,
+                'name' => $data['name'],
                 'nisn' => $data['nisn']
             ]);
         });

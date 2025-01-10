@@ -32,6 +32,16 @@
                         </div>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nama Lengkap Siswa</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                        name="name" placeholder="Enter your name" value="{{ old('name') }}" />
+                    @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
                 <div class="mb-3 form-password-toggle">
                     <label class="form-label" for="password">Password</label>
                     <div class="input-group input-group-merge">

@@ -9,6 +9,7 @@ class Admin extends Model
 {
     use HasFactory;
 
+    protected $keyType = 'string';
     protected $guarded = [];
 
     public function user()
