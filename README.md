@@ -41,23 +41,21 @@ Project Setup :
 
 9. buka browser `http://127.0.0.1:8000`
 
-10. akses halaman admin dengan beri url `/admin` seperti contoh : `http://127.0.0.1:8000/admin`
-
-11. sign-in / login ke halaman admin :
+10. sign-in / login ke halaman admin :
 
     ```
     Username : adminppdb
     Password : admin123
     ```
 
-12. sign-in / login ke halaman kepala sekolah :
+11. sign-in / login ke halaman kepala sekolah :
 
     ```
     Username : principleppdb
     Password : principle123
     ```
 
-13. sign-in / login ke halaman siswa :
+12. sign-in / login ke halaman siswa :
 
     ```
     Username : studentppdb
