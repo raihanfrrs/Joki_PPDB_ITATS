@@ -31,12 +31,18 @@
 
         <!-- Apps & Pages -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Reporting</span>
+            <span class="menu-header-text">Menu</span>
         </li>
         <li class="menu-item">
             <a href="" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-clipboard"></i>
-                <div data-i18n="Recap Student Data">Recap Student Data</div>
+                <i class="menu-icon tf-icons ti ti-receipt"></i>
+                <div data-i18n="Registration">Registration</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-credit-card"></i>
+                <div data-i18n="Payment">Payment</div>
             </a>
         </li>
     </ul>
