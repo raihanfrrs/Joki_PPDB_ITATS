@@ -32,10 +32,17 @@ document.addEventListener('DOMContentLoaded', function (e) {
               }
             }
           },
-          'nisn': {
+          nisn: {
             validators: {
               notEmpty: {
                 message: 'Please enter NISN'
+              }
+            }
+          },
+          name: {
+            validators: {
+              notEmpty: {
+                message: 'Please enter your name'
               }
             }
           },

@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Admin;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AdminSeeder extends Seeder
 {
@@ -12,6 +15,18 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $admins = [
+            [
+                'id' => Uuid::uuid4()->toString(),
+                'user_id' => User::where('username', 'adminppdb')->first()->id,
+                'name' => 'John Doe',
+                'phone' => '1234567890',
+                'email' => 'vMxgM@example.com'
+            ]
+        ];
+
+        foreach ($admins as $key => $admin) {
+            Admin::create($admin);
+        }
     }
 }

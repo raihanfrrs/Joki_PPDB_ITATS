@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             CustodianSeeder::class,
             PaymentSeeder::class,
             RegistrationSeeder::class,
+            PrincipleSeeder::class
         ]);
     }
 }
