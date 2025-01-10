@@ -53,15 +53,9 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/flatpickr/flatpickr.css') }}" />
 
-    @guest
-        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
-    @endguest
-
     <!-- Page CSS -->
     @if (request()->routeIs('/'))
         <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-advance.css') }}" />
-    @else
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />
     @endif
 
     <!-- Helpers -->

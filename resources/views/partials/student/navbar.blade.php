@@ -46,7 +46,7 @@
                                 <div class="flex-grow-1">
                                     <span
                                         class="fw-semibold d-block text-capitalize">{{ auth()->user()->student->name }}</span>
-                                    <small class="text-muted">Kepala Sekolah</small>
+                                    <small class="text-muted">Siswa</small>
                                 </div>
                             </div>
                         </a>
