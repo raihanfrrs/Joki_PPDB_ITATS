@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->string('nisn')->unique();
             $table->string('nik')->nullable();
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('religion')->nullable();
             $table->string('hobby')->nullable();
             $table->string('goal')->nullable();
@@ -39,6 +39,7 @@ return new class extends Migration
             $table->string('pob')->nullable();
             $table->date('dob')->nullable();
             $table->year('school_year')->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->timestamps();
         });
     }
