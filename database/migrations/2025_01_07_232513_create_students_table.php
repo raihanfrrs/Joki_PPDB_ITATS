@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('subdistrict')->nullable();
             $table->string('regency')->nullable();
             $table->string('province')->nullable();
+            $table->string('city')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('kk_number')->nullable();

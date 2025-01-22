@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Repositories\LoginRepository;
 use App\Http\Requests\LoginStoreRequest;
 
@@ -28,7 +29,13 @@ class LoginController extends Controller
 
         $checkUser = $this->login->getUsernameAndRole($kredensial['username']);
 
-        if (empty($checkUser)) {
+        if (!$checkUser) {
+            return back()->withErrors([
+                'username' => 'Wrong username or password!'
+            ])->onlyInput('username');
+        }
+
+        if (!Hash::check($request->password, $checkUser->password)) {
             return back()->withErrors([
                 'username' => 'Wrong username or password!'
             ])->onlyInput('username');

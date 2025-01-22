@@ -12,7 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('custodians', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('nik')->unique()->nullable();
+            $table->string('kk_number')->nullable();
+            $table->string('name')->nullable();
+            $table->string('pob')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('education')->nullable();
+            $table->string('job')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('subdistrict')->nullable();
+            $table->string('regency')->nullable();
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('religion')->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->timestamps();
         });
     }
