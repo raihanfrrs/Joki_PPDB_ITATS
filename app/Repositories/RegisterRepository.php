@@ -6,13 +6,14 @@ use App\Models\Student;
 use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\DB;
-use App\Repositories\RoleRepostory;
+use App\Repositories\RoleRepository;
 
 class RegisterRepository
 {
     protected $role;
 
-    public function __construct(RoleRepostory $role)
+
+    public function __construct(RoleRepository $role)
     {
         $this->role = $role;
     }
