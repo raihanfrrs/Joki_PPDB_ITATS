@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Custodian extends Model
 {
     use HasFactory;
+
+    protected $keyType = 'string';
+    protected $guarded = [];
 }

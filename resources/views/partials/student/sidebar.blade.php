@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{ route('/') }}" class="app-brand-link">
             <span class="app-brand-text demo menu-text fw-bold">PPDB</span>
         </a>
 
@@ -14,15 +14,15 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboards -->
-        <li class="menu-item active open">
+        <li class="menu-item {{ request()->routeIs('/') ? 'active open' : '' }} ">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">3</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item active">
-                    <a href="" class="menu-link">
+                <li class="menu-item {{ request()->routeIs('/') ? 'active' : '' }}">
+                    <a href="{{ route('/') }}" class="menu-link">
                         <div data-i18n="Analytics">Analytics</div>
                     </a>
                 </li>
@@ -33,14 +33,14 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Menu</span>
         </li>
-        <li class="menu-item">
-            <a href="" class="menu-link">
+        <li class="menu-item {{ request()->routeIs('registration') ? 'active' : '' }}">
+            <a href="{{ route('registration') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-receipt"></i>
                 <div data-i18n="Registration">Registration</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="" class="menu-link">
+        <li class="menu-item {{ request()->routeIs('payment') ? 'active' : '' }}">
+            <a href="{{ route('payment') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-credit-card"></i>
                 <div data-i18n="Payment">Payment</div>
             </a>

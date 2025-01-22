@@ -4,11 +4,16 @@ namespace App\Repositories;
 
 use App\Models\Role;
 
-class RoleRepostory
+class RoleRepository
 {
     public function all()
     {
         return Role::all();
+    }
+
+    public function find($id)
+    {
+        return Role::find($id);
     }
 
     public function getRoleByRoleName($roleName)

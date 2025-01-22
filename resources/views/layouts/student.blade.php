@@ -149,6 +149,8 @@
     <!-- Page JS -->
     @if (request()->routeIs('/'))
         <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+    @elseif (request()->routeIs('registration'))
+        <script src="{{ asset('assets/js/form-basic-inputs.js') }}"></script>
     @endif
 
     @stack('scripts')

@@ -15,14 +15,14 @@ class User extends Authenticatable
     protected $keyType = 'string';
     protected $guarded = [];
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
     public function student()
     {
         return $this->hasOne(Student::class);
+    }
+
+    public function principle()
+    {
+        return $this->hasOne(Principle::class);
     }
 
     public function admin()
@@ -30,8 +30,8 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class);
     }
 
-    public function principle()
+    public function role()
     {
-        return $this->hasOne(Principle::class);
+        return $this->belongsTo(Role::class);
     }
 }
