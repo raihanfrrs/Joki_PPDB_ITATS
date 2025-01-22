@@ -151,6 +151,9 @@
         <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
     @elseif (request()->routeIs('registration'))
         <script src="{{ asset('assets/js/form-basic-inputs.js') }}"></script>
+    @elseif (request()->routeIs('payment'))
+        <script src="{{ asset('assets/vendor/libs/dropzone/dropzone.js') }}"></script>
+        <script src="{{ asset('assets/js/forms-file-upload.js') }}"></script>
     @endif
 
     @stack('scripts')

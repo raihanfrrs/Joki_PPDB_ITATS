@@ -27,4 +27,9 @@ class Payment extends Model implements HasMedia
             ->height(232)
             ->sharpen(10);
     }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }
