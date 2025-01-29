@@ -15,7 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-
         $users = [
             [
                 'id' => Uuid::uuid4()->toString(),

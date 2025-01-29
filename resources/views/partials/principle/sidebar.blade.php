@@ -31,12 +31,12 @@
 
         <!-- Apps & Pages -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Reporting</span>
+            <span class="menu-header-text">Laporan</span>
         </li>
         <li class="menu-item">
             <a href="" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-clipboard"></i>
-                <div data-i18n="Recap Student Data">Recap Student Data</div>
+                <div data-i18n="Rekap Data Siswa">Rekap Data Siswa</div>
             </a>
         </li>
     </ul>
