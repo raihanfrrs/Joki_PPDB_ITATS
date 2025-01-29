@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mothers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('nik')->unique()->nullable();
+            $table->string('nik')->nullable();
             $table->string('kk_number')->nullable();
             $table->string('name')->nullable();
             $table->string('pob')->nullable();

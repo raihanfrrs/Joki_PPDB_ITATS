@@ -147,9 +147,13 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <!-- Page JS -->
-    @if (request()->is('/'))
+    @if (request()->routeIs('/'))
         <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
         <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
+    @elseif (request()->routeIs('master.student'))
+        <script src="{{ asset('assets/js/app-student-list.js') }}"></script>
+    @elseif (request()->routeIs('master.principle'))
+        <script src="{{ asset('assets/js/app-principle-list.js') }}"></script>
     @endif
 
     @stack('scripts')

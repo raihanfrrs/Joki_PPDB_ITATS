@@ -9,7 +9,7 @@
                 <h5 class="card-title mb-3">Daftar Siswa</h5>
             </div>
             <div class="card-datatable table-responsive">
-                <table class="table border-top" id="listStudentTable">
+                <table class="table border-top" id="listStudentsTable">
                     <thead>
                         <tr>
                             <th></th>
@@ -22,6 +22,9 @@
                             <th class="text-center">Tempat, Tanggal Lahir</th>
                             <th class="text-center">Jenis Kelamin</th>
                             <th class="text-center">Alamat</th>
+                            <th class="text-center">Status Pendaftaran</th>
+                            <th class="text-center">Status Pembayaran</th>
+                            <th class="text-center">Terdaftar Pada</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
