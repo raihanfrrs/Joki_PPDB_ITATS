@@ -18,7 +18,6 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignIdFor(Registration::class)->nullable();
             $table->foreignIdFor(Father::class)->nullable();
             $table->foreignIdFor(Mother::class)->nullable();
             $table->foreignIdFor(Custodian::class)->nullable();

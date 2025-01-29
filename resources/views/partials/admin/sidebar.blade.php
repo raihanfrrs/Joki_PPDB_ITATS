@@ -36,29 +36,46 @@
         <li class="menu-item {{ request()->routeIs('master.student') ? 'active' : '' }}">
             <a href="{{ route('master.student') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-users"></i>
-                <div data-i18n="Student">Student</div>
+                <div data-i18n="Siswa">Siswa</div>
             </a>
         </li>
-        <li class="menu-item {{ request()->routeIs('master.principle') ? 'active' : '' }}">
+        <li
+            class="menu-item {{ request()->routeIs('master.principle', 'master.principle.create', 'master.principle.edit') ? 'active' : '' }}">
             <a href="{{ route('master.principle') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-user"></i>
-                <div data-i18n="Principle">Principle</div>
+                <div data-i18n="Kepala Sekolah">Kepala Sekolah</div>
             </a>
         </li>
-        <!-- Apps & Pages -->
+
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Reporting</span>
+            <span class="menu-header-text">Verifikasi</span>
         </li>
         <li class="menu-item">
             <a href="" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-clipboard"></i>
-                <div data-i18n="Recap Student Data">Recap Student Data</div>
+                <div data-i18n="Pendaftaran">Pendaftaran</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-clipboard"></i>
-                <div data-i18n="Recap Student Canditate">Recap Student Canditate</div>
+                <div data-i18n="Pembayaran">Pembayaran</div>
+            </a>
+        </li>
+
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Laporan</span>
+        </li>
+        <li class="menu-item">
+            <a href="" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-clipboard"></i>
+                <div data-i18n="Rekap Data Siswa Lulus">Rekap Data Siswa Lulus</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-clipboard"></i>
+                <div data-i18n="Rekap Data Calon Siswa">Rekap Data Calon Siswa</div>
             </a>
         </li>
     </ul>

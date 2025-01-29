@@ -22,6 +22,7 @@
                             <th class="text-center">Tempat, Tanggal Lahir</th>
                             <th class="text-center">Jenis Kelamin</th>
                             <th class="text-center">Alamat</th>
+                            <th class="text-center">Dibuat Pada</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>

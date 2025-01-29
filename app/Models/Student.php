@@ -33,6 +33,11 @@ class Student extends Model implements HasMedia
         return $this->belongsTo(User::class);
     }
 
+    public function registration()
+    {
+        return $this->hasOne(Registration::class);
+    }
+
     public function payment()
     {
         return $this->hasMany(Payment::class);
