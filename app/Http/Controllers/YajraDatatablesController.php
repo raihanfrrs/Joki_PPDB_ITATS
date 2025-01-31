@@ -106,4 +106,46 @@ class YajraDatatablesController extends Controller
             ->rawColumns(['index', 'nip', 'name', 'title', 'phone', 'email', 'pob_dob', 'gender', 'address', 'created_at', 'action'])
             ->make(true);
     }
+
+    public function student_report()
+    {
+        $students = $this->student->getStudentsWhereRegistrationAndPaymentAccepted();
+
+        return DataTables::of($students)
+            ->addColumn('index', function ($model) use ($students) {
+                return $students->search($model) + 1;
+            })
+            ->addColumn('nisn', function ($model) {
+                return view('components.data.yajra.data-master-student-report.nisn-column', compact('model'))->render();
+            })
+            ->addColumn('nik', function ($model) {
+                return view('components.data.yajra.data-master-student-report.nik-column', compact('model'))->render();
+            })
+            ->addColumn('name', function ($model) {
+                return view('components.data.yajra.data-master-student-report.name-column', compact('model'))->render();
+            })
+            ->addColumn('phone', function ($model) {
+                return view('components.data.yajra.data-master-student-report.phone-column', compact('model'))->render();
+            })
+            ->addColumn('email', function ($model) {
+                return view('components.data.yajra.data-master-student-report.email-column', compact('model'))->render();
+            })
+            ->addColumn('pob_dob', function ($model) {
+                return view('components.data.yajra.data-master-student-report.pob-dob-column', compact('model'))->render();
+            })
+            ->addColumn('gender', function ($model) {
+                return view('components.data.yajra.data-master-student-report.gender-column', compact('model'))->render();
+            })
+            ->addColumn('address', function ($model) {
+                return view('components.data.yajra.data-master-student-report.address-column', compact('model'))->render();
+            })
+            ->addColumn('created_at', function ($model) {
+                return view('components.data.yajra.data-master-student-report.created-at-column', compact('model'))->render();
+            })
+            ->addColumn('action', function ($model) {
+                return view('components.data.yajra.data-master-student-report.action-column', compact('model'))->render();
+            })
+            ->rawColumns(['index', 'nisn', 'nik', 'name', 'phone', 'email', 'pob_dob', 'gender', 'address', 'created_at', 'action'])
+            ->make(true);
+    }
 }

@@ -40,7 +40,6 @@ return new class extends Migration
             $table->date('dob')->nullable();
             $table->year('school_year')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
-            $table->enum('status', ['waiting', 'approved', 'rejected'])->nullable();
             $table->timestamps();
         });
     }
