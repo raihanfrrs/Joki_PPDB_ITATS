@@ -150,6 +150,8 @@
     @if (request()->is('/'))
         <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
         <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
+    @elseif (request()->routeIs('principle.reporting.student'))
+        <script src="{{ asset('assets/js/app-student-report-list.js') }}"></script>
     @endif
 
     @stack('scripts')
