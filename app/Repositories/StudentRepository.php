@@ -10,4 +10,13 @@ class StudentRepository
     {
         return Student::all();
     }
+
+    public function getStudentsWhereRegistrationAndPaymentAccepted()
+    {
+        return Student::whereHas('registration', function ($query) {
+            $query->where('status', 'accepted');
+        })->whereHas('payment', function ($query) {
+            $query->where('status', 'accepted');
+        })->get();
+    }
 }
