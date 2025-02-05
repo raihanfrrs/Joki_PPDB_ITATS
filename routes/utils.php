@@ -8,6 +8,7 @@ Route::controller(YajraDatatablesController::class)->group(function () {
     Route::get('listStudentsTable', 'student');
     Route::get('listPrinciplesTable', 'principle');
     Route::get('listStudentReportTable', 'student_report');
+    Route::get('listVerificationRegistrationTable', 'verification_registration');
 });
 
 Route::controller(AjaxController::class)->group(function () {});

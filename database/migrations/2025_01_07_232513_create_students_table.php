@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignIdFor(Custodian::class)->nullable();
             $table->foreignIdFor(User::class);
             $table->string('nisn')->unique();
-            $table->string('nik')->nullable();
+            $table->string('nik')->unique()->nullable();
             $table->string('name');
             $table->string('religion')->nullable();
             $table->string('hobby')->nullable();

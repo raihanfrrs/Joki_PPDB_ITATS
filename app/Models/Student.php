@@ -42,4 +42,19 @@ class Student extends Model implements HasMedia
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function father()
+    {
+        return $this->belongsTo(Father::class);
+    }
+
+    public function mother()
+    {
+        return $this->belongsTo(Mother::class);
+    }
+
+    public function custodian()
+    {
+        return $this->belongsTo(Custodian::class);
+    }
 }

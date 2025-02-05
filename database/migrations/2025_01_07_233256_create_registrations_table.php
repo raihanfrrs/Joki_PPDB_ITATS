@@ -19,6 +19,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignIdFor(Student::class);
             $table->enum('status', ['waiting', 'approved', 'rejected'])->default('waiting');
+            $table->enum('flag', ['non-resubmit', 'resubmit'])->default('non-resubmit');
             $table->timestamps();
         });
     }

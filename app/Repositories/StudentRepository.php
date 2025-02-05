@@ -11,6 +11,11 @@ class StudentRepository
         return Student::all();
     }
 
+    public function find($id)
+    {
+        return Student::find($id);
+    }
+
     public function getStudentsWhereRegistrationAndPaymentAccepted()
     {
         return Student::whereHas('registration', function ($query) {

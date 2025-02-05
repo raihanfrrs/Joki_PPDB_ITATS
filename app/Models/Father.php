@@ -27,4 +27,9 @@ class Father extends Model implements HasMedia
             ->height(232)
             ->sharpen(10);
     }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
 }

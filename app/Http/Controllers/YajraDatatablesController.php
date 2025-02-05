@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\PrincipleRepository;
+use App\Repositories\RegistrationRepository;
 use Illuminate\Http\Request;
 use App\Repositories\StudentRepository;
 use Yajra\DataTables\Facades\DataTables;
 
 class YajraDatatablesController extends Controller
 {
-    protected $student, $principle;
+    protected $student, $principle, $registration;
 
-    public function __construct(StudentRepository $student, PrincipleRepository $principle)
+    public function __construct(StudentRepository $student, PrincipleRepository $principle, RegistrationRepository $registration)
     {
         $this->student = $student;
         $this->principle = $principle;
+        $this->registration = $registration;
     }
 
     public function student()
@@ -146,6 +148,45 @@ class YajraDatatablesController extends Controller
                 return view('components.data.yajra.data-master-student-report.action-column', compact('model'))->render();
             })
             ->rawColumns(['index', 'nisn', 'nik', 'name', 'phone', 'email', 'pob_dob', 'gender', 'address', 'created_at', 'action'])
+            ->make(true);
+    }
+
+    public function verification_registration()
+    {
+        $registration = $this->registration->getAllRegistration();
+
+        return DataTables::of($registration)
+            ->addColumn('index', function ($model) use ($registration) {
+                return $registration->search($model) + 1;
+            })
+            ->addColumn('nisn', function ($model) {
+                return view('components.data.yajra.data-verification-registration.nisn-column', compact('model'))->render();
+            })
+            ->addColumn('nik', function ($model) {
+                return view('components.data.yajra.data-verification-registration.nik-column', compact('model'))->render();
+            })
+            ->addColumn('name', function ($model) {
+                return view('components.data.yajra.data-verification-registration.name-column', compact('model'))->render();
+            })
+            ->addColumn('pob_dob', function ($model) {
+                return view('components.data.yajra.data-verification-registration.pob-dob-column', compact('model'))->render();
+            })
+            ->addColumn('gender', function ($model) {
+                return view('components.data.yajra.data-verification-registration.gender-column', compact('model'))->render();
+            })
+            ->addColumn('address', function ($model) {
+                return view('components.data.yajra.data-verification-registration.address-column', compact('model'))->render();
+            })
+            ->addColumn('status_registration', function ($model) {
+                return view('components.data.yajra.data-verification-registration.status-registration-column', compact('model'))->render();
+            })
+            ->addColumn('created_at', function ($model) {
+                return view('components.data.yajra.data-verification-registration.created-at-column', compact('model'))->render();
+            })
+            ->addColumn('action', function ($model) {
+                return view('components.data.yajra.data-verification-registration.action-column', compact('model'))->render();
+            })
+            ->rawColumns(['index', 'nisn', 'nik', 'name', 'pob_dob', 'gender', 'address', 'status_registration', 'created_at', 'action'])
             ->make(true);
     }
 }
