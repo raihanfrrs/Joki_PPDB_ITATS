@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['cekUserLogin:student']], function () {
     Route::controller(RegistrationController::class)->group(function () {
         Route::get('registration', 'index')->name('registration');
+        Route::post('registration/{student}', 'store')->name('registration.store');
+        Route::patch('registration/{student}', 'update')->name('registration.update');
+        Route::put('registration/{student}/resubmit', 'resubmit')->name('registration.resubmit');
+        Route::post('registration/{student}', 'store')->name('registration.store');
     });
 
     Route::controller(PaymentController::class)->group(function () {

@@ -19,6 +19,8 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
 
     Route::controller(AdminVerificationController::class)->group(function () {
         Route::get('verification/registration', 'registration_index')->name('verification.registration');
+        Route::patch('verification-registration/{registration}', 'registration_update')->name('verification.registration.update');
+        Route::get('verification/registration/{registration}', 'registration_show')->name('verification.registration.show');
 
         Route::get('verification/payment', 'payment_index')->name('verification.payment');
     });

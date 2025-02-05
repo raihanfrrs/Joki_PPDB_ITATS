@@ -52,13 +52,13 @@
         </li>
         <li class="menu-item {{ request()->routeIs('verification.registration') ? 'active' : '' }}">
             <a href="{{ route('verification.registration') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-clipboard"></i>
+                <i class="menu-icon tf-icons ti ti-receipt"></i>
                 <div data-i18n="Pendaftaran">Pendaftaran</div>
             </a>
         </li>
         <li class="menu-item {{ request()->routeIs('verification.payment') ? 'active' : '' }}">
             <a href="{{ route('verification.payment') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-clipboard"></i>
+                <i class="menu-icon tf-icons ti ti-credit-card"></i>
                 <div data-i18n="Pembayaran">Pembayaran</div>
             </a>
         </li>
