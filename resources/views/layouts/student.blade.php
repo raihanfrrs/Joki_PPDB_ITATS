@@ -52,6 +52,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/flatpickr/flatpickr.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/animate-on-scroll/animate-on-scroll.css') }}" />
 
     <!-- Page CSS -->
     @if (request()->routeIs('/'))
@@ -140,6 +141,8 @@
     <script src="{{ asset('assets/vendor/libs/bloodhound/bloodhound.js') }}"></script>
     <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/animate-on-scroll/animate-on-scroll.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/dropzone/dropzone.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/prev-image.js') }}"></script>
@@ -148,11 +151,10 @@
 
     <!-- Page JS -->
     @if (request()->routeIs('/'))
-        <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+        <script src="{{ asset('assets/js/extended-ui-timeline.js') }}"></script>
     @elseif (request()->routeIs('registration'))
         <script src="{{ asset('assets/js/form-basic-inputs.js') }}"></script>
     @elseif (request()->routeIs('payment'))
-        <script src="{{ asset('assets/vendor/libs/dropzone/dropzone.js') }}"></script>
         <script src="{{ asset('assets/js/forms-file-upload.js') }}"></script>
     @endif
 

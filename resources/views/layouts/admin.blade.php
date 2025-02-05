@@ -140,6 +140,7 @@
     <script src="{{ asset('assets/vendor/libs/bloodhound/bloodhound.js') }}"></script>
     <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/animate-on-scroll/animate-on-scroll.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/prev-image.js') }}"></script>
