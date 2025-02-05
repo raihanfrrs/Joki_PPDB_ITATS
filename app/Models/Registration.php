@@ -13,6 +13,7 @@ class Registration extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $keyType = 'string';
+    protected $primaryKey = 'id';
     protected $guarded = [];
 
     public function registerMediaCollections(): void
