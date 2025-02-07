@@ -9,15 +9,14 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Upload Bukti Pembayaran</h5>
                     <div class="card-body">
-                        <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
+                        <form action="{{ route('payment.store') }}" method="POST" enctype="multipart/form-data"
+                            class="dropzone" id="dropzone-basic">
+                            @csrf
                             <div class="dz-message needsclick">
                                 Drop files here or click to upload
-                                <span class="note needsclick">(This is just a demo dropzone. Selected files are
-                                    <strong>not</strong> actually
-                                    uploaded.)</span>
                             </div>
                             <div class="fallback">
-                                <input name="file" type="file" />
+                                <input name="file" type="file" accept="image/*" />
                             </div>
                         </form>
                     </div>
@@ -30,7 +29,7 @@
                         <h5 class="card-title mb-3">Riwayat Pembayaran</h5>
                     </div>
                     <div class="card-datatable table-responsive">
-                        <table class="table border-top" id="listPaymentTable">
+                        <table class="table border-top" id="listPaymentsTable">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -38,6 +37,7 @@
                                     <th class="text-center">Pembayaran</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Tanggal Pembayaran</th>
+                                    <th class="text-center">Terakhir Perubahan</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -48,3 +48,9 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        tbl_payment()
+    </script>
+@endpush
