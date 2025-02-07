@@ -157,6 +157,8 @@
         <script src="{{ asset('assets/js/app-principle-list.js') }}"></script>
     @elseif (request()->routeIs('verification.registration'))
         <script src="{{ asset('assets/js/app-verification-registration-list.js') }}"></script>
+    @elseif (request()->routeIs('verification.payment'))
+        <script src="{{ asset('assets/js/app-verification-payment-list.js') }}"></script>
     @endif
 
     @stack('scripts')

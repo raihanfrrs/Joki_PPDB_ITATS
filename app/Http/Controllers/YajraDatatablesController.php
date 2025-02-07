@@ -192,6 +192,45 @@ class YajraDatatablesController extends Controller
             ->make(true);
     }
 
+    public function verification_payment()
+    {
+        $payments = $this->payment->getAllPayment();
+
+        return DataTables::of($payments)
+            ->addColumn('index', function ($model) use ($payments) {
+                return $payments->search($model) + 1;
+            })
+            ->addColumn('nisn', function ($model) {
+                return view('components.data.yajra.data-verification-payment.nisn-column', compact('model'))->render();
+            })
+            ->addColumn('nik', function ($model) {
+                return view('components.data.yajra.data-verification-payment.nik-column', compact('model'))->render();
+            })
+            ->addColumn('name', function ($model) {
+                return view('components.data.yajra.data-verification-payment.name-column', compact('model'))->render();
+            })
+            ->addColumn('pob_dob', function ($model) {
+                return view('components.data.yajra.data-verification-payment.pob-dob-column', compact('model'))->render();
+            })
+            ->addColumn('gender', function ($model) {
+                return view('components.data.yajra.data-verification-payment.gender-column', compact('model'))->render();
+            })
+            ->addColumn('address', function ($model) {
+                return view('components.data.yajra.data-verification-payment.address-column', compact('model'))->render();
+            })
+            ->addColumn('status_payment', function ($model) {
+                return view('components.data.yajra.data-verification-payment.status-payment-column', compact('model'))->render();
+            })
+            ->addColumn('created_at', function ($model) {
+                return view('components.data.yajra.data-verification-payment.created-at-column', compact('model'))->render();
+            })
+            ->addColumn('action', function ($model) {
+                return view('components.data.yajra.data-verification-payment.action-column', compact('model'))->render();
+            })
+            ->rawColumns(['index', 'nisn', 'nik', 'name', 'pob_dob', 'gender', 'address', 'status_payment', 'created_at', 'action'])
+            ->make(true);
+    }
+
     public function payment()
     {
         $payments = $this->payment->all();
@@ -209,13 +248,10 @@ class YajraDatatablesController extends Controller
             ->addColumn('created_at', function ($model) {
                 return view('components.data.yajra.data-payment.created-at-column', compact('model'))->render();
             })
-            ->addColumn('updated_at', function ($model) {
-                return view('components.data.yajra.data-payment.updated-at-column', compact('model'))->render();
-            })
             ->addColumn('action', function ($model) {
                 return view('components.data.yajra.data-payment.action-column', compact('model'))->render();
             })
-            ->rawColumns(['index', 'payment', 'status', 'created_at', 'updated_at', 'action'])
+            ->rawColumns(['index', 'payment', 'status', 'created_at', 'action'])
             ->make(true);
     }
 }

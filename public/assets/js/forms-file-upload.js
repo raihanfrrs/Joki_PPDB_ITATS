@@ -79,8 +79,8 @@
   }
 
   const dropzoneBasicEdit = document.querySelector('#dropzone-basic-edit');
-  if (dropzoneBasic) {
-    const myDropzone = new Dropzone(dropzoneBasic, {
+  if (dropzoneBasicEdit) {
+    const myDropzone = new Dropzone(dropzoneBasicEdit, {
       previewTemplate: previewTemplate,
       parallelUploads: 1,
       maxFilesize: 5,
