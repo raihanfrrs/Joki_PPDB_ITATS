@@ -38,7 +38,7 @@
                 <div data-i18n="Registration">Registration</div>
             </a>
         </li>
-        <li class="menu-item {{ request()->routeIs('payment') ? 'active' : '' }}">
+        <li class="menu-item {{ request()->routeIs('payment', 'payment.edit') ? 'active' : '' }}">
             <a href="{{ route('payment') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-credit-card"></i>
                 <div data-i18n="Payment">Payment</div>

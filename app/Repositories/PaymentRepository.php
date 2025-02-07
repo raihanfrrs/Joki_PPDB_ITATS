@@ -15,6 +15,21 @@ class PaymentRepository
         return Payment::where('student_id', auth()->user()->student->id)->get();
     }
 
+    public function getAllPayment()
+    {
+        return Payment::all();
+    }
+
+    public function updateStatus($data, $payment)
+    {
+        return DB::transaction(function () use ($data, $payment) {
+            Payment::where('id', $payment->id)->update([
+                'status' => $data['status'],
+            ]);
+            return true;
+        });
+    }
+
     public function store($data)
     {
         $payment_id = Uuid::uuid4()->toString();
@@ -41,28 +56,65 @@ class PaymentRepository
         });
     }
 
-    public function update($data, $media)
+    public function update($data, $mediaId)
     {
-        return DB::transaction(function () use ($data, $media) {
+        return DB::transaction(function () use ($data, $mediaId) {
             if ($data->hasFile('file')) {
-                $mediaStudent = Media::where('id', $media)->first();
+                // Cari media berdasarkan ID
+                $media = Media::find($mediaId);
 
-                // Hapus media sebelumnya di koleksi 'akta_kelahiran_images'
-                $mediaStudent->clearMediaCollection('payment_images');
+                // Pastikan media ditemukan
+                if (!$media) {
+                    throw new \Exception("Media tidak ditemukan");
+                }
+
+                // Ambil model yang memiliki media ini
+                $model = $media->model;
+
+                // Pastikan model valid dan mendukung `clearMediaCollection`
+                if (!$model || !method_exists($model, 'clearMediaCollection')) {
+                    throw new \Exception("Model tidak valid atau tidak mendukung media");
+                }
+
+                // Hapus media lama dari koleksi 'payment_images'
+                $model->clearMediaCollection('payment_images');
 
                 // Tambahkan gambar baru ke koleksi media
-                $media = $mediaStudent
+                $newMedia = $model
                     ->addMediaFromRequest('file')
                     ->toMediaCollection('payment_images');
 
-                // Pastikan objek media tidak null sebelum mengupdate informasi
-                if ($media) {
-                    $media->update([
-                        'model_id' => $mediaStudent->model_id,
-                        'model_type' => Registration::class,
+                // Update informasi media baru
+                if ($newMedia) {
+                    $newMedia->update([
+                        'model_id' => $model->id,
+                        'model_type' => get_class($model),
                     ]);
                 }
             }
+
+            return true;
+        });
+    }
+
+    public function destroy($mediaId)
+    {
+        return DB::transaction(function () use ($mediaId) {
+            // Cari media berdasarkan ID
+            $media = Media::findOrFail($mediaId);
+
+            // Ambil model Payment yang terkait dengan media ini (jika ada)
+            $payment = Payment::where('id', $media->model_id)->first();
+
+            // Hapus media dari koleksi
+            $media->delete();
+
+            // Hapus payment jika ditemukan
+            if ($payment) {
+                $payment->delete();
+            }
+
+            return true;
         });
     }
 }

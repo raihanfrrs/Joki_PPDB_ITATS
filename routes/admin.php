@@ -23,5 +23,7 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
         Route::get('verification/registration/{registration}', 'registration_show')->name('verification.registration.show');
 
         Route::get('verification/payment', 'payment_index')->name('verification.payment');
+        Route::patch('verification-payment/{payment}', 'payment_update')->name('verification.payment.update');
+        Route::get('verification/payment/{payment}', 'payment_show')->name('verification.payment.show');
     });
 });

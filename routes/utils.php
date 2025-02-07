@@ -9,6 +9,7 @@ Route::controller(YajraDatatablesController::class)->group(function () {
     Route::get('listPrinciplesTable', 'principle');
     Route::get('listStudentReportTable', 'student_report');
     Route::get('listVerificationRegistrationTable', 'verification_registration');
+    Route::get('listVerificationPaymentTable', 'verification_payment');
     Route::get('listPaymentsTable', 'payment');
 });
 
