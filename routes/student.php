@@ -15,5 +15,9 @@ Route::group(['middleware' => ['cekUserLogin:student']], function () {
 
     Route::controller(PaymentController::class)->group(function () {
         Route::get('payment', 'index')->name('payment');
+        Route::post('payment', 'store')->name('payment.store');
+        Route::get('payment/{media}', 'edit')->name('payment.edit');
+        Route::post('payment/{media}', 'update')->name('payment.update');
+        Route::post('payment/destroy', 'destroy')->name('payment.destroy');
     });
 });

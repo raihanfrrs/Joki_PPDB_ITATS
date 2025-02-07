@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\PaymentRepository;
 use App\Repositories\PrincipleRepository;
 use App\Repositories\RegistrationRepository;
 use Illuminate\Http\Request;
@@ -10,13 +11,14 @@ use Yajra\DataTables\Facades\DataTables;
 
 class YajraDatatablesController extends Controller
 {
-    protected $student, $principle, $registration;
+    protected $student, $principle, $registration, $payment;
 
-    public function __construct(StudentRepository $student, PrincipleRepository $principle, RegistrationRepository $registration)
+    public function __construct(StudentRepository $student, PrincipleRepository $principle, RegistrationRepository $registration, PaymentRepository $payment)
     {
         $this->student = $student;
         $this->principle = $principle;
         $this->registration = $registration;
+        $this->payment = $payment;
     }
 
     public function student()
@@ -187,6 +189,33 @@ class YajraDatatablesController extends Controller
                 return view('components.data.yajra.data-verification-registration.action-column', compact('model'))->render();
             })
             ->rawColumns(['index', 'nisn', 'nik', 'name', 'pob_dob', 'gender', 'address', 'status_registration', 'created_at', 'action'])
+            ->make(true);
+    }
+
+    public function payment()
+    {
+        $payments = $this->payment->all();
+
+        return DataTables::of($payments)
+            ->addColumn('index', function ($model) use ($payments) {
+                return $payments->search($model) + 1;
+            })
+            ->addColumn('payment', function ($model) {
+                return view('components.data.yajra.data-payment.payment-column', compact('model'))->render();
+            })
+            ->addColumn('status', function ($model) {
+                return view('components.data.yajra.data-payment.status-column', compact('model'))->render();
+            })
+            ->addColumn('created_at', function ($model) {
+                return view('components.data.yajra.data-payment.created-at-column', compact('model'))->render();
+            })
+            ->addColumn('updated_at', function ($model) {
+                return view('components.data.yajra.data-payment.updated-at-column', compact('model'))->render();
+            })
+            ->addColumn('action', function ($model) {
+                return view('components.data.yajra.data-payment.action-column', compact('model'))->render();
+            })
+            ->rawColumns(['index', 'payment', 'status', 'created_at', 'updated_at', 'action'])
             ->make(true);
     }
 }
