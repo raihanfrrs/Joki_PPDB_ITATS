@@ -147,18 +147,18 @@ class RegistrationRepository
                 }
             }
 
-            if ($data->hasFile('image_ijasah')) {
-                foreach ($data->file('image_ijasah') as $key => $file) {
-                    $media = $registration->addMedia($file)
-                        ->withResponsiveImages()
-                        ->toMediaCollection('ijasah_tk_images');
+        if ($data->hasFile('image_ijasah')) {
+            foreach ($data->file('image_ijasah') as $key => $file) {
+                $media = $registration->addMedia($file)
+                    ->withResponsiveImages()
+                    ->toMediaCollection('ijasah_tk_images');
 
-                    $media->update([
-                        'model_id' => $registration_id,
-                        'model_type' => Registration::class,
-                    ]);
-                }
+                $media->update([
+                    'model_id' => $registration_id,
+                    'model_type' => Registration::class,
+                ]);
             }
+        }
 
             return true;
         });

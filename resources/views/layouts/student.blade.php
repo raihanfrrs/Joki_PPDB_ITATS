@@ -142,7 +142,7 @@
     <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/animate-on-scroll/animate-on-scroll.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/dropzone/dropzone.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/dropzone/dropzone.min.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/prev-image.js') }}"></script>
@@ -154,8 +154,9 @@
         <script src="{{ asset('assets/js/extended-ui-timeline.js') }}"></script>
     @elseif (request()->routeIs('registration'))
         <script src="{{ asset('assets/js/form-basic-inputs.js') }}"></script>
-    @elseif (request()->routeIs('payment'))
+    @elseif (request()->routeIs('payment', 'payment.edit'))
         <script src="{{ asset('assets/js/forms-file-upload.js') }}"></script>
+        <script src="{{ asset('assets/js/app-payment-list.js') }}"></script>
     @endif
 
     @stack('scripts')

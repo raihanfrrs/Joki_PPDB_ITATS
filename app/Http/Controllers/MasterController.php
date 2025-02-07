@@ -66,7 +66,7 @@ class MasterController extends Controller
                 'case' => 'default',
                 'position' => 'center',
                 'type' => 'success',
-                'message' => 'Ubah Buyer Kepala Sekolah Berhasil!'
+                'message' => 'Ubah Kepala Sekolah Berhasil!'
             ]);
         } else {
             return redirect()->back()->with([
@@ -74,7 +74,7 @@ class MasterController extends Controller
                 'case' => 'default',
                 'position' => 'center',
                 'type' => 'error',
-                'message' => 'Ubah Buyer Kepala Sekolah Gagal!'
+                'message' => 'Ubah Kepala Sekolah Gagal!'
             ]);
         }
     }
