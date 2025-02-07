@@ -43,4 +43,25 @@ class PaymentController extends Controller
             return response()->json(['success' => false, 'message' => 'Unggah Pembayaran Gagal!']);
         }
     }
+
+    public function destroy($media)
+    {
+        if ($this->payment->destroy($media)) {
+            return redirect()->back()->with([
+                'flash-type' => 'sweetalert',
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Hapus Bukti Pembayaran Berhasil!'
+            ]);
+        } else {
+            return redirect()->back()->with([
+                'flash-type' => 'sweetalert',
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'error',
+                'message' => 'Hapus Bukti Pembayaran Gagal!'
+            ]);
+        }
+    }
 }

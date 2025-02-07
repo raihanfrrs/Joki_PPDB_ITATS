@@ -5,7 +5,7 @@
 'use strict';
 
 // Datatable (jquery)
-function tbl_payment () {
+function tbl_verification_payment () {
   let borderColor, bodyBg, headingColor;
 
   if (isDarkStyle) {
@@ -18,16 +18,21 @@ function tbl_payment () {
     headingColor = config.colors.headingColor;
   }
 
-  var dt_brand_table = $('#listPaymentsTable');
+  var dt_brand_table = $('#listVerificationPaymentTable');
 
   if (dt_brand_table.length) {
     var dt_user = dt_brand_table.DataTable({
-      ajax: "/listPaymentsTable",
+      ajax: "/listVerificationPaymentTable",
       columns: [
         { data: '' },
         { data: 'index', class: 'text-center' },
-        { data: 'payment', class: 'text-center' },
-        { data: 'status', class: 'text-center' },
+        { data: 'nisn', class: 'text-center' },
+        { data: 'nik', class: 'text-center' },
+        { data: 'name', class: 'text-center' },
+        { data: 'pob_dob', class: 'text-center' },
+        { data: 'gender', class: 'text-center' },
+        { data: 'address' },
+        { data: 'status_payment', class: 'text-center' },
         { data: 'created_at', class: 'text-center' },
         { data: 'action' }
       ],
@@ -52,17 +57,47 @@ function tbl_payment () {
         {
           targets: 2,
           render: function (data, type, full, meta) {
-            return full.payment;
+            return full.nisn;
           }
         },
         {
           targets: 3,
           render: function (data, type, full, meta) {
-            return full.status;
+            return full.nik;
           }
         },
         {
           targets: 4,
+          render: function (data, type, full, meta) {
+            return full.name;
+          }
+        },
+        {
+          targets: 5,
+          render: function (data, type, full, meta) {
+            return full.pob_dob;
+          }
+        },
+        {
+          targets: 6,
+          render: function (data, type, full, meta) {
+            return full.gender;
+          }
+        },
+        {
+          targets: 7,
+          render: function (data, type, full, meta) {
+            return full.address;
+          }
+        },
+        {
+          targets: 8,
+          render: function (data, type, full, meta) {
+            return full.status_payment;
+          }
+        },
+        {
+          targets: 9,
           render: function (data, type, full, meta) {
             return full.created_at;
           }
@@ -104,7 +139,7 @@ function tbl_payment () {
               text: '<i class="ti ti-printer me-2" ></i>Print',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               },
               customize: function (win) {
                 $(win.document.body)
@@ -124,7 +159,7 @@ function tbl_payment () {
               text: '<i class="ti ti-file-text me-2" ></i>Csv',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               }
             },
             {
@@ -132,7 +167,7 @@ function tbl_payment () {
               text: '<i class="ti ti-file-spreadsheet me-2"></i>Excel',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               }
             },
             {
@@ -140,7 +175,7 @@ function tbl_payment () {
               text: '<i class="ti ti-file-code-2 me-2"></i>Pdf',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               }
             },
             {
@@ -148,11 +183,11 @@ function tbl_payment () {
               text: '<i class="ti ti-copy me-2" ></i>Copy',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               }
             }
           ]
-        },
+        }
       ],
       // For responsive popup
       responsive: {
@@ -189,6 +224,30 @@ function tbl_payment () {
       }
     });
   }
+
+  // Delete Record
+  $(document).on('click', '#button-delete-tenant', function () {
+    let id = $(this).attr('data-id');
+    let formSelector = ".form-delete-tenant-" + id;
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
+      confirmButtonText: 'Yes, Delete!',
+      customClass: {
+        confirmButton: 'btn btn-primary me-3',
+        cancelButton: 'btn btn-label-secondary'
+      },
+      buttonsStyling: false
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        $(formSelector).submit();
+      }
+    });
+  });
 
   setTimeout(() => {
     $('.dataTables_filter .form-control').removeClass('form-control-sm');
