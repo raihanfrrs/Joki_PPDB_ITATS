@@ -698,7 +698,7 @@
   color: #fff;
 }
 .light-style .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
-  font-weight: 600;
+  font-weight: 500;
 }
 .light-style .apexcharts-canvas .apexcharts-xaxistooltip,
 .light-style .apexcharts-canvas .apexcharts-yaxistooltip {
@@ -771,7 +771,7 @@
   color: #fff;
 }
 .dark-style .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
-  font-weight: 600;
+  font-weight: 500;
 }
 .dark-style .apexcharts-canvas .apexcharts-xaxistooltip,
 .dark-style .apexcharts-canvas .apexcharts-yaxistooltip {

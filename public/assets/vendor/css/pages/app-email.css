@@ -3,6 +3,9 @@
   height: calc(100vh - 12rem) !important;
   overflow: hidden;
 }
+.layout-navbar-hidden .app-email {
+  height: calc(100vh - 8.5rem) !important;
+}
 .layout-horizontal .app-email {
   height: calc(100vh - 12rem + 1rem) !important;
 }
@@ -28,6 +31,9 @@
 }
 .app-email .app-email-sidebar .email-filters {
   height: calc(100vh - 16.6rem);
+}
+.layout-navbar-hidden .app-email .app-email-sidebar .email-filters {
+  height: calc(100vh - 12.6rem);
 }
 .layout-horizontal .app-email .app-email-sidebar .email-filters {
   height: calc(100vh - 15.6rem);
@@ -65,10 +71,21 @@
 .app-email .app-email-compose .email-compose-to .select2-selection {
   border: none;
 }
+.app-email .app-email-compose .email-compose-to .select2-selection .select2-selection__choice {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+.app-email .app-email-compose .email-compose-to .select2-selection__choice__remove {
+  top: unset;
+}
 .app-email .app-email-compose .email-compose-toggle-wrapper {
   width: 80px;
 }
 .app-email .app-email-compose .ql-editor {
+  height: 10rem;
   min-height: 10rem;
 }
 .app-email .app-email-compose .ql-snow.ql-toolbar {
@@ -91,6 +108,16 @@
     height: calc(100vh - 17.5rem);
   }
 }
+@media (min-width: 992px) {
+  .layout-navbar-hidden .app-email .app-emails-list .email-list {
+    height: calc(100vh - 15.5rem);
+  }
+}
+@media (max-width: 991.98px) {
+  .layout-navbar-hidden .app-email .app-emails-list .email-list {
+    height: calc(100vh - 13.5rem);
+  }
+}
 .layout-horizontal .app-email .app-emails-list .email-list {
   height: calc(100vh - 17rem);
 }
@@ -110,11 +137,8 @@
   cursor: pointer;
   z-index: 1;
 }
-.app-email .app-emails-list .email-list li .email-list-item-subject {
-  font-size: 0.85rem;
-}
 .app-email .app-emails-list .email-list li .email-list-item-username {
-  font-weight: 600;
+  font-weight: 500;
 }
 .app-email .app-emails-list .email-list li .email-list-item-time {
   width: 60px;
@@ -127,7 +151,7 @@
 .app-email .app-emails-list .email-list li .email-list-item-meta .email-list-item-actions li {
   padding: 0;
 }
-.app-email .app-emails-list .email-list li:not(.list-inline-item):hover {
+.app-email .app-emails-list .email-list li.email-list-item:not(.list-inline-item):hover {
   z-index: 5;
   transform: translateY(-2px);
 }
@@ -139,6 +163,9 @@
   height: calc(100vh - 12rem);
   z-index: -1;
   transition: all 0.25s ease;
+}
+.layout-navbar-hidden .app-email .app-email-view {
+  height: calc(100vh - 8.5rem);
 }
 .layout-horizontal .app-email .app-email-view {
   height: calc(100vh - 12rem + 1rem);
@@ -182,7 +209,8 @@
   border: 0;
 }
 .app-email .app-email-view .app-email-view-content .ql-container .ql-editor {
-  min-height: 5rem;
+  height: 7rem;
+  min-height: 7rem;
 }
 .app-email .app-email-view .app-email-view-content .ql-editor,
 .app-email .app-email-view .app-email-view-content .ql-editor.ql-blank::before {

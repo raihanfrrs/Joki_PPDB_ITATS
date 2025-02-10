@@ -252,4 +252,5 @@
 
 [dir=rtl] .ps--active-y > .ps__rail-y {
   left: 0;
+  right: auto !important;
 }

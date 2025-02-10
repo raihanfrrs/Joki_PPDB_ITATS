@@ -43,6 +43,14 @@
   overflow: hidden;
 }
 
+.jq-ry-container > .jq-ry-group-wrapper > .jq-ry-group,
+.jq-ry-container > .jq-ry-group-wrapper > .jq-ry-group.jq-ry-rated-group {
+  z-index: 8;
+}
+
+.light-style .jq-ry-container {
+  padding: 0;
+}
 .light-style:not([dir=rtl]) .jq-ry-container .jq-ry-normal-group svg {
   fill: rgba(75, 70, 92, 0.2);
 }

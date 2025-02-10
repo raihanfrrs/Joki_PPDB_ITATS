@@ -18,13 +18,6 @@
   width: 1em;
 }
 
-.fi-xx {
-  background-image: url(../fonts/flags/4x3/xx.svg);
-}
-.fi-xx.fis {
-  background-image: url(../fonts/flags/1x1/xx.svg);
-}
-
 .fi-ad {
   background-image: url(../fonts/flags/4x3/ad.svg);
 }
@@ -1733,6 +1726,13 @@
   background-image: url(../fonts/flags/1x1/ws.svg);
 }
 
+.fi-xx {
+  background-image: url(../fonts/flags/4x3/xx.svg);
+}
+.fi-xx.fis {
+  background-image: url(../fonts/flags/1x1/xx.svg);
+}
+
 .fi-ye {
   background-image: url(../fonts/flags/4x3/ye.svg);
 }
@@ -1775,6 +1775,20 @@
   background-image: url(../fonts/flags/1x1/ac.svg);
 }
 
+.fi-arab {
+  background-image: url(../fonts/flags/4x3/arab.svg);
+}
+.fi-arab.fis {
+  background-image: url(../fonts/flags/1x1/arab.svg);
+}
+
+.fi-cefta {
+  background-image: url(../fonts/flags/4x3/cefta.svg);
+}
+.fi-cefta.fis {
+  background-image: url(../fonts/flags/1x1/cefta.svg);
+}
+
 .fi-cp {
   background-image: url(../fonts/flags/4x3/cp.svg);
 }
@@ -1789,11 +1803,11 @@
   background-image: url(../fonts/flags/1x1/dg.svg);
 }
 
-.fi-ea {
-  background-image: url(../fonts/flags/4x3/ea.svg);
+.fi-eac {
+  background-image: url(../fonts/flags/4x3/eac.svg);
 }
-.fi-ea.fis {
-  background-image: url(../fonts/flags/1x1/ea.svg);
+.fi-eac.fis {
+  background-image: url(../fonts/flags/1x1/eac.svg);
 }
 
 .fi-es-ct {
@@ -1808,6 +1822,13 @@
 }
 .fi-es-ga.fis {
   background-image: url(../fonts/flags/1x1/es-ga.svg);
+}
+
+.fi-es-pv {
+  background-image: url(../fonts/flags/4x3/es-pv.svg);
+}
+.fi-es-pv.fis {
+  background-image: url(../fonts/flags/1x1/es-pv.svg);
 }
 
 .fi-eu {

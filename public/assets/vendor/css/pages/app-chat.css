@@ -1,6 +1,9 @@
 .app-chat {
   position: relative;
-  height: calc(100vh - 11.5rem) !important;
+  height: calc(100vh - 11.5rem);
+}
+.layout-navbar-hidden .app-chat {
+  height: calc(100vh - 7.5rem);
 }
 @media (min-width: 1200px) {
   .layout-horizontal .app-chat {
@@ -30,6 +33,9 @@
   flex-basis: 21rem;
   transition: all 0.25s ease;
 }
+.layout-navbar-hidden .app-chat .app-chat-contacts {
+  height: calc(100vh - 7.5rem);
+}
 @media (min-width: 1200px) {
   .layout-horizontal .app-chat .app-chat-contacts {
     height: calc(100vh - 11.5rem - 2.2rem);
@@ -47,9 +53,13 @@
   height: calc(calc(100vh - 11.5rem) - 3.9rem);
   height: calc(calc(100vh - 11.5rem) - 3.5rem);
 }
+.layout-navbar-hidden .app-chat .app-chat-contacts .sidebar-body {
+  height: calc(calc(100vh - 7.5rem) - 3.9rem);
+  height: calc(calc(100vh - 11.5rem) - 3.5rem);
+}
 @media (min-width: 992px) {
   .layout-horizontal .app-chat .app-chat-contacts .sidebar-body {
-    height: calc(calc(100vh - 11.5rem) - 5rem + calc(2.2rem / 2));
+    height: calc(calc(100vh - 11.5rem) - 5rem + 2.2rem / 2);
   }
 }
 @media (min-width: 1200px) {
@@ -91,6 +101,9 @@
   z-index: 5;
   transition: all 0.25s ease;
 }
+.layout-navbar-hidden .app-chat .app-chat-sidebar-left {
+  height: calc(100vh - 7.5rem);
+}
 @media (min-width: 1200px) {
   .layout-horizontal .app-chat .app-chat-sidebar-left {
     height: calc(100vh - 11.5rem - 2.2rem);
@@ -103,6 +116,9 @@
 .app-chat .app-chat-sidebar-left .sidebar-body {
   height: calc(calc(100vh - 11.5rem) - 11.5rem);
 }
+.layout-navbar-hidden .app-chat .app-chat-sidebar-left .sidebar-body {
+  height: calc(calc(100vh - 7.5rem) - 11.5rem);
+}
 @media (min-width: 1200px) {
   .layout-horizontal .app-chat .app-chat-sidebar-left .sidebar-body {
     height: calc(calc(100vh - 11.5rem) - 10.9rem - 2.2rem);
@@ -112,6 +128,9 @@
   position: relative;
   height: calc(100vh - 11.5rem);
   transition: all 0.25s ease;
+}
+.layout-navbar-hidden .app-chat .app-chat-history {
+  height: calc(100vh - 7.5rem);
 }
 @media (min-width: 1200px) {
   .layout-horizontal .app-chat .app-chat-history {
@@ -128,6 +147,9 @@
   height: calc(100vh - 20.5rem);
   padding: 2rem 1.5rem;
   overflow: hidden;
+}
+.layout-navbar-hidden .app-chat .app-chat-history .chat-history-body {
+  height: calc(100vh - 16.5rem);
 }
 @media (min-width: 1200px) {
   .layout-horizontal .app-chat .app-chat-history .chat-history-body {
@@ -176,6 +198,9 @@
   z-index: 5;
   transition: all 0.25s ease;
 }
+.layout-navbar-hidden .app-chat .app-chat-sidebar-right {
+  height: calc(100vh - 7.5rem);
+}
 @media (min-width: 1200px) {
   .layout-horizontal .app-chat .app-chat-sidebar-right {
     height: calc(100vh - 11.5rem - 2.2rem);
@@ -187,6 +212,9 @@
 }
 .app-chat .app-chat-sidebar-right .sidebar-body {
   height: calc(calc(100vh - 11.5rem) - 11.75rem);
+}
+.layout-navbar-hidden .app-chat .app-chat-sidebar-right .sidebar-body {
+  height: calc(calc(100vh - 7.5rem) - 11.75rem);
 }
 @media (min-width: 1200px) {
   .layout-horizontal .app-chat .app-chat-sidebar-right .sidebar-body {
