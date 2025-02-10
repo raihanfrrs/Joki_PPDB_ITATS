@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/front-page.css') }}" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
@@ -59,7 +60,7 @@
 
     <!-- Page CSS -->
     @if (request()->routeIs('/'))
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-help-center.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/front-page-help-center.css') }}" />
     @else
         <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />
     @endif
@@ -89,8 +90,6 @@
 
                 <div class="layout-page">
                     <div class="content-wrapper">
-
-                        @include('partials.guest.bottombar')
 
                         @yield('section-guest')
 
@@ -163,12 +162,11 @@
     <script src="{{ asset('assets/js/prev-image.js') }}"></script>
     <script src="{{ asset('assets/js/script-customer.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/front-main.js') }}"></script>
 
     <!-- Page JS -->
     @if (request()->routeIs('signin') || request()->routeIs('signup'))
         <script src="{{ asset('assets/js/pages-auth.js') }}"></script>
-    @else
-        <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
     @endif
 
     @stack('scripts')

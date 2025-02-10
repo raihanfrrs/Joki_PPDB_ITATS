@@ -204,6 +204,7 @@
   padding: 0 1rem;
   flex-wrap: nowrap;
   gap: 1rem;
+  font-weight: 500;
 }
 .bs-stepper .bs-stepper-header .step .step-trigger .bs-stepper-label {
   margin: 0;
@@ -212,11 +213,12 @@
   text-overflow: ellipsis;
   text-align: start;
   display: inline-grid;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9375rem;
 }
 .bs-stepper .bs-stepper-header .step .step-trigger .bs-stepper-label .bs-stepper-title {
   line-height: 1;
+  font-weight: 500;
 }
 .bs-stepper .bs-stepper-header .step .step-trigger .bs-stepper-label .bs-stepper-subtitle {
   font-size: 0.8125rem;
@@ -246,7 +248,7 @@ html:not([dir=rtl]) .bs-stepper .bs-stepper-header .step:last-child .step-trigge
   width: 2.5rem;
   height: 2.5rem;
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .bs-stepper .bs-stepper-content {
   padding: 1.5rem 1.5rem;

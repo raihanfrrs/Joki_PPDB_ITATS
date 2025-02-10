@@ -618,7 +618,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .light-style .noUi-tooltip {
   color: #5d596c;
   background: #e2e1e5;
-  font-weight: 600;
+  font-weight: 500;
 }
 .light-style .noUi-secondary .noUi-connect {
   background: #a8aaae !important;
@@ -692,7 +692,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .dark-style .noUi-tooltip {
   color: #cfd3ec;
   background: rgba(134, 146, 208, 0.16);
-  font-weight: 600;
+  font-weight: 500;
 }
 .dark-style .noUi-secondary .noUi-connect {
   background: #a8aaae !important;

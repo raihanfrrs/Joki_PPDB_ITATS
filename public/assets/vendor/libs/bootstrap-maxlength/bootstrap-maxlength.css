@@ -7,7 +7,7 @@
 .light-style .bootstrap-maxlength {
   background: rgba(75, 70, 92, 0.2);
   font-size: 0.81em;
-  font-weight: 600;
+  font-weight: 500;
   padding: 0.49em 1em;
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -21,7 +21,7 @@
   background: #25293c;
   padding: 0.49em 1em;
   font-size: 0.81em;
-  font-weight: 600;
+  font-weight: 500;
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }

@@ -1,72 +1,296 @@
-<nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
-    <div class="container-xxl">
-        <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
-            <a href="/" class="app-brand-link gap-2">
-                <span class="app-brand-text demo menu-text fw-bold">PPDB</span>
-            </a>
-
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
-                <i class="ti ti-x ti-sm align-middle"></i>
-            </a>
-        </div>
-
-        <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                <i class="ti ti-menu-2 ti-sm"></i>
-            </a>
-        </div>
-
-        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+<nav class="layout-navbar shadow-none py-0">
+    <div class="container">
+        <div class="navbar navbar-expand-lg landing-navbar px-3 px-md-4">
+            <!-- Menu logo wrapper: Start -->
+            <div class="navbar-brand app-brand demo d-flex py-0 py-lg-2 me-4">
+                <!-- Mobile menu toggle: Start-->
+                <button class="navbar-toggler border-0 px-0 me-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="ti ti-menu-2 ti-sm align-middle"></i>
+                </button>
+                <!-- Mobile menu toggle: End-->
+                <a href="{{ route('/') }}" class="app-brand-link">
+                    <span class="app-brand-text demo menu-text fw-bold ms-2 ps-1">PPDB</span>
+                </a>
+            </div>
+            <!-- Menu logo wrapper: End -->
+            <!-- Menu wrapper: Start -->
+            <div class="collapse navbar-collapse landing-nav-menu" id="navbarSupportedContent">
+                <button class="navbar-toggler border-0 text-heading position-absolute end-0 top-0 scaleX-n1-rtl"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="ti ti-x ti-sm"></i>
+                </button>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" aria-current="page" href="landing-page.html#landingHero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="landing-page.html#landingFeatures">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="landing-page.html#landingTeam">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="landing-page.html#landingFAQ">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="landing-page.html#landingContact">Contact us</a>
+                    </li>
+                    <li class="nav-item mega-dropdown">
+                        <a href="javascript:void(0);"
+                            class="nav-link dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium"
+                            aria-expanded="false" data-bs-toggle="mega-dropdown" data-trigger="hover">
+                            <span data-i18n="Pages">Pages</span>
+                        </a>
+                        <div class="dropdown-menu p-4">
+                            <div class="row gy-4">
+                                <div class="col-12 col-lg">
+                                    <div class="h6 d-flex align-items-center mb-2 mb-lg-3">
+                                        <div class="avatar avatar-sm flex-shrink-0 me-2">
+                                            <span class="avatar-initial rounded bg-label-primary"><i
+                                                    class="ti ti-layout-grid"></i></span>
+                                        </div>
+                                        <span class="ps-1">Other</span>
+                                    </div>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link" href="pricing-page.html">
+                                                <i class="ti ti-circle me-1"></i>
+                                                <span data-i18n="Pricing">Pricing</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link" href="payment-page.html">
+                                                <i class="ti ti-circle me-1"></i>
+                                                <span data-i18n="Payment">Payment</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link" href="checkout-page.html">
+                                                <i class="ti ti-circle me-1"></i>
+                                                <span data-i18n="Checkout">Checkout</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link" href="help-center-landing.html">
+                                                <i class="ti ti-circle me-1"></i>
+                                                <span data-i18n="Help Center">Help Center</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-lg">
+                                    <div class="h6 d-flex align-items-center mb-2 mb-lg-3">
+                                        <div class="avatar avatar-sm flex-shrink-0 me-2">
+                                            <span class="avatar-initial rounded bg-label-primary"><i
+                                                    class="ti ti-lock-open"></i></span>
+                                        </div>
+                                        <span class="ps-1">Auth Demo</span>
+                                    </div>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-login-basic.html" target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Login (Basic)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-login-cover.html" target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Login (Cover)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-register-basic.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Register (Basic)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-register-cover.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Register (Cover)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-register-multisteps.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Register (Multi-steps)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-forgot-password-basic.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Forgot Password (Basic)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-forgot-password-cover.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Forgot Password (Cover)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-reset-password-basic.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Reset Password (Basic)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-reset-password-cover.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Reset Password (Cover)
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-lg">
+                                    <div class="h6 d-flex align-items-center mb-2 mb-lg-3">
+                                        <div class="avatar avatar-sm flex-shrink-0 me-2">
+                                            <span class="avatar-initial rounded bg-label-primary"><i
+                                                    class="ti ti-file-analytics"></i></span>
+                                        </div>
+                                        <span class="ps-1">Other</span>
+                                    </div>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/pages-misc-error.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Error
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/pages-misc-under-maintenance.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Under Maintenance
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/pages-misc-comingsoon.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Coming Soon
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/pages-misc-not-authorized.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Not Authorized
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-verify-email-basic.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Verify Email (Basic)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-verify-email-cover.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Verify Email (Cover)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-two-steps-basic.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Two Steps (Basic)
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link mega-dropdown-link"
+                                                href="../vertical-menu-template/auth-two-steps-cover.html"
+                                                target="_blank">
+                                                <i class="ti ti-circle me-1"></i>
+                                                Two Steps (Cover)
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-4 d-none d-lg-block">
+                                    <div class="bg-body nav-img-col p-2">
+                                        <img src="../../assets/img/front-pages/misc/nav-item-col-img.png"
+                                            alt="nav item col image" class="w-100" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="../vertical-menu-template/index.html"
+                            target="_blank">Admin</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="landing-menu-overlay d-lg-none"></div>
+            <!-- Menu wrapper: End -->
+            <!-- Toolbar: Start -->
             <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Style Switcher -->
-                <li class="nav-item me-2 me-xl-0">
-                    <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
-                        <i class="ti ti-md"></i>
+                <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
+                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                        data-bs-toggle="dropdown">
+                        <i class="ti ti-sm"></i>
                     </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                        <li>
+                            <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                                <span class="align-middle"><i class="ti ti-sun me-2"></i>Light</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                                <span class="align-middle"><i class="ti ti-moon me-2"></i>Dark</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                                <span class="align-middle"><i class="ti ti-device-desktop me-2"></i>System</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <!--/ Style Switcher -->
+                <!-- / Style Switcher-->
 
-                <!-- Quick links  -->
-                <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
-                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown"
-                        data-bs-auto-close="outside" aria-expanded="false">
-                        <i class="ti ti-user ti-md"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end py-0">
-                        <div class="dropdown-menu-header border-bottom">
-                            <div class="dropdown-header d-flex align-items-center py-3">
-                                <h5 class="text-body mb-0 me-auto">Authentication</h5>
-                            </div>
-                        </div>
-                        <div class="dropdown-shortcuts-list scrollable-container">
-                            <div class="row row-bordered overflow-visible g-0">
-                                <div class="dropdown-shortcuts-item col">
-                                    <span class="dropdown-shortcuts-icon rounded-circle mb-2">
-                                        <i class="ti ti-key fs-4"></i>
-                                    </span>
-                                    <a href="{{ route('signin') }}" class="stretched-link">Sign In</a>
-                                    <small class="text-muted mb-0">Access your account</small>
-                                </div>
-                                <div class="dropdown-shortcuts-item col">
-                                    <span class="dropdown-shortcuts-icon rounded-circle mb-2">
-                                        <i class="ti ti-lock fs-4"></i>
-                                    </span>
-                                    <a href="{{ route('signup') }}" class="stretched-link">Sign Up</a>
-                                    <small class="text-muted mb-0">Create user account</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- navbar button: Start -->
+                <li>
+                    <a href="{{ route('signin') }}" class="btn btn-primary"><span
+                            class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span
+                            class="d-none d-md-block">Login/Register</span></a>
                 </li>
-                <!-- Quick links -->
+                <!-- navbar button: End -->
             </ul>
-        </div>
-
-        <!-- Search Small Screens -->
-        <div class="navbar-search-wrapper search-input-wrapper container-xxl d-none">
-            <input type="text" class="form-control search-input border-0" placeholder="Search..."
-                aria-label="Search..." />
-            <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
+            <!-- Toolbar: End -->
         </div>
     </div>
 </nav>

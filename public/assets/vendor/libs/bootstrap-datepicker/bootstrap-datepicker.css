@@ -89,7 +89,7 @@ html:not([dir=rtl]) .datepicker .datepicker-centuries .prev {
 }
 .datepicker .datepicker-switch {
   vertical-align: middle;
-  font-weight: 600;
+  font-weight: 500;
   position: relative;
 }
 html:not([dir=rtl]) .datepicker .datepicker-switch {
@@ -139,7 +139,7 @@ html:not([dir=rtl]) .datepicker .datepicker-centuries .datepicker-switch {
   user-select: none;
   margin: 0;
   overflow: hidden;
-  border-radius: 0.375rem;
+  border-radius: var(--bs-border-radius);
 }
 .datepicker table tbody:before {
   content: "@";
@@ -157,7 +157,7 @@ html:not([dir=rtl]) .datepicker .datepicker-centuries .datepicker-switch {
 }
 .datepicker table tr td.dow,
 .datepicker table tr th.dow {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.8125rem;
 }
 
@@ -173,6 +173,9 @@ html:not([dir=rtl]) .datepicker .datepicker-centuries .datepicker-switch {
 }
 .datepicker table tr td.range {
   border-radius: 0 !important;
+}
+.datepicker table tr td.range.today {
+  box-shadow: none !important;
 }
 html:not([dir=rtl]) .datepicker table tr td.range-start:not(.range-end) {
   border-bottom-right-radius: 0 !important;

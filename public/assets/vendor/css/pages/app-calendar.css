@@ -51,6 +51,10 @@
 .app-calendar-wrapper table.fc-scrollgrid td {
   border-right: 0;
 }
+.app-calendar-wrapper .fc-timeGridDay-view table.fc-scrollgrid tbody tr:not(.fc-scrollgrid-section:first-of-type) td,
+.app-calendar-wrapper .fc-timeGridWeek-view table.fc-scrollgrid tbody tr:not(.fc-scrollgrid-section:first-of-type) td {
+  border-bottom: 0;
+}
 .app-calendar-wrapper .fc-dayGridMonth-view table.fc-scrollgrid td {
   border-bottom: 0;
 }

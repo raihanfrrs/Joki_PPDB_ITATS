@@ -68,10 +68,13 @@ html:not([dir=rtl]) .fc .fc-view-harness .fc-scrollgrid-section-header > * {
 .fc .fc-view-harness .fc-v-event .fc-event-title {
   font-size: 0.8125rem;
   padding-top: 0.2rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .fc .fc-view-harness .fc-timegrid-event .fc-event-main {
   padding: 0.216rem 0.5rem 0;
+}
+.fc .fc-day-today {
+  background-clip: padding-box;
 }
 .fc .fc-h-event .fc-event-main,
 .fc .fc-v-event .fc-event-main {
@@ -93,9 +96,12 @@ html:not([dir=rtl]) .fc .fc-view-harness .fc-scrollgrid-section-header > * {
 }
 .fc .fc-view-harness .fc-event {
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 500;
   padding: 0.216rem 0.5rem;
   border: 0;
+}
+.fc .fc-view-harness .fc-event .fc-event-title {
+  font-weight: 500;
 }
 .fc .fc-view-harness .fc-daygrid-event-harness .fc-event.private-event {
   background-color: transparent !important;
@@ -104,11 +110,11 @@ html:not([dir=rtl]) .fc .fc-view-harness .fc-scrollgrid-section-header > * {
 .fc .fc-view-harness .fc-event .fc-daygrid-event-dot {
   display: none;
 }
+.fc .fc-daygrid-event-harness + .fc-daygrid-event-harness .fc-daygrid-event {
+  margin-top: 0.3rem !important;
+}
 .fc .fc-timegrid .fc-timegrid-divider {
   display: none;
-}
-.fc .fc-daygrid-event-harness + .fc-daygrid-event-harness {
-  margin-top: 0.3rem !important;
 }
 .fc .fc-popover {
   z-index: 1090 !important;
