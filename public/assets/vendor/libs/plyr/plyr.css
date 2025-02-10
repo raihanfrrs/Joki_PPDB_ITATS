@@ -260,7 +260,7 @@ a.plyr__control::after, a.plyr__control::before {
   content: "";
   height: 0;
   position: absolute;
-  right: calc(((var(--plyr-control-icon-size, 18px) / 2) + calc(var(--plyr-control-spacing, 10px) * 0.7)) - (var(--plyr-menu-arrow-size, 4px) / 2));
+  right: calc(var(--plyr-control-icon-size, 18px) / 2 + calc(var(--plyr-control-spacing, 10px) * 0.7) - var(--plyr-menu-arrow-size, 4px) / 2);
   top: 100%;
   width: 0;
 }
@@ -301,7 +301,7 @@ a.plyr__control::after, a.plyr__control::before {
 }
 .plyr__menu__container .plyr__control--forward::after {
   border-left-color: var(--plyr-menu-arrow-color, hsl(216, 15%, 52%));
-  right: calc((calc(var(--plyr-control-spacing, 10px) * 0.7) * 1.5) - var(--plyr-menu-item-arrow-size, 4px));
+  right: calc(calc(var(--plyr-control-spacing, 10px) * 0.7) * 1.5 - var(--plyr-menu-item-arrow-size, 4px));
 }
 .plyr__menu__container .plyr__control--forward:focus-visible::after, .plyr__menu__container .plyr__control--forward:hover::after {
   border-left-color: currentColor;
@@ -312,11 +312,11 @@ a.plyr__control::after, a.plyr__control::before {
   margin-bottom: calc(calc(var(--plyr-control-spacing, 10px) * 0.7) / 2);
   padding-left: calc(calc(var(--plyr-control-spacing, 10px) * 0.7) * 4);
   position: relative;
-  width: calc(100% - (calc(var(--plyr-control-spacing, 10px) * 0.7) * 2));
+  width: calc(100% - calc(var(--plyr-control-spacing, 10px) * 0.7) * 2);
 }
 .plyr__menu__container .plyr__control--back::after {
   border-right-color: var(--plyr-menu-arrow-color, hsl(216, 15%, 52%));
-  left: calc((calc(var(--plyr-control-spacing, 10px) * 0.7) * 1.5) - var(--plyr-menu-item-arrow-size, 4px));
+  left: calc(calc(var(--plyr-control-spacing, 10px) * 0.7) * 1.5 - var(--plyr-menu-item-arrow-size, 4px));
 }
 .plyr__menu__container .plyr__control--back::before {
   background: var(--plyr-menu-back-border-color, hsl(216, 15%, 88%));
@@ -387,7 +387,7 @@ a.plyr__control::after, a.plyr__control::before {
   border-radius: calc(var(--plyr-range-thumb-height, 13px) * 2);
   color: var(--plyr-range-fill-background, var(--plyr-color-main, var(--plyr-color-main, hsl(198, 100%, 50%))));
   display: block;
-  height: calc((var(--plyr-range-thumb-active-shadow-width, 3px) * 2) + var(--plyr-range-thumb-height, 13px));
+  height: calc(var(--plyr-range-thumb-active-shadow-width, 3px) * 2 + var(--plyr-range-thumb-height, 13px));
   margin: 0;
   min-width: 0;
   padding: 0;
@@ -589,7 +589,7 @@ a.plyr__control::after, a.plyr__control::before {
 }
 .plyr__controls > .plyr__control:first-child .plyr__tooltip::before,
 .plyr__controls > .plyr__control:first-child + .plyr__control .plyr__tooltip::before {
-  left: calc((var(--plyr-control-icon-size, 18px) / 2) + calc(var(--plyr-control-spacing, 10px) * 0.7));
+  left: calc(var(--plyr-control-icon-size, 18px) / 2 + calc(var(--plyr-control-spacing, 10px) * 0.7));
 }
 
 .plyr__controls > .plyr__control:last-child .plyr__tooltip {
@@ -600,7 +600,7 @@ a.plyr__control::after, a.plyr__control::before {
 }
 .plyr__controls > .plyr__control:last-child .plyr__tooltip::before {
   left: auto;
-  right: calc((var(--plyr-control-icon-size, 18px) / 2) + calc(var(--plyr-control-spacing, 10px) * 0.7));
+  right: calc(var(--plyr-control-icon-size, 18px) / 2 + calc(var(--plyr-control-spacing, 10px) * 0.7));
   transform: translateX(50%);
 }
 
@@ -642,7 +642,7 @@ a.plyr__control::after, a.plyr__control::before {
   border-radius: 100px;
   height: var(--plyr-range-track-height, 5px);
   left: 0;
-  margin-top: calc((var(--plyr-range-track-height, 5px) / 2) * -1);
+  margin-top: calc(var(--plyr-range-track-height, 5px) / 2 * -1);
   padding: 0;
   position: absolute;
   top: 50%;

@@ -217,7 +217,7 @@ html:not([dir=rtl]) .flatpickr-calendar.hasWeeks .flatpickr-days {
   top: 1.15rem;
   display: inline-block;
   text-align: left;
-  font-weight: 600;
+  font-weight: 500;
   display: flex;
   align-items: center;
   line-height: 1;
@@ -232,7 +232,7 @@ html:not([dir=rtl]) .flatpickr-calendar.hasWeeks .flatpickr-days {
   padding: 0 0 0 0.5ch;
   outline: none;
   vertical-align: middle !important;
-  font-weight: 600;
+  font-weight: 500;
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
@@ -391,10 +391,6 @@ html:not([dir=rtl]) .flatpickr-day.selected.endRange, html:not([dir=rtl]) .flatp
 [dir=rtl] .flatpickr-day.selected.endRange, [dir=rtl] .flatpickr-day.startRange.endRange, [dir=rtl] .flatpickr-day.endRange.endRange {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-}
-
-.rangeMode .flatpickr-day {
-  margin-top: 1px;
 }
 
 .flatpickr-weekwrapper {
@@ -576,10 +572,10 @@ html:not([dir=rtl]) .flatpickr-weekwrapper .flatpickr-weeks .flatpickr-weeks {
 }
 .light-style .flatpickr-calendar,
 .light-style .flatpickr-days {
-  width: calc(16.625rem + 0px) !important;
+  width: calc(16.625rem + 0px * 2) !important;
 }
 .light-style .flatpickr-calendar.hasWeeks {
-  width: calc(18.75rem + 0px) !important;
+  width: calc(18.75rem + 0px * 3) !important;
 }
 .light-style .flatpickr-calendar.open {
   z-index: 1091;
@@ -628,7 +624,7 @@ html:not([dir=rtl]) .flatpickr-weekwrapper .flatpickr-weeks .flatpickr-weeks {
   background: #fff;
 }
 .light-style span.flatpickr-weekday {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.8125rem;
   background: #fff;
   color: #5d596c;
@@ -680,6 +676,13 @@ html:not([dir=rtl]) .flatpickr-weekwrapper .flatpickr-weeks .flatpickr-weeks {
 }
 .light-style .flatpickr-time input {
   color: #6f6b7d;
+  font-size: 0.9375rem;
+}
+.light-style .flatpickr-time input.flatpickr-hour {
+  font-weight: 500;
+}
+.light-style .flatpickr-time input.flatpickr-minute, .light-style .flatpickr-time input.flatpickr-second {
+  font-weight: 500;
 }
 .light-style .flatpickr-time .numInputWrapper span.arrowUp:after {
   border-bottom-color: #a5a3ae;
@@ -692,6 +695,7 @@ html:not([dir=rtl]) .flatpickr-weekwrapper .flatpickr-weeks .flatpickr-weeks {
 }
 .light-style .flatpickr-time .flatpickr-time-separator {
   color: #6f6b7d;
+  font-weight: 500;
 }
 
 .dark-style .flatpickr-calendar {
@@ -708,11 +712,10 @@ html:not([dir=rtl]) .flatpickr-weekwrapper .flatpickr-weeks .flatpickr-weeks {
 }
 .dark-style .flatpickr-calendar,
 .dark-style .flatpickr-days {
-  width: calc(16.625rem + 0px) !important;
+  width: calc(16.625rem + 0px * 2) !important;
 }
-.dark-style .flatpickr-calendar.hasWeeks,
-.dark-style .flatpickr-calendar.hasWeeks .flatpickr-days {
-  width: calc(18.75rem + 0px) !important;
+.dark-style .flatpickr-calendar.hasWeeks {
+  width: calc(18.75rem + 0px * 3) !important;
 }
 .dark-style .flatpickr-calendar.open {
   z-index: 1091;
@@ -762,13 +765,14 @@ html:not([dir=rtl]) .flatpickr-weekwrapper .flatpickr-weeks .flatpickr-weeks {
   background: #2f3349;
 }
 .dark-style span.flatpickr-weekday {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.8125rem;
   background: #2f3349;
   color: #cfd3ec;
 }
 .dark-style .flatpickr-day {
   color: #b6bee3;
+  font-weight: 500;
   border-radius: 50rem;
 }
 .dark-style .flatpickr-day:hover, .dark-style .flatpickr-day:focus, .dark-style .flatpickr-day.nextMonthDay:hover, .dark-style .flatpickr-day.prevMonthDay:hover, .dark-style .flatpickr-day.today:hover, .dark-style .flatpickr-day.nextMonthDay:focus, .dark-style .flatpickr-day.prevMonthDay:focus, .dark-style .flatpickr-day.today:focus {
@@ -810,6 +814,12 @@ html:not([dir=rtl]) .flatpickr-weekwrapper .flatpickr-weeks .flatpickr-weeks {
 .dark-style .flatpickr-time input {
   color: #b6bee3;
 }
+.dark-style .flatpickr-time input.flatpickr-hour {
+  font-weight: 500;
+}
+.dark-style .flatpickr-time input.flatpickr-minute, .dark-style .flatpickr-time input.flatpickr-second {
+  font-weight: 500;
+}
 .dark-style .flatpickr-time .numInputWrapper span.arrowUp:after {
   border-bottom-color: #7983bb;
 }
@@ -821,4 +831,5 @@ html:not([dir=rtl]) .flatpickr-weekwrapper .flatpickr-weeks .flatpickr-weeks {
 }
 .dark-style .flatpickr-time .flatpickr-time-separator {
   color: #b6bee3;
+  font-weight: 500;
 }

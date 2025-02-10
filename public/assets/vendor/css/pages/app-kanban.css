@@ -28,8 +28,9 @@
 }
 .app-kanban .kanban-wrapper .kanban-container .kanban-board .kanban-board-header .kanban-title-board {
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 500;
   max-width: 13rem;
+  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -88,7 +89,7 @@
 }
 .app-kanban .kanban-add-new-board label {
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0;
   cursor: pointer;
 }

@@ -431,6 +431,9 @@ select.selectpicker {
 .bootstrap-select .dropdown-toggle.btn {
   box-shadow: none !important;
 }
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+  line-height: 1.5;
+}
 .bootstrap-select .dropdown-menu .popover-header {
   display: flex;
   align-items: center;
@@ -523,20 +526,17 @@ html[class] .bootstrap-select.form-select {
 }
 .light-style .bootstrap-select .dropdown-toggle {
   border-radius: 0.375rem;
-  border: 1px solid #dbdade;
+  border: var(--bs-border-width) solid #dbdade;
 }
 .light-style .bootstrap-select .dropdown-toggle:not(.show):hover {
-  border-color: #dbdade;
-}
-.light-style .bootstrap-select .dropdown-menu {
-  box-shadow: 0 0.25rem 1rem rgba(165, 163, 174, 0.45);
+  border-color: #c9c8ce;
 }
 .light-style .bootstrap-select .dropdown-menu[data-popper-placement=top-start], .light-style .bootstrap-select .dropdown-menu[data-popper-placement=top-end] {
-  box-shadow: 0 -0.2rem 1.25rem rgba(165, 163, 174, 0.4) !important;
+  box-shadow: 0 -0.2rem 1.25rem rgba(165, 163, 174, 0.4);
 }
 .light-style .bootstrap-select .dropdown-menu .notify {
   background: #fff;
-  border: 1px solid var(--bs-border-color-translucent);
+  border: var(--bs-border-width) solid var(--bs-border-color-translucent);
 }
 .light-style .bootstrap-select .dropdown-menu .popover-header button {
   color: #6f6b7d;
@@ -546,21 +546,18 @@ html[class] .bootstrap-select.form-select {
   background-color: #2f3349;
 }
 .dark-style .bootstrap-select .dropdown-toggle {
-  border: 1px solid #434968;
+  border: var(--bs-border-width) solid #434968;
   border-radius: 0.375rem;
 }
 .dark-style .bootstrap-select .dropdown-toggle:not(.show):hover {
-  border-color: #434968;
-}
-.dark-style .bootstrap-select .dropdown-menu {
-  box-shadow: 0 0.25rem 1rem rgba(15, 20, 34, 0.55);
+  border-color: #5e6692;
 }
 .dark-style .bootstrap-select .dropdown-menu[data-popper-placement=top-start], .dark-style .bootstrap-select .dropdown-menu[data-popper-placement=top-end] {
-  box-shadow: 0 -0.2rem 1.25rem rgba(15, 20, 34, 0.55) !important;
+  box-shadow: 0 -0.2rem 1.25rem rgba(15, 20, 34, 0.55);
 }
 .dark-style .bootstrap-select .dropdown-menu .notify {
   background: #2f3349;
-  border: 1px solid var(--bs-border-color-translucent);
+  border: var(--bs-border-width) solid var(--bs-border-color-translucent);
 }
 .dark-style .bootstrap-select .dropdown-menu .popover-header button {
   color: #b6bee3;

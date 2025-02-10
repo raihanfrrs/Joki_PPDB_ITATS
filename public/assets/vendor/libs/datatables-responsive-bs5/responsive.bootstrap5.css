@@ -214,7 +214,7 @@ table.dataTable.table-bordered td.dtr-control.dtr-hidden + * {
 table.dataTable.dtr-column > tbody > tr > td.control:before,
 table.dataTable.dtr-column > tbody > tr > th.control:before {
   line-height: 0.9em;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 1399.98px) {
@@ -232,5 +232,5 @@ table.dataTable.dtr-column > tbody > tr > th.control:before {
   box-shadow: none !important;
 }
 .modal.dtr-bs-modal .table .emp_name {
-  font-weight: 600;
+  font-weight: 500;
 }
