@@ -55,9 +55,6 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/animate-on-scroll/animate-on-scroll.css') }}" />
 
     <!-- Page CSS -->
-    @if (request()->routeIs('/'))
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-advance.css') }}" />
-    @endif
 
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>

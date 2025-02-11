@@ -17,6 +17,47 @@ class RegistrationRepository
         return Registration::all();
     }
 
+    public function getRegistrationByStudentId($student_id)
+    {
+        return Registration::where('student_id', $student_id)->first();
+    }
+
+    public function checkIfFatherFilled($student_id)
+    {
+        // Ambil data Father berdasarkan Student ID
+        $father = Student::where('id', $student_id)->first()?->father;
+
+        // Jika tidak ada data Father, anggap belum terisi
+        if (!$father) {
+            return false;
+        }
+
+        // Cek apakah ada kolom yang NULL atau kosong
+        $isEmpty = Father::where('id', $father->id)
+            ->where(function ($query) {
+                $query->whereNull('nik')->orWhere('nik', '')
+                    ->orWhereNull('kk_number')->orWhere('kk_number', '')
+                    ->orWhereNull('name')->orWhere('name', '')
+                    ->orWhereNull('pob')->orWhere('pob', '')
+                    ->orWhereNull('dob')->orWhere('dob', '')
+                    ->orWhereNull('education')->orWhere('education', '')
+                    ->orWhereNull('job')->orWhere('job', '')
+                    ->orWhereNull('phone')->orWhere('phone', '')
+                    ->orWhereNull('email')->orWhere('email', '')
+                    ->orWhereNull('address')->orWhere('address', '')
+                    ->orWhereNull('subdistrict')->orWhere('subdistrict', '')
+                    ->orWhereNull('regency')->orWhere('regency', '')
+                    ->orWhereNull('province')->orWhere('province', '')
+                    ->orWhereNull('city')->orWhere('city', '')
+                    ->orWhereNull('religion')->orWhere('religion', '');
+            })
+            ->exists();
+
+        // Jika ada data kosong, return false (belum terisi sepenuhnya)
+        return !$isEmpty;
+    }
+
+
     public function store($data, $student)
     {
         $father_id = Uuid::uuid4()->toString();
@@ -147,18 +188,18 @@ class RegistrationRepository
                 }
             }
 
-        if ($data->hasFile('image_ijasah')) {
-            foreach ($data->file('image_ijasah') as $key => $file) {
-                $media = $registration->addMedia($file)
-                    ->withResponsiveImages()
-                    ->toMediaCollection('ijasah_tk_images');
+            if ($data->hasFile('image_ijasah')) {
+                foreach ($data->file('image_ijasah') as $key => $file) {
+                    $media = $registration->addMedia($file)
+                        ->withResponsiveImages()
+                        ->toMediaCollection('ijasah_tk_images');
 
-                $media->update([
-                    'model_id' => $registration_id,
-                    'model_type' => Registration::class,
-                ]);
+                    $media->update([
+                        'model_id' => $registration_id,
+                        'model_type' => Registration::class,
+                    ]);
+                }
             }
-        }
 
             return true;
         });
