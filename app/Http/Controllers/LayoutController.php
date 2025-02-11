@@ -28,6 +28,8 @@ class LayoutController extends Controller
                 'student' => $this->student->find(auth()->user()->student->id),
                 'registration' => $this->registration->getRegistrationByStudentId(auth()->user()->student->id),
                 'fatherFilled' => $this->registration->checkIfFatherFilled(auth()->user()->student->id),
+                'motherFilled' => $this->registration->checkIfMotherFilled(auth()->user()->student->id),
+                'custodianFilled' => $this->registration->checkIfCustodianFilled(auth()->user()->student->id),
                 'payment' => $this->payment->getPaymentByStudentId(auth()->user()->student->id)
             ]);
         } else if (Auth::check() && $this->role->find(auth()->user()->role_id)->role == 'admin') {

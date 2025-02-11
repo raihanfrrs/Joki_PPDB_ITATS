@@ -57,6 +57,75 @@ class RegistrationRepository
         return !$isEmpty;
     }
 
+    public function checkIfMotherFilled($student_id)
+    {
+        // Ambil data Mother berdasarkan Student ID
+        $mother = Student::where('id', $student_id)->first()?->mother;
+
+        // Jika tidak ada data Mother, anggap belum terisi
+        if (!$mother) {
+            return false;
+        }
+
+        // Cek apakah ada kolom yang NULL atau kosong
+        $isEmpty = Mother::where('id', $mother->id)
+            ->where(function ($query) {
+                $query->whereNull('nik')->orWhere('nik', '')
+                    ->orWhereNull('kk_number')->orWhere('kk_number', '')
+                    ->orWhereNull('name')->orWhere('name', '')
+                    ->orWhereNull('pob')->orWhere('pob', '')
+                    ->orWhereNull('dob')->orWhere('dob', '')
+                    ->orWhereNull('education')->orWhere('education', '')
+                    ->orWhereNull('job')->orWhere('job', '')
+                    ->orWhereNull('phone')->orWhere('phone', '')
+                    ->orWhereNull('email')->orWhere('email', '')
+                    ->orWhereNull('address')->orWhere('address', '')
+                    ->orWhereNull('subdistrict')->orWhere('subdistrict', '')
+                    ->orWhereNull('regency')->orWhere('regency', '')
+                    ->orWhereNull('province')->orWhere('province', '')
+                    ->orWhereNull('city')->orWhere('city', '')
+                    ->orWhereNull('religion')->orWhere('religion', '');
+            })
+            ->exists();
+
+        // Jika ada data kosong, return false (belum terisi sepenuhnya)
+        return !$isEmpty;
+    }
+
+    public function checkIfCustodianFilled($student_id)
+    {
+        // Ambil data Custodian berdasarkan Student ID
+        $custodian = Student::where('id', $student_id)->first()?->custodian;
+
+        // Jika tidak ada data Custodian, anggap belum terisi
+        if (!$custodian) {
+            return false;
+        }
+
+        // Cek apakah ada kolom yang NULL atau kosong
+        $isEmpty = Custodian::where('id', $custodian->id)
+            ->where(function ($query) {
+                $query->whereNull('nik')->orWhere('nik', '')
+                    ->orWhereNull('kk_number')->orWhere('kk_number', '')
+                    ->orWhereNull('name')->orWhere('name', '')
+                    ->orWhereNull('pob')->orWhere('pob', '')
+                    ->orWhereNull('dob')->orWhere('dob', '')
+                    ->orWhereNull('education')->orWhere('education', '')
+                    ->orWhereNull('job')->orWhere('job', '')
+                    ->orWhereNull('phone')->orWhere('phone', '')
+                    ->orWhereNull('email')->orWhere('email', '')
+                    ->orWhereNull('address')->orWhere('address', '')
+                    ->orWhereNull('subdistrict')->orWhere('subdistrict', '')
+                    ->orWhereNull('regency')->orWhere('regency', '')
+                    ->orWhereNull('province')->orWhere('province', '')
+                    ->orWhereNull('city')->orWhere('city', '')
+                    ->orWhereNull('religion')->orWhere('religion', '')
+                    ->orWhereNull('gender')->orWhere('gender', '');
+            });
+
+        // Jika ada data kosong, return false (belum terisi sepenuhnya)
+        return !$isEmpty;
+    }
 
     public function store($data, $student)
     {
