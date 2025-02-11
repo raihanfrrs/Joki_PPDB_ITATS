@@ -73,6 +73,7 @@
 
 <body>
     @include('components.flasher.sweetalert')
+    @include('components.modal.modal')
 
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
