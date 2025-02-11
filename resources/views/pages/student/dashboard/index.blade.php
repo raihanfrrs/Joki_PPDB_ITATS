@@ -7,157 +7,99 @@
                 <ul class="timeline timeline-center mt-5">
                     <li class="timeline-item pb-md-4 pb-5">
                         <span class="timeline-indicator timeline-indicator-primary" data-aos="zoom-in" data-aos-delay="200">
-                            <i class="ti ti-brush"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-feedly text-success">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7.833 12.278l4.445 -4.445" />
+                                <path d="M10.055 14.5l2.223 -2.222" />
+                                <path d="M12.278 16.722l.555 -.555" />
+                                <path
+                                    d="M19.828 14.828a4 4 0 0 0 0 -5.656l-5 -5a4 4 0 0 0 -5.656 0l-5 5a4 4 0 0 0 0 5.656l6.171 6.172h3.314l6.171 -6.172z" />
+                            </svg>
                         </span>
                         <div class="timeline-event card p-0" data-aos="fade-right">
                             <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
-                                <h6 class="card-title mb-0">Designing UI</h6>
+                                <h6 class="card-title mb-0">Pembuatan Akun Baru</h6>
                                 <div class="meta">
-                                    <span class="badge rounded-pill bg-label-primary">Design</span>
-                                    <span class="badge rounded-pill bg-label-success">Meeting</span>
+                                    <span class="badge rounded-pill bg-label-success">Berhasil</span>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <p class="mb-2">
-                                    Our main goal is to design a new mobile application for our client. The customer wants a
-                                    clean & flat design.
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center flex-wrap">
-                                    <div>
-                                        <p class="text-muted mb-2">Participants</p>
-                                        <ul class="list-unstyled users-list d-flex align-items-center avatar-group">
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                title="Vinnie Mostowy" class="avatar avatar-xs pull-up">
-                                                <img class="rounded-circle" src="../../assets/img/avatars/5.png"
-                                                    alt="Avatar" />
-                                            </li>
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                title="Allen Rieske" class="avatar avatar-xs pull-up">
-                                                <img class="rounded-circle" src="../../assets/img/avatars/12.png"
-                                                    alt="Avatar" />
-                                            </li>
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                title="Julee Rossignol" class="avatar avatar-xs pull-up">
-                                                <img class="rounded-circle" src="../../assets/img/avatars/6.png"
-                                                    alt="Avatar" />
-                                            </li>
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                title="Darcey Nooner" class="avatar avatar-xs pull-up">
-                                                <img class="rounded-circle" src="../../assets/img/avatars/10.png"
-                                                    alt="Avatar" />
-                                            </li>
+                                @if (!optional($student->registration))
+                                    <a href="{{ route('registration') }}" class="btn btn-outline-primary btn-sm">
+                                        Pendaftaran Disini
+                                    </a>
+                                @else
+                                    <a href="{{ route('student.profile') }}" class="btn btn-outline-primary btn-sm">
+                                        Lihat Biodata
+                                    </a>
+                                @endif
+
+                            </div>
+                            <div class="timeline-event-time">
+                                {{ \Carbon\Carbon::parse($student->created_at)->format('d M Y') }}</div>
+                        </div>
+                    </li>
+
+                    @if (optional($student->registration))
+                        <li class="timeline-item pb-md-4 pb-5">
+                            <span class="timeline-indicator timeline-indicator-success" data-aos="zoom-in"
+                                data-aos-delay="200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-checklist {{ optional($student->registration)->status == 'approved' ? 'text-success' : (optional($student->registration)->status == 'rejected' ? 'text-danger' : 'text-warning') }}">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8" />
+                                    <path d="M14 19l2 2l4 -4" />
+                                    <path d="M9 8h4" />
+                                    <path d="M9 12h2" />
+                                </svg>
+                            </span>
+                            <div class="timeline-event card p-0" data-aos="fade-left">
+                                <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="card-title mb-0">Pendaftaran Siswa</h6>
+                                    <div class="meta">
+                                        @if (optional($student->registration)->status == 'approved')
+                                            <span class="badge rounded-pill bg-label-success">Diterima</span>
+                                        @elseif (optional($student->registration)->status == 'rejected')
+                                            <span class="badge rounded-pill bg-label-danger">Ditolak</span>
+                                        @else
+                                            <span class="badge rounded-pill bg-label-warning">Menunggu</span>
+                                        @endif
+
+                                        @if (optional($student->registration)->flag == 'resubmit')
+                                            <span class="badge rounded-pill bg-label-primary">Daftar Ulang</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-2">Cek berkas pendaftaran</p>
+                                    <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseExample" aria-expanded="false"
+                                        aria-controls="collapseExample">
+                                        Lihat Berkas
+                                    </button>
+                                    <div class="collapse" id="collapseExample">
+                                        <ul class="list-group list-group-flush mt-3">
+                                            @if ($fatherFilled)
+                                                <li class="list-group-item d-flex justify-content-between flex-wrap">
+                                                    <span>Data Ayah : <strong>Terisi</strong></span>
+                                                    <i class="ti ti-check text-success"></i>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>
+                                <div class="timeline-event-time">
+                                    {{ \Carbon\Carbon::parse($student->registration->updated_at)->format('d M Y') }}</div>
                             </div>
-                            <div class="timeline-event-time">1st January</div>
-                        </div>
-                    </li>
+                        </li>
+                    @endif
                     <li class="timeline-item pb-md-4 pb-5">
-                        <span class="timeline-indicator timeline-indicator-success" data-aos="zoom-in" data-aos-delay="200">
-                            <i class="ti ti-question-mark"></i>
-                        </span>
-                        <div class="timeline-event card p-0" data-aos="fade-left">
-                            <h6 class="card-header">Survey Report</h6>
-                            <div class="card-body">
-                                <div class="d-flex flex-wrap mb-4">
-                                    <div>
-                                        <div class="avatar avatar-xs me-2">
-                                            <img src="../../assets/img/avatars/4.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </div>
-                                    </div>
-                                    <span>assigned this task to <strong>Sarah</strong></span>
-                                </div>
-                                <ul class="list-unstyled">
-                                    <li class="d-flex">
-                                        <div>
-                                            <div class="avatar avatar-xs me-3">
-                                                <img src="../../assets/img/avatars/2.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 w-100">
-                                            <div class="progress" style="height: 6px">
-                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 48.7%"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <small>Jquery</small>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex">
-                                        <div>
-                                            <div class="avatar avatar-xs me-3">
-                                                <img src="../../assets/img/avatars/3.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 w-100">
-                                            <div class="progress" style="height: 6px">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 31.3%"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <small>React</small>
-                                            <small>React</small>
-                                            <small>React</small>
-                                            <small>React</small>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex">
-                                        <div>
-                                            <div class="avatar avatar-xs me-3">
-                                                <img src="../../assets/img/avatars/4.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 w-100">
-                                            <div class="progress" style="height: 6px">
-                                                <div class="progress-bar bg-warning" role="progressbar"
-                                                    style="width: 30%" aria-valuenow="25" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                            <small>Angular</small>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex">
-                                        <div>
-                                            <div class="avatar avatar-xs me-3">
-                                                <img src="../../assets/img/avatars/5.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 w-100">
-                                            <div class="progress" style="height: 6px">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 15%"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <small>VUE</small>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex">
-                                        <div>
-                                            <div class="avatar avatar-xs me-3">
-                                                <img src="../../assets/img/avatars/6.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                        </div>
-                                        <div class="w-100">
-                                            <div class="progress" style="height: 6px">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                    style="width: 10%" aria-valuenow="25" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                            <small>Laravel</small>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="timeline-event-time">2nd January</div>
-                        </div>
-                    </li>
-                    <li class="timeline-item pb-md-4 pb-5">
-                        <span class="timeline-indicator timeline-indicator-danger" data-aos="zoom-in"
-                            data-aos-delay="200">
+                        <span class="timeline-indicator timeline-indicator-danger" data-aos="zoom-in" data-aos-delay="200">
                             <i class="ti ti-chart-line"></i>
                         </span>
 
@@ -167,8 +109,7 @@
                             <div class="card-body">
                                 <p class="mb-2">Click the button below to read financial reports</p>
                                 <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
+                                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                     Show Report
                                 </button>
                                 <div class="collapse" id="collapseExample">

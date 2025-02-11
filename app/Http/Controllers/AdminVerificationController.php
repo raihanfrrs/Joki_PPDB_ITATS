@@ -76,4 +76,9 @@ class AdminVerificationController extends Controller
             ]);
         }
     }
+
+    public function payment_show()
+    {
+        return view('pages.admin.verification.payment.show');
+    }
 }

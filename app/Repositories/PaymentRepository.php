@@ -15,6 +15,11 @@ class PaymentRepository
         return Payment::where('student_id', auth()->user()->student->id)->get();
     }
 
+    public function getPaymentByStudentId($studentId)
+    {
+        return Payment::where('student_id', $studentId)->get();
+    }
+
     public function getAllPayment()
     {
         return Payment::all();
