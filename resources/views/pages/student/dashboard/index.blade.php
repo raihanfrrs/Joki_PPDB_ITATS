@@ -10,13 +10,12 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-feedly text-success">
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-align-box-left-stretch text-success">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M7.833 12.278l4.445 -4.445" />
-                                <path d="M10.055 14.5l2.223 -2.222" />
-                                <path d="M12.278 16.722l.555 -.555" />
-                                <path
-                                    d="M19.828 14.828a4 4 0 0 0 0 -5.656l-5 -5a4 4 0 0 0 -5.656 0l-5 5a4 4 0 0 0 0 5.656l6.171 6.172h3.314l6.171 -6.172z" />
+                                <path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z" />
+                                <path d="M9 17h-2" />
+                                <path d="M13 12h-6" />
+                                <path d="M11 7h-4" />
                             </svg>
                         </span>
                         <div class="timeline-event card p-0" data-aos="fade-right">
@@ -129,13 +128,14 @@
 
                     @if ($student->payment)
                         @php
+                            $payments = $student->payment->sortBy('created_at');
                             $latestApproved = optional($student->payment()->latest()->first())->status == 'approved';
                         @endphp
 
-                        @foreach ($student->payment as $payment)
+                        @foreach ($payments as $payment)
                             <li
                                 class="timeline-item 
-                            {{ $latestApproved ? 'pb-md-4 pb-5' : ($loop->last ? 'mb-4 border-0' : '') }} timeline-item-left">
+            {{ $latestApproved ? 'pb-md-4 pb-5' : ($loop->last ? 'mb-4 border-0' : '') }} timeline-item-left">
                                 <span class="timeline-indicator timeline-indicator-danger" data-aos="zoom-in"
                                     data-aos-delay="200">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
