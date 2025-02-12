@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminReportingController;
 use App\Http\Controllers\AdminVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MasterController;
@@ -25,5 +26,13 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
         Route::get('verification/payment', 'payment_index')->name('verification.payment');
         Route::patch('verification-payment/{payment}', 'payment_update')->name('verification.payment.update');
         Route::get('verification/payment/{payment}', 'payment_show')->name('verification.payment.show');
+    });
+
+    Route::controller(AdminReportingController::class)->group(function () {
+        Route::get('reporting/student-passed', 'student_passed_index')->name('reporting.student.passed');
+        Route::get('reporting/student-passed/{student}', 'student_passed_show')->name('reporting.student.passed.show');
+
+        Route::get('reporting/student-candidate', 'student_candidate_index')->name('reporting.student.candidate');
+        Route::get('reporting/student-candidate/{student}', 'student_candidate_show')->name('reporting.student.candidate.show');
     });
 });

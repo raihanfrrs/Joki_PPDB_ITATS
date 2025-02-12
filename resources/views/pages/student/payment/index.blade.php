@@ -25,7 +25,7 @@
 @section('section-student')
     @php
         $isRegistered = auth()->user()->student->registration ? true : false;
-        $isRegisteredApproved = auth()->user()->student->registration->status == 'approved' ? true : false;
+        $isRegisteredApproved = optional(auth()->user()->student->registration)->status == 'approved' ? true : false;
         $latestPayment = auth()->user()->student->payment()->where('status', '!=', 'rejected')->latest()->first();
         $isUploaded = $latestPayment ? false : true;
     @endphp

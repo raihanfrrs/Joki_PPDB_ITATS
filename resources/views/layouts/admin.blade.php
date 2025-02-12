@@ -153,6 +153,10 @@
         <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
     @elseif (request()->routeIs('master.student'))
         <script src="{{ asset('assets/js/app-student-list.js') }}"></script>
+    @elseif (request()->routeIs('reporting.student.passed'))
+        <script src="{{ asset('assets/js/app-reporting-student-passed-list.js') }}"></script>
+    @elseif (request()->routeIs('reporting.student.candidate'))
+        <script src="{{ asset('assets/js/app-reporting-student-candidate-list.js') }}"></script>
     @elseif (request()->routeIs('master.principle'))
         <script src="{{ asset('assets/js/app-principle-list.js') }}"></script>
     @elseif (request()->routeIs('verification.registration'))

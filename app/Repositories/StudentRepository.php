@@ -19,9 +19,20 @@ class StudentRepository
     public function getStudentsWhereRegistrationAndPaymentAccepted()
     {
         return Student::whereHas('registration', function ($query) {
-            $query->where('status', 'accepted');
+            $query->where('status', 'approved');
         })->whereHas('payment', function ($query) {
-            $query->where('status', 'accepted');
+            $query->where('status', 'approved');
         })->get();
+    }
+
+    public function getStudentsWhereRegistrationAndPaymentWaiting()
+    {
+        return Student::whereHas('registration', function ($query) {
+            $query->where('status', 'waiting');
+        })
+            ->orWhereHas('payment', function ($query) {
+                $query->where('status', 'waiting');
+            })
+            ->get();
     }
 }
