@@ -11,6 +11,10 @@
                 </button>
                 <!-- Mobile menu toggle: End-->
                 <a href="{{ route('/') }}" class="app-brand-link">
+                    <span class="app-brand-logo demo">
+                        <img src="{{ asset('assets/img/branding/tut-wuri-handayani.png') }}" alt="tut wuri handayani"
+                            class="img-fluid w-75">
+                    </span>
                     <span class="app-brand-text demo menu-text fw-bold ms-2 ps-1">PPDB</span>
                 </a>
             </div>
