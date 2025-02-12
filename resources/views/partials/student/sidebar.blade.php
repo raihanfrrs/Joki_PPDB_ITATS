@@ -22,7 +22,7 @@
             <ul class="menu-sub">
                 <li class="menu-item {{ request()->routeIs('/') ? 'active' : '' }}">
                     <a href="{{ route('/') }}" class="menu-link">
-                        <div data-i18n="Analytics">Analytics</div>
+                        <div data-i18n="Aktivitas">Aktivitas</div>
                     </a>
                 </li>
             </ul>
@@ -35,13 +35,13 @@
         <li class="menu-item {{ request()->routeIs('registration') ? 'active' : '' }}">
             <a href="{{ route('registration') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-receipt"></i>
-                <div data-i18n="Registration">Registration</div>
+                <div data-i18n="Pendaftaran">Pendaftaran</div>
             </a>
         </li>
         <li class="menu-item {{ request()->routeIs('payment', 'payment.edit') ? 'active' : '' }}">
             <a href="{{ route('payment') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-credit-card"></i>
-                <div data-i18n="Payment">Payment</div>
+                <div data-i18n="Pembayaran">Pembayaran</div>
             </a>
         </li>
     </ul>

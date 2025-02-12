@@ -25,6 +25,11 @@ class PaymentRepository
         return Payment::all();
     }
 
+    public function getMediaById($mediaId)
+    {
+        return Media::where('model_id', $mediaId)->first();
+    }
+
     public function updateStatus($data, $payment)
     {
         return DB::transaction(function () use ($data, $payment) {

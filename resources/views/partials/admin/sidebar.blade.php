@@ -66,14 +66,15 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Laporan</span>
         </li>
-        <li class="menu-item">
-            <a href="" class="menu-link">
+        <li
+            class="menu-item {{ request()->routeIs('reporting.student.passed', 'reporting.student.passed.show') ? 'active' : '' }}">
+            <a href="{{ route('reporting.student.passed') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-clipboard"></i>
-                <div data-i18n="Rekap Data Siswa Lulus">Rekap Data Siswa Lulus</div>
+                <div data-i18n="Rekap Data Siswa Lolos">Rekap Data Siswa Lolos</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="" class="menu-link">
+        <li class="menu-item {{ request()->routeIs('reporting.student.candidate') ? 'active' : '' }}">
+            <a href="{{ route('reporting.student.candidate') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-clipboard"></i>
                 <div data-i18n="Rekap Data Calon Siswa">Rekap Data Calon Siswa</div>
             </a>

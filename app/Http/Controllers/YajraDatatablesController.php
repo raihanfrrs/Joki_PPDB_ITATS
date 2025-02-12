@@ -254,4 +254,88 @@ class YajraDatatablesController extends Controller
             ->rawColumns(['index', 'payment', 'status', 'created_at', 'action'])
             ->make(true);
     }
+
+    public function reporting_student_passed()
+    {
+        $students = $this->student->getStudentsWhereRegistrationAndPaymentAccepted();
+
+        return DataTables::of($students)
+            ->addColumn('index', function ($model) use ($students) {
+                return $students->search($model) + 1;
+            })
+            ->addColumn('nisn', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.nisn-column', compact('model'))->render();
+            })
+            ->addColumn('nik', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.nik-column', compact('model'))->render();
+            })
+            ->addColumn('name', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.name-column', compact('model'))->render();
+            })
+            ->addColumn('phone', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.phone-column', compact('model'))->render();
+            })
+            ->addColumn('email', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.email-column', compact('model'))->render();
+            })
+            ->addColumn('pob_dob', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.pob-dob-column', compact('model'))->render();
+            })
+            ->addColumn('gender', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.gender-column', compact('model'))->render();
+            })
+            ->addColumn('address', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.address-column', compact('model'))->render();
+            })
+            ->addColumn('created_at', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.created-at-column', compact('model'))->render();
+            })
+            ->addColumn('action', function ($model) {
+                return view('components.data.yajra.data-reporting-student-passed.action-column', compact('model'))->render();
+            })
+            ->rawColumns(['index', 'nisn', 'nik', 'name', 'phone', 'email', 'pob_dob', 'gender', 'address', 'created_at', 'action'])
+            ->make(true);
+    }
+
+    public function reporting_student_candidate()
+    {
+        $students = $this->student->getStudentsWhereRegistrationAndPaymentWaiting();
+
+        return DataTables::of($students)
+            ->addColumn('index', function ($model) use ($students) {
+                return $students->search($model) + 1;
+            })
+            ->addColumn('nisn', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.nisn-column', compact('model'))->render();
+            })
+            ->addColumn('nik', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.nik-column', compact('model'))->render();
+            })
+            ->addColumn('name', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.name-column', compact('model'))->render();
+            })
+            ->addColumn('phone', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.phone-column', compact('model'))->render();
+            })
+            ->addColumn('email', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.email-column', compact('model'))->render();
+            })
+            ->addColumn('pob_dob', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.pob-dob-column', compact('model'))->render();
+            })
+            ->addColumn('gender', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.gender-column', compact('model'))->render();
+            })
+            ->addColumn('address', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.address-column', compact('model'))->render();
+            })
+            ->addColumn('created_at', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.created-at-column', compact('model'))->render();
+            })
+            ->addColumn('action', function ($model) {
+                return view('components.data.yajra.data-reporting-student-candidate.action-column', compact('model'))->render();
+            })
+            ->rawColumns(['index', 'nisn', 'nik', 'name', 'phone', 'email', 'pob_dob', 'gender', 'address', 'created_at', 'action'])
+            ->make(true);
+    }
 }

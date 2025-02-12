@@ -11,6 +11,10 @@ Route::controller(YajraDatatablesController::class)->group(function () {
     Route::get('listVerificationRegistrationTable', 'verification_registration');
     Route::get('listVerificationPaymentTable', 'verification_payment');
     Route::get('listPaymentsTable', 'payment');
+    Route::get('listReportingStudentPassedTable', 'reporting_student_passed');
+    Route::get('listReportingStudentCandidateTable', 'reporting_student_candidate');
 });
 
-Route::controller(AjaxController::class)->group(function () {});
+Route::controller(AjaxController::class)->group(function () {
+    Route::get('/ajax/payment/{media}/show', 'payment_show');
+});
