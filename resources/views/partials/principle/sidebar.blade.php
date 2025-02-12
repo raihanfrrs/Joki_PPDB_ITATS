@@ -1,6 +1,10 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="{{ route('/') }}" class="app-brand-link">
+            <span class="app-brand-logo demo">
+                <img src="{{ asset('assets/img/branding/tut-wuri-handayani.png') }}" alt="tut wuri handayani"
+                    class="img-fluid w-75">
+            </span>
             <span class="app-brand-text demo menu-text fw-bold">PPDB</span>
         </a>
 

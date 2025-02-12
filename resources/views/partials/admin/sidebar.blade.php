@@ -1,6 +1,10 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="{{ route('/') }}" class="app-brand-link">
+            <span class="app-brand-logo demo">
+                <img src="{{ asset('assets/img/branding/tut-wuri-handayani.png') }}" alt="tut wuri handayani"
+                    class="img-fluid w-75">
+            </span>
             <span class="app-brand-text demo menu-text fw-bold">PPDB</span>
         </a>
 
@@ -60,6 +64,16 @@
             <a href="{{ route('verification.payment') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-credit-card"></i>
                 <div data-i18n="Pembayaran">Pembayaran</div>
+            </a>
+        </li>
+
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Menu</span>
+        </li>
+        <li class="menu-item {{ request()->routeIs('timer') ? 'active' : '' }}">
+            <a href="{{ route('timer') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-clock"></i>
+                <div data-i18n="Manajemen Waktu">Manajemen Waktu</div>
             </a>
         </li>
 

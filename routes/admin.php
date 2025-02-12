@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminReportingController;
 use App\Http\Controllers\AdminVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\TimerController;
 
 Route::group(['middleware' => ['cekUserLogin:admin']], function () {
     Route::controller(MasterController::class)->group(function () {
@@ -34,5 +35,10 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
 
         Route::get('reporting/student-candidate', 'student_candidate_index')->name('reporting.student.candidate');
         Route::get('reporting/student-candidate/{student}', 'student_candidate_show')->name('reporting.student.candidate.show');
+    });
+
+    Route::controller(TimerController::class)->group(function () {
+        Route::get('timer', 'index')->name('timer');
+        Route::post('timer', 'store')->name('timer.store');
     });
 });

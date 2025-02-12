@@ -14,7 +14,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/branding/tut-wuri-handayani.png') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,10 +53,15 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/flatpickr/flatpickr.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/trix-editor/css/trix.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/jquery-timepicker/jquery-timepicker.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/pickr/pickr-themes.css') }}" />
 
     <!-- Page CSS -->
     @if (request()->is('/'))
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-advance.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/app-logistics-dashboard.css') }}" />
     @endif
 
     <!-- Helpers -->
@@ -141,6 +146,10 @@
     <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/animate-on-scroll/animate-on-scroll.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/jquery-timepicker/jquery-timepicker.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/pickr/pickr.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/prev-image.js') }}"></script>
@@ -149,8 +158,7 @@
 
     <!-- Page JS -->
     @if (request()->routeIs('/'))
-        <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
-        <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
+        <script src="{{ asset('assets/js/app-logistics-dashboard.js') }}"></script>
     @elseif (request()->routeIs('master.student'))
         <script src="{{ asset('assets/js/app-student-list.js') }}"></script>
     @elseif (request()->routeIs('reporting.student.passed'))
@@ -163,6 +171,8 @@
         <script src="{{ asset('assets/js/app-verification-registration-list.js') }}"></script>
     @elseif (request()->routeIs('verification.payment'))
         <script src="{{ asset('assets/js/app-verification-payment-list.js') }}"></script>
+    @elseif (request()->routeIs('timer'))
+        <script src="{{ asset('assets/js/forms-pickers.js') }}"></script>
     @endif
 
     @stack('scripts')
