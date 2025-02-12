@@ -9,7 +9,7 @@
   // --------------------------------------------------------------------
   const flatpickrDate = document.querySelector('#flatpickr-date'),
     flatpickrTime = document.querySelector('#flatpickr-time'),
-    flatpickrDateTime = document.querySelector('#flatpickr-datetime'),
+    flatpickrDateTime = document.querySelectorAll('[id^="flatpickr-datetime"]'),
     flatpickrMulti = document.querySelector('#flatpickr-multi'),
     flatpickrRange = document.querySelector('#flatpickr-range'),
     flatpickrInline = document.querySelector('#flatpickr-inline'),
