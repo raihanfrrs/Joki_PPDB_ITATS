@@ -4,6 +4,14 @@
 
 @section('section-student')
     <div class="container-xxl flex-grow-1 container-p-y">
+        @if ($timer)
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                <span class="alert-icon text-warning me-2">
+                    <i class="ti ti-clock ti-xs"></i>
+                </span>
+                Batas Pendaftaran {{ \Carbon\Carbon::parse($timer->end_at)->format('d F Y H:i:s') }}
+            </div>
+        @endif
         <form method="POST" enctype="multipart/form-data" id="form-registration">
             @csrf
             <div class="row">

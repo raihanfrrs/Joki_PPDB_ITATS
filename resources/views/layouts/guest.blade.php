@@ -82,6 +82,7 @@
 
 <body>
     @include('components.flasher.sweetalert')
+    @include('components.modal.modal')
 
     @if (!request()->routeIs('signin') && !request()->routeIs('signup'))
         <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
@@ -170,6 +171,16 @@
     @endif
 
     @stack('scripts')
+
+    @if (\App\Models\Timer::all())
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var myModal = new bootstrap.Modal(document.getElementById('modalCenter'));
+                myModal.show();
+            });
+        </script>
+    @endif
+
 </body>
 
 </html>

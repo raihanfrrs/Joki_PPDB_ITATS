@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\PaymentRepository;
 use Illuminate\Http\Request;
+use App\Repositories\TimerRepository;
+use App\Repositories\PaymentRepository;
 
 class PaymentController extends Controller
 {
-    protected $payment;
+    protected $payment, $timer;
 
-    public function __construct(PaymentRepository $payment)
+    public function __construct(PaymentRepository $payment, TimerRepository $timer)
     {
         $this->payment = $payment;
+        $this->timer = $timer;
     }
 
     public function index()
     {
-        return view('pages.student.payment.index');
+        return view('pages.student.payment.index', [
+            'timer' => $this->timer->getTimer()
+        ]);
     }
 
     public function store(Request $request)
@@ -31,7 +35,10 @@ class PaymentController extends Controller
 
     public function edit($media)
     {
-        return view('pages.student.payment.edit', compact('media'));
+        return view('pages.student.payment.edit', [
+            'media' => $media,
+            'timer' => $this->timer->getTimer()
+        ]);
     }
 
     public function update(Request $request, $media)

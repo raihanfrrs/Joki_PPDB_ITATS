@@ -7,20 +7,23 @@ use Illuminate\Http\Request;
 use App\Repositories\RegistrationRepository;
 use App\Http\Requests\StudentRegistrationStoreRequest;
 use App\Http\Requests\StudentRegistrationUpdateRequest;
+use App\Repositories\TimerRepository;
 
 class RegistrationController extends Controller
 {
-    protected $registration;
+    protected $registration, $timer;
 
-    public function __construct(RegistrationRepository $registration)
+    public function __construct(RegistrationRepository $registration, TimerRepository $timer)
     {
         $this->registration = $registration;
+        $this->timer = $timer;
     }
 
     public function index()
     {
         return view('pages.student.registration.index', [
-            'student' => auth()->user()->student
+            'student' => auth()->user()->student,
+            'timer' => $this->timer->getTimer()
         ]);
     }
 
