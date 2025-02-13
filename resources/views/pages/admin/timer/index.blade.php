@@ -16,7 +16,7 @@
                                 <div class="col-md-8">
                                     <input type="text" class="form-control @error('begin_at') is-invalid @enderror"
                                         placeholder="YYYY-MM-DD HH:MM" id="flatpickr-datetime" name="begin_at"
-                                        value="{{ old('begin_at') }}" />
+                                        value="{{ old('begin_at', $timer->begin_at ?? '') }}" />
                                     @error('begin_at')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -29,7 +29,7 @@
                                 <div class="col-md-8">
                                     <input type="text" class="form-control @error('end_at') is-invalid @enderror"
                                         placeholder="YYYY-MM-DD HH:MM" id="flatpickr-datetime" name="end_at"
-                                        value="{{ old('end_at') }}" />
+                                        value="{{ old('end_at', $timer->end_at ?? '') }}" />
                                     @error('end_at')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -37,7 +37,15 @@
                                     @enderror
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit"
+                                class="btn btn-{{ $timer ? 'warning' : 'primary' }}">{{ $timer ? 'Ubah' : 'Simpan' }}</button>
+                            @if ($timer)
+                                <button type="button" class="btn btn-danger" onclick="deleteData()">Batalkan</button>
+                            @endif
+                        </form>
+                        <form action="{{ route('timer.destroy') }}" method="POST" id="form-delete">
+                            @csrf
+                            @method('DELETE')
                         </form>
                     </div>
                 </div>
@@ -45,3 +53,11 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function deleteData() {
+            $('#form-delete').submit();
+        }
+    </script>
+@endpush

@@ -40,5 +40,6 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
     Route::controller(TimerController::class)->group(function () {
         Route::get('timer', 'index')->name('timer');
         Route::post('timer', 'store')->name('timer.store');
+        Route::delete('timer', 'destroy')->name('timer.destroy');
     });
 });
