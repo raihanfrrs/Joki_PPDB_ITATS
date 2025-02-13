@@ -6,6 +6,14 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
             <div class="col-12">
+                @if ($timer)
+                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                        <span class="alert-icon text-warning me-2">
+                            <i class="ti ti-clock ti-xs"></i>
+                        </span>
+                        Batas Pendaftaran {{ \Carbon\Carbon::parse($timer->end_at)->format('d F Y H:i:s') }}
+                    </div>
+                @endif
                 <div class="card mb-4">
                     <h5 class="card-header">Upload Bukti Pembayaran Baru</h5>
                     <div class="card-body">

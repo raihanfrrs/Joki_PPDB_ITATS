@@ -17,7 +17,9 @@ class TimerController extends Controller
 
     public function index()
     {
-        return view('pages.admin.timer.index');
+        return view('pages.admin.timer.index', [
+            'timer' => $this->timer->getTimer()
+        ]);
     }
 
     public function store(TimerStoreRequest $request)
@@ -37,6 +39,27 @@ class TimerController extends Controller
                 'position' => 'center',
                 'type' => 'error',
                 'message' => 'Batas Pendaftaran Gagal Diaktifkan!'
+            ]);
+        }
+    }
+
+    public function destroy()
+    {
+        if ($this->timer->destroy()) {
+            return redirect()->back()->with([
+                'flash-type' => 'sweetalert',
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Batas Pendaftaran Dinonaktifkan!'
+            ]);
+        } else {
+            return redirect()->back()->with([
+                'flash-type' => 'sweetalert',
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'error',
+                'message' => 'Batas Pendaftaran Gagal Dinonaktifkan!'
             ]);
         }
     }
