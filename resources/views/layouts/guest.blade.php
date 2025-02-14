@@ -172,13 +172,15 @@
 
     @stack('scripts')
 
-    @if (\App\Models\Timer::all())
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var myModal = new bootstrap.Modal(document.getElementById('modalCenter'));
-                myModal.show();
-            });
-        </script>
+    @if (\App\Models\Timer::all()->count() > 0 && request()->routeIs('/'))
+        @if (\App\Models\Timer::first()->end_at > now())
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var myModal = new bootstrap.Modal(document.getElementById('modalCenter'));
+                    myModal.show();
+                });
+            </script>
+        @endif
     @endif
 
 </body>
