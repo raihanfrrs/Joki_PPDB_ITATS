@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StudentStoreRequest;
-use App\Repositories\RegisterRepository;
 use Illuminate\Http\Request;
+use App\Repositories\TimerRepository;
+use App\Repositories\RegisterRepository;
+use App\Http\Requests\StudentStoreRequest;
 
 class RegisterController extends Controller
 {
-    protected $register;
+    protected $register, $timer;
 
-    public function __construct(RegisterRepository $register)
+    public function __construct(RegisterRepository $register, TimerRepository $timer)
     {
         $this->register = $register;
+        $this->timer = $timer;
     }
 
     public function index()
@@ -22,6 +24,16 @@ class RegisterController extends Controller
 
     public function store(StudentStoreRequest $request)
     {
+        if ($this->timer->getTimer()->end_at < now()) {
+            return redirect()->back()->with([
+                'flash-type' => 'sweetalert',
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'error',
+                'message' => 'Batas Pendaftaran Sudah Berakhir!'
+            ]);
+        }
+
         if ($this->register->store($request)) {
             return redirect()->back()->with([
                 'flash-type' => 'sweetalert',
@@ -29,14 +41,6 @@ class RegisterController extends Controller
                 'position' => 'center',
                 'type' => 'success',
                 'message' => 'Register Success!'
-            ]);
-        } else {
-            return redirect()->back()->with([
-                'flash-type' => 'sweetalert',
-                'case' => 'default',
-                'position' => 'center',
-                'type' => 'error',
-                'message' => 'Register Failed!'
             ]);
         }
     }

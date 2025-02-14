@@ -24,6 +24,16 @@ class TimerController extends Controller
 
     public function store(TimerStoreRequest $request)
     {
+        if ($request->end_at < date('Y-m-d H:i:s')) {
+            return redirect()->back()->with([
+                'flash-type' => 'sweetalert',
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'error',
+                'message' => 'Tanggal akhir harus lebih besar dari tanggal sekarang!'
+            ]);
+        }
+
         if ($this->timer->store($request)) {
             return redirect()->back()->with([
                 'flash-type' => 'sweetalert',
@@ -31,14 +41,6 @@ class TimerController extends Controller
                 'position' => 'center',
                 'type' => 'success',
                 'message' => 'Batas Pendaftaran Diaktifkan!'
-            ]);
-        } else {
-            return redirect()->back()->with([
-                'flash-type' => 'sweetalert',
-                'case' => 'default',
-                'position' => 'center',
-                'type' => 'error',
-                'message' => 'Batas Pendaftaran Gagal Diaktifkan!'
             ]);
         }
     }
