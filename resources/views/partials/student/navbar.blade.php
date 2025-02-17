@@ -36,7 +36,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <a class="dropdown-item" href="{{ route('student.profile') }}">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
@@ -55,15 +55,15 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="{{ route('student.profile') }}">
                             <i class="ti ti-user-check me-2 ti-sm"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Profil Saya</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="{{ route('student.settings') }}">
                             <i class="ti ti-settings me-2 ti-sm"></i>
-                            <span class="align-middle">Settings</span>
+                            <span class="align-middle">Pengaturan</span>
                         </a>
                     </li>
                     <li>
@@ -72,7 +72,7 @@
                     <li>
                         <a class="dropdown-item" href="{{ route('signout') }}">
                             <i class="ti ti-logout me-2 ti-sm"></i>
-                            <span class="align-middle">Log Out</span>
+                            <span class="align-middle">Keluar</span>
                         </a>
                     </li>
                 </ul>

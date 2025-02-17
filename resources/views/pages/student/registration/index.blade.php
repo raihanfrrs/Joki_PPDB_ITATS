@@ -3,15 +3,7 @@
 @section('title', 'PPDB - Registration')
 
 @section('section-student')
-    <div class="container-xxl flex-grow-1 container-p-y">
-        @if ($timer)
-            <div class="alert alert-warning d-flex align-items-center" role="alert">
-                <span class="alert-icon text-warning me-2">
-                    <i class="ti ti-clock ti-xs"></i>
-                </span>
-                Batas Pendaftaran {{ \Carbon\Carbon::parse($timer->end_at)->format('d F Y H:i:s') }}
-            </div>
-        @endif
+    <div class="container-xxl flex-grow-1 pt-0">
         <form method="POST" enctype="multipart/form-data" id="form-registration">
             @csrf
             <div class="row">
@@ -938,7 +930,8 @@
                                             <input type="file"
                                                 class="form-control @error('image_akte_kelahiran') is-invalid @enderror"
                                                 id="image_akte_kelahiran" name="image_akte_kelahiran[]"
-                                                {{ optional($student->registration)->status == 'approved' ? 'required' : '' }} />
+                                                {{ optional($student->registration)->status == 'approved' ? 'required' : '' }}
+                                                accept="image/*" />
                                             @error('image_akte_kelahiran')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -950,7 +943,8 @@
                                             <input type="file"
                                                 class="form-control @error('ktp_foto') is-invalid @enderror"
                                                 id="ktp_foto" name="ktp_foto[]"
-                                                {{ optional($student->registration)->status == 'approved' ? 'required' : '' }} />
+                                                {{ optional($student->registration)->status == 'approved' ? 'required' : '' }}
+                                                accept="image/*" />
                                             @error('ktp_foto')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -962,7 +956,8 @@
                                             <input type="file"
                                                 class="form-control @error('image_pas_foto') is-invalid @enderror"
                                                 id="image_pas_foto" name="image_pas_foto[]"
-                                                {{ optional($student->registration)->status == 'approved' ? 'required' : '' }} />
+                                                {{ optional($student->registration)->status == 'approved' ? 'required' : '' }}
+                                                accept="image/*" />
                                             @error('image_pas_foto')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -974,7 +969,8 @@
                                             <input type="file"
                                                 class="form-control @error('image_ijasah') is-invalid @enderror"
                                                 id="image_ijasah" name="image_ijasah[]"
-                                                {{ optional($student->registration)->status == 'approved' ? 'required' : '' }} />
+                                                {{ optional($student->registration)->status == 'approved' ? 'required' : '' }}
+                                                accept="image/*" />
                                             @error('image_ijasah')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

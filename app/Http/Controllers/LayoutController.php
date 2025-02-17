@@ -33,7 +33,6 @@ class LayoutController extends Controller
                 'motherFilled' => $this->registration->checkIfMotherFilled(auth()->user()->student->id),
                 'custodianFilled' => $this->registration->checkIfCustodianFilled(auth()->user()->student->id),
                 'payment' => $this->payment->getPaymentByStudentId(auth()->user()->student->id),
-                'timer' => $this->timer->getTimer(),
             ]);
         } else if (Auth::check() && $this->role->find(auth()->user()->role_id)->role == 'admin') {
             return view('pages.admin.dashboard.index');
