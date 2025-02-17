@@ -4,31 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Repositories\TimerRepository;
+use Illuminate\Http\RedirectResponse;
 use App\Repositories\RegistrationRepository;
 use App\Http\Requests\StudentRegistrationStoreRequest;
 use App\Http\Requests\StudentRegistrationUpdateRequest;
-use App\Repositories\TimerRepository;
 
-class RegistrationController extends Controller
+class RegistrationController extends BaseController
 {
-    protected $registration, $timer;
+    protected $registration;
 
-    public function __construct(RegistrationRepository $registration, TimerRepository $timer)
+    public function __construct(TimerRepository $timer, RegistrationRepository $registration)
     {
+        parent::__construct($timer);
         $this->registration = $registration;
-        $this->timer = $timer;
     }
 
     public function index()
     {
         return view('pages.student.registration.index', [
-            'student' => auth()->user()->student,
-            'timer' => $this->timer->getTimer()
+            'student' => auth()->user()->student
         ]);
     }
 
-    public function store(StudentRegistrationStoreRequest $request, Student $student)
+    public function store(StudentRegistrationStoreRequest $request, Student $student): RedirectResponse
     {
+        if ($redirect = $this->checkRegistrationDeadline()) {
+            return $redirect;
+        }
+
         if ($this->registration->store($request, $student)) {
             return redirect()->back()->with([
                 'flash-type' => 'sweetalert',
@@ -69,8 +73,12 @@ class RegistrationController extends Controller
         }
     }
 
-    public function resubmit(StudentRegistrationUpdateRequest $request, Student $student)
+    public function resubmit(StudentRegistrationUpdateRequest $request, Student $student): RedirectResponse
     {
+        if ($redirect = $this->checkRegistrationDeadline()) {
+            return $redirect;
+        }
+
         if ($this->registration->update($request, $student, 'resubmit')) {
             return redirect()->back()->with([
                 'flash-type' => 'sweetalert',
