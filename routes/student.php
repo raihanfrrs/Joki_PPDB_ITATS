@@ -23,6 +23,8 @@ Route::group(['middleware' => ['cekUserLogin:student']], function () {
     });
 
     Route::controller(StudentProfileController::class)->group(function () {
-        Route::get('student/profile', 'index')->name('student.profile');
+        Route::get('student/profile', 'profile_index')->name('student.profile');
+
+        Route::get('student/settings', 'setting_index')->name('student.settings');
     });
 });

@@ -8,24 +8,24 @@ use App\Repositories\PaymentRepository;
 
 class PaymentController extends Controller
 {
-    protected $payment, $timer;
+    protected $payment;
 
-    public function __construct(PaymentRepository $payment, TimerRepository $timer)
+    public function __construct(PaymentRepository $payment)
     {
         $this->payment = $payment;
-        $this->timer = $timer;
     }
 
     public function index()
     {
-        return view('pages.student.payment.index', [
-            'timer' => $this->timer->getTimer()
-        ]);
+        return view('pages.student.payment.index');
     }
 
     public function store(Request $request)
     {
-        // Proses unggah file
+        if ($redirect = $this->checkRegistrationDeadline()) {
+            return $redirect;
+        }
+
         if ($this->payment->store($request)) {
             return response()->json(['success' => true, 'redirect' => route('payment')]);
         } else {
@@ -36,8 +36,7 @@ class PaymentController extends Controller
     public function edit($media)
     {
         return view('pages.student.payment.edit', [
-            'media' => $media,
-            'timer' => $this->timer->getTimer()
+            'media' => $media
         ]);
     }
 

@@ -85,6 +85,8 @@
                 @include('partials.student.navbar')
 
                 <div class="content-wrapper">
+                    @include('partials.student.timer')
+
                     @yield('section-student')
 
                     @include('partials.student.footer')

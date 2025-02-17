@@ -3,7 +3,7 @@
 @section('title', 'PPDB - Payment')
 
 @section('section-student')
-    <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container-xxl flex-grow-1 pt-0">
         <div class="row">
             <div class="col-12">
                 @if ($timer)
