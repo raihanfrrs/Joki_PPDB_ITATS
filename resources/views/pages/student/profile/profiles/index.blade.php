@@ -1,28 +1,34 @@
 @extends('layouts.student')
 
-@section('title', 'PPDB - Profil Saya')
+@section('title', 'PPDB - Profil')
 
 @section('section-student')
     <div class="container-xxl flex-grow-1 pt-0">
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-3">
                 @include('components.nav-pills.profile-settings')
-                <form method="POST">
+                <form method="POST" action="{{ route('student.profile.update') }}">
                     @csrf
+                    @method('PATCH')
                     <div class="card mb-2">
                         <h5 class="card-header">Rincian Profil</h5>
                         <!-- Account -->
                         <div class="card-body">
                             <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                <img src="{{ auth()->user()->student->registration->getFirstMediaUrl('pasfoto_images') }}"
-                                    alt="{{ auth()->user()->student->name }}" class="d-block w-px-100 h-px-100 rounded"
-                                    id="uploadedAvatar" />
+                                @if (auth()->user()->student->registration && auth()->user()->student->registration->getFirstMediaUrl('pasfoto_images'))
+                                    <img src="{{ auth()->user()->student->registration->getFirstMediaUrl('pasfoto_images') }}"
+                                        alt="{{ auth()->user()->student->name }}" class="d-block w-px-100 h-px-100 rounded"
+                                        id="uploadedAvatar" />
+                                @else
+                                    <img src="{{ asset('assets/img/avatars/14.png') }}" alt="user-avatar"
+                                        class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
+                                @endif
+
                             </div>
                         </div>
                         <hr class="my-0" />
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="mb-3 col-md-4">
                                     <label for="nisn" class="form-label">NISN (Nomor Induk Siswa Nasional)</label>
@@ -47,182 +53,89 @@
                                 <div class="mb-3 col-md-4">
                                     <label for="email" class="form-label">Alamat Surel</label>
                                     <input class="form-control" type="text" id="email" name="email"
-                                        value="{{ auth()->user()->student->email }}" />
+                                        value="{{ auth()->user()->student->email }}" disabled />
                                 </div>
                                 <div class="mb-3 col-md-4">
                                     <label for="phone" class="form-label">Nomor Telepon</label>
                                     <input class="form-control" type="text" name="phone" id="phone"
                                         value="{{ auth()->user()->student->phone }}" disabled />
                                 </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="organization" class="form-label">Organization</label>
-                                    <input type="text" class="form-control" id="organization" name="organization"
-                                        value="Pixinvent" />
+                                <div class="mb-3 col-md-4">
+                                    <label for="address" class="form-label">Alamat</label>
+                                    <textarea name="address" id="address" cols="30" rows="3" class="form-control" disabled>{{ auth()->user()->student->address }}</textarea>
                                 </div>
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="phoneNumber">Phone Number</label>
-                                    <div class="input-group input-group-merge">
-                                        <span class="input-group-text">US (+1)</span>
-                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control"
-                                            placeholder="202 555 0111" />
+                                <div class="mb-3 col-md-2">
+                                    <label for="subdistrict" class="form-label">Kecamatan</label>
+                                    <input type="text" class="form-control" id="subdistrict" name="subdistrict"
+                                        value="{{ auth()->user()->student->subdistrict }}" disabled />
+                                </div>
+                                <div class="mb-3 col-md-2">
+                                    <label for="regency" class="form-label">Kelurahan</label>
+                                    <input type="text" class="form-control" id="regency" name="regency"
+                                        value="{{ auth()->user()->student->regency }}" disabled />
+                                </div>
+                                <div class="mb-3 col-md-2">
+                                    <label for="province" class="form-label">Provinsi</label>
+                                    <input type="text" class="form-control" id="province" name="province"
+                                        value="{{ auth()->user()->student->province }}" disabled />
+                                </div>
+                                <div class="mb-3 col-md-2">
+                                    <label for="city" class="form-label">Kota</label>
+                                    <input type="text" class="form-control" id="city" name="city"
+                                        value="{{ auth()->user()->student->city }}" disabled />
+                                </div>
+                                <div class="mb-3 col-md-3">
+                                    <label for="pob" class="form-label">Tempat Lahir</label>
+                                    <input type="text" class="form-control" id="pob" name="pob"
+                                        value="{{ auth()->user()->student->pob }}" disabled />
+                                </div>
+                                <div class="mb-3 col-md-3">
+                                    <label for="dob" class="form-label">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" id="dob" name="dob"
+                                        value="{{ auth()->user()->student->dob }}" disabled />
+                                </div>
+                                <div class="mb-3 col-md-2">
+                                    <label for="religion" class="form-label">Agama</label>
+                                    <input type="text" class="form-control" id="religion" name="religion"
+                                        value="{{ auth()->user()->student->religion }}" disabled />
+                                </div>
+                                <div class="mb-3 col-md-2">
+                                    <label for="school_year" class="form-label">Tahun Kelulusan</label>
+                                    <input type="text" class="form-control" id="school_year" name="school_year"
+                                        value="{{ auth()->user()->student->school_year }}" disabled />
+                                </div>
+                                <div class="mb-3 col-md-2">
+                                    <label for="gender" class="form-label d-block">Jenis Kelamin</label>
+                                    <div class="form-check form-check-inline mt-3">
+                                        <input class="form-check-input" type="radio"
+                                            {{ auth()->user()->student->gender == 'male' ? 'checked' : '' }}
+                                            name="gender" disabled />
+                                        <label class="form-check-label">Laki-laki</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                            {{ auth()->user()->student->gender == 'female' ? 'checked' : '' }}
+                                            name="gender" disabled />
+                                        <label class="form-check-label">Perempuan</label>
                                     </div>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="address" name="address"
-                                        placeholder="Address" />
+                                    <label for="hobby" class="form-label">Hobi</label>
+                                    <input type="text" class="form-control" id="hobby" name="hobby"
+                                        value="{{ auth()->user()->student->hobby }}" />
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="state" class="form-label">State</label>
-                                    <input class="form-control" type="text" id="state" name="state"
-                                        placeholder="California" />
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="zipCode" class="form-label">Zip Code</label>
-                                    <input type="text" class="form-control" id="zipCode" name="zipCode"
-                                        placeholder="231465" maxlength="6" />
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="country">Country</label>
-                                    <select id="country" class="select2 form-select">
-                                        <option value="">Select</option>
-                                        <option value="Australia">Australia</option>
-                                        <option value="Bangladesh">Bangladesh</option>
-                                        <option value="Belarus">Belarus</option>
-                                        <option value="Brazil">Brazil</option>
-                                        <option value="Canada">Canada</option>
-                                        <option value="China">China</option>
-                                        <option value="France">France</option>
-                                        <option value="Germany">Germany</option>
-                                        <option value="India">India</option>
-                                        <option value="Indonesia">Indonesia</option>
-                                        <option value="Israel">Israel</option>
-                                        <option value="Italy">Italy</option>
-                                        <option value="Japan">Japan</option>
-                                        <option value="Korea">Korea, Republic of</option>
-                                        <option value="Mexico">Mexico</option>
-                                        <option value="Philippines">Philippines</option>
-                                        <option value="Russia">Russian Federation</option>
-                                        <option value="South Africa">South Africa</option>
-                                        <option value="Thailand">Thailand</option>
-                                        <option value="Turkey">Turkey</option>
-                                        <option value="Ukraine">Ukraine</option>
-                                        <option value="United Arab Emirates">United Arab Emirates</option>
-                                        <option value="United Kingdom">United Kingdom</option>
-                                        <option value="United States">United States</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="language" class="form-label">Language</label>
-                                    <select id="language" class="select2 form-select">
-                                        <option value="">Select Language</option>
-                                        <option value="en">English</option>
-                                        <option value="fr">French</option>
-                                        <option value="de">German</option>
-                                        <option value="pt">Portuguese</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="timeZones" class="form-label">Timezone</label>
-                                    <select id="timeZones" class="select2 form-select">
-                                        <option value="">Select Timezone</option>
-                                        <option value="-12">(GMT-12:00) International Date Line West</option>
-                                        <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
-                                        <option value="-10">(GMT-10:00) Hawaii</option>
-                                        <option value="-9">(GMT-09:00) Alaska</option>
-                                        <option value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
-                                        <option value="-8">(GMT-08:00) Tijuana, Baja California</option>
-                                        <option value="-7">(GMT-07:00) Arizona</option>
-                                        <option value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-                                        <option value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
-                                        <option value="-6">(GMT-06:00) Central America</option>
-                                        <option value="-6">(GMT-06:00) Central Time (US & Canada)</option>
-                                        <option value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
-                                        <option value="-6">(GMT-06:00) Saskatchewan</option>
-                                        <option value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-                                        <option value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
-                                        <option value="-5">(GMT-05:00) Indiana (East)</option>
-                                        <option value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
-                                        <option value="-4">(GMT-04:00) Caracas, La Paz</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="currency" class="form-label">Currency</label>
-                                    <select id="currency" class="select2 form-select">
-                                        <option value="">Select Currency</option>
-                                        <option value="usd">USD</option>
-                                        <option value="euro">Euro</option>
-                                        <option value="pound">Pound</option>
-                                        <option value="bitcoin">Bitcoin</option>
-                                    </select>
+                                    <label for="goal" class="form-label">Cita-Cita</label>
+                                    <input type="text" class="form-control" id="goal" name="goal"
+                                        value="{{ auth()->user()->student->goal }}" />
                                 </div>
                             </div>
                             <div class="mt-2">
-                                <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                                <button type="reset" class="btn btn-label-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary me-2">Simpan</button>
+                                <button type="reset" class="btn btn-label-secondary">Batal</button>
                             </div>
                         </div>
                         <!-- /Account -->
-                    </div>
-
-                    <div class="accordion" id="accordionWithIcon">
-                        <div class="card accordion-item">
-                            <h2 class="accordion-header d-flex align-items-center">
-                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionWithIcon-1" aria-expanded="false">
-                                    <i class="ti ti-star ti-xs me-2"></i>
-                                    Header Option 1
-                                </button>
-                            </h2>
-
-                            <div id="accordionWithIcon-1" class="accordion-collapse collapse" style="">
-                                <div class="accordion-body">
-                                    Lemon drops chocolate cake gummies carrot cake chupa chups muffin topping. Sesame snaps
-                                    icing
-                                    marzipan gummi bears macaroon dragée danish caramels powder. Bear claw dragée pastry
-                                    topping
-                                    soufflé. Wafer gummi bears marshmallow pastry pie.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item card">
-                            <h2 class="accordion-header d-flex align-items-center">
-                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionWithIcon-2" aria-expanded="false">
-                                    <i class="me-2 ti ti-sun ti-xs"></i>
-                                    Header Option 2
-                                </button>
-                            </h2>
-                            <div id="accordionWithIcon-2" class="accordion-collapse collapse" style="">
-                                <div class="accordion-body">
-                                    Dessert ice cream donut oat cake jelly-o pie sugar plum cheesecake. Bear claw dragée oat
-                                    cake
-                                    dragée ice cream halvah tootsie roll. Danish cake oat cake pie macaroon tart donut
-                                    gummies.
-                                    Jelly beans candy canes carrot cake. Fruitcake chocolate chupa chups.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item card">
-                            <h2 class="accordion-header d-flex align-items-center">
-                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionWithIcon-3" aria-expanded="false">
-                                    <i class="me-2 ti ti-moon ti-xs"></i>
-                                    Header Option 3
-                                </button>
-                            </h2>
-                            <div id="accordionWithIcon-3" class="accordion-collapse collapse" style="">
-                                <div class="accordion-body">
-                                    Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake.
-                                    Bonbon
-                                    gingerbread marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat
-                                    cake
-                                    dragée caramels. Ice cream wafer danish cookie caramels muffin.
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </form>
             </div>

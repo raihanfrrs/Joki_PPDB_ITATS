@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 
 class StudentRepository
 {
@@ -34,5 +35,18 @@ class StudentRepository
                 $query->where('status', 'waiting');
             })
             ->get();
+    }
+
+    public function update($data)
+    {
+        return DB::transaction(function () use ($data) {
+            Student::where('id', auth()->user()->student->id)->update([
+                'kk_number' => $data['kk_number'],
+                'hobby' => $data['hobby'],
+                'goal' => $data['goal']
+            ]);
+
+            return true;
+        });
     }
 }

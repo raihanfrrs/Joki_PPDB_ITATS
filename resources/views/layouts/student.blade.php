@@ -157,6 +157,8 @@
     @elseif (request()->routeIs('payment', 'payment.edit'))
         <script src="{{ asset('assets/js/forms-file-upload.js') }}"></script>
         <script src="{{ asset('assets/js/app-payment-list.js') }}"></script>
+    @elseif (request()->routeIs('student.settings'))
+        <script src="{{ asset('assets/js/pages-account-settings-security.js') }}"></script>
     @endif
 
     @stack('scripts')
