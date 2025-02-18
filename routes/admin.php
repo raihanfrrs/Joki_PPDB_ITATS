@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminReportingController;
 use App\Http\Controllers\AdminVerificationController;
 use Illuminate\Support\Facades\Route;
@@ -41,5 +42,10 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
         Route::get('timer', 'index')->name('timer');
         Route::post('timer', 'store')->name('timer.store');
         Route::delete('timer', 'destroy')->name('timer.destroy');
+    });
+
+    Route::controller(AdminProfileController::class)->group(function () {
+        Route::get('admin/settings', 'setting_index')->name('admin.settings');
+        Route::patch('admin/settings', 'setting_update')->name('admin.settings.update');
     });
 });
