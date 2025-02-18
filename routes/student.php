@@ -24,7 +24,9 @@ Route::group(['middleware' => ['cekUserLogin:student']], function () {
 
     Route::controller(StudentProfileController::class)->group(function () {
         Route::get('student/profile', 'profile_index')->name('student.profile');
+        Route::patch('student/profile', 'profile_update')->name('student.profile.update');
 
         Route::get('student/settings', 'setting_index')->name('student.settings');
+        Route::post('student/settings', 'setting_update')->name('student.settings.update');
     });
 });
