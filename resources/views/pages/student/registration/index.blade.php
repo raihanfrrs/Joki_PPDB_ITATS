@@ -932,6 +932,10 @@
                                                 id="image_akte_kelahiran" name="image_akte_kelahiran[]"
                                                 {{ optional($student->registration)->status == 'approved' ? 'required' : '' }}
                                                 accept="image/*" />
+                                            @if ($student->registration && $student->registration->getFirstMediaUrl('akta_kelahiran_images'))
+                                                <img src="{{ $student->registration->getFirstMediaUrl('akta_kelahiran_images') }}"
+                                                    class="img-fluid mt-2 w-25">
+                                            @endif
                                             @error('image_akte_kelahiran')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -945,6 +949,10 @@
                                                 id="ktp_foto" name="ktp_foto[]"
                                                 {{ optional($student->registration)->status == 'approved' ? 'required' : '' }}
                                                 accept="image/*" />
+                                            @if ($student->registration && $student->registration->getFirstMediaUrl('ktp_images'))
+                                                <img src="{{ $student->registration->getFirstMediaUrl('ktp_images') }}"
+                                                    class="img-fluid mt-2 w-25">
+                                            @endif
                                             @error('ktp_foto')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -958,6 +966,10 @@
                                                 id="image_pas_foto" name="image_pas_foto[]"
                                                 {{ optional($student->registration)->status == 'approved' ? 'required' : '' }}
                                                 accept="image/*" />
+                                            @if ($student->registration && $student->registration->getFirstMediaUrl('pasfoto_images'))
+                                                <img src="{{ $student->registration->getFirstMediaUrl('pasfoto_images') }}"
+                                                    class="img-fluid mt-2 w-25">
+                                            @endif
                                             @error('image_pas_foto')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -971,6 +983,10 @@
                                                 id="image_ijasah" name="image_ijasah[]"
                                                 {{ optional($student->registration)->status == 'approved' ? 'required' : '' }}
                                                 accept="image/*" />
+                                            @if ($student->registration && $student->registration->getFirstMediaUrl('ijasah_tk_images'))
+                                                <img src="{{ $student->registration->getFirstMediaUrl('ijasah_tk_images') }}"
+                                                    class="img-fluid mt-2 w-25">
+                                            @endif
                                             @error('image_ijasah')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

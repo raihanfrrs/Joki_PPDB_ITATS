@@ -17,7 +17,7 @@ class BaseController extends Controller
 
     protected function checkRegistrationDeadline(): ?RedirectResponse
     {
-        if ($this->timer->getTimer()->end_at < now()) {
+        if ($this->timer->getTimer() && $this->timer->getTimer()->end_at < now()) {
             return Redirect::back()->with([
                 'flash-type' => 'sweetalert',
                 'case' => 'default',

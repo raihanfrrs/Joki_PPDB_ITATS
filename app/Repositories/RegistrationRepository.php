@@ -213,7 +213,7 @@ class RegistrationRepository
             ]);
 
             $registration = Registration::create([
-                'id' => Uuid::uuid4()->toString(),
+                'id' => $registration_id,
                 'student_id' => $student->id,
             ]);
 
