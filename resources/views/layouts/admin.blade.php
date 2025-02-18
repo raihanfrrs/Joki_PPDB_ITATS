@@ -173,6 +173,8 @@
         <script src="{{ asset('assets/js/app-verification-payment-list.js') }}"></script>
     @elseif (request()->routeIs('timer'))
         <script src="{{ asset('assets/js/forms-pickers.js') }}"></script>
+    @elseif (request()->routeIs('admin.settings'))
+        <script src="{{ asset('assets/js/pages-account-settings-security.js') }}"></script>
     @endif
 
     @stack('scripts')
