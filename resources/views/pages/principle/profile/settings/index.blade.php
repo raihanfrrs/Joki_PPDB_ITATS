@@ -1,8 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.principle')
 
 @section('title', 'PPDB - Profil')
 
-@section('section-admin')
+@section('section-principle')
     <div class="container-xxl flex-grow-1 pt-0">
 
         <div class="row">
@@ -12,7 +12,7 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Pengaturan</h5>
                     <div class="card-body">
-                        <form action="{{ route('admin.settings.update') }}" method="POST"
+                        <form action="{{ route('principle.settings.update') }}" method="POST"
                             class="fv-plugins-bootstrap5 fv-plugins-framework">
                             @csrf
                             @method('PATCH')
@@ -22,7 +22,7 @@
                                     <div class="input-group input-group-merge has-validation">
                                         <input class="form-control @error('name') is-invalid @enderror" type="text"
                                             name="name" id="name"
-                                            value="{{ old('name', auth()->user()->admin->name) }}">
+                                            value="{{ old('name', auth()->user()->principle->name) }}">
                                     </div>
                                     @error('name')
                                         <div class="invalid-feedback">
@@ -35,7 +35,7 @@
                                     <div class="input-group input-group-merge has-validation">
                                         <input class="form-control @error('email') is-invalid @enderror" type="email"
                                             name="email" id="email"
-                                            value="{{ old('email', auth()->user()->admin->email) }}">
+                                            value="{{ old('email', auth()->user()->principle->email) }}">
                                     </div>
                                     @error('email')
                                         <div class="invalid-feedback">
@@ -48,7 +48,7 @@
                                     <div class="input-group input-group-merge has-validation">
                                         <input class="form-control @error('phone') is-invalid @enderror" type="text"
                                             name="phone" id="phone"
-                                            value="{{ old('phone', auth()->user()->admin->phone) }}">
+                                            value="{{ old('phone', auth()->user()->principle->phone) }}">
                                     </div>
                                     @error('phone')
                                         <div class="invalid-feedback">
