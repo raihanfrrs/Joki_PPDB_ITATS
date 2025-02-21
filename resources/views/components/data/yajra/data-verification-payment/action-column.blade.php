@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
-    <a href="{{ route('verification.payment.show', $model->id) }}" class="text-body"><i
-            class="ti ti-eye ti-sm mx-1"></i></a>
+    <a href="javascript:;" class="text-body" data-bs-target="#editAdmin" data-bs-toggle="modal"
+        id="button-trigger-modal-edit-admin" data-id="{{ $model->id }}"><i class="ti ti-pencil ti-sm mx-1"></i></a>
     <a href="javascript:;" class="text-body dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i
             class="ti ti-dots-vertical ti-sm mx-1"></i></a>
     <div class="dropdown-menu dropdown-menu-end m-0">
