@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Repositories\TimerRepository;
 use App\Repositories\PaymentRepository;
 
-class PaymentController extends Controller
+class PaymentController extends BaseController
 {
     protected $payment;
 
-    public function __construct(PaymentRepository $payment)
+    public function __construct(TimerRepository $timer, PaymentRepository $payment)
     {
+        parent::__construct($timer);
         $this->payment = $payment;
     }
 
