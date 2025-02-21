@@ -37,9 +37,11 @@ class UserRepository
                 ]);
             }
 
-            User::where('id', auth()->user()->id)->update([
-                'password' => bcrypt($data['newPassword'])
-            ]);
+            if ($data['newPassword']) {
+                User::where('id', auth()->user()->id)->update([
+                    'password' => bcrypt($data['newPassword'])
+                ]);
+            }
 
             return true;
         });
