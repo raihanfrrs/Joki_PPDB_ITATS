@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\TimerRepository;
+use Illuminate\Http\RedirectResponse;
 use App\Repositories\RegisterRepository;
 use App\Http\Requests\StudentStoreRequest;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     protected $register, $timer;
 
     public function __construct(RegisterRepository $register, TimerRepository $timer)
     {
+        parent::__construct($timer);
         $this->register = $register;
-        $this->timer = $timer;
     }
 
     public function index()
@@ -22,16 +23,10 @@ class RegisterController extends Controller
         return view('auth.signup');
     }
 
-    public function store(StudentStoreRequest $request)
+    public function store(StudentStoreRequest $request): RedirectResponse
     {
-        if ($this->timer->getTimer()->end_at < now()) {
-            return redirect()->back()->with([
-                'flash-type' => 'sweetalert',
-                'case' => 'default',
-                'position' => 'center',
-                'type' => 'error',
-                'message' => 'Batas Pendaftaran Sudah Berakhir!'
-            ]);
+        if ($redirect = $this->checkRegistrationDeadline()) {
+            return $redirect;
         }
 
         if ($this->register->store($request)) {
