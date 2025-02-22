@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PrincipleStoreRequest;
 use App\Http\Requests\PrincipleUpdateRequest;
 use App\Models\Principle;
+use App\Models\Student;
 use App\Repositories\PrincipleRepository;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,13 @@ class MasterController extends Controller
     public function student_index()
     {
         return view('pages.admin.master.student.index');
+    }
+
+    public function student_show(Student $student)
+    {
+        return view('pages.admin.verification.registration.show', [
+            'registration' => $student->registration
+        ]);
     }
 
     public function principle_index()
