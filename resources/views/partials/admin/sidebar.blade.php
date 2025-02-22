@@ -53,7 +53,8 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Verifikasi</span>
         </li>
-        <li class="menu-item {{ request()->routeIs('verification.registration') ? 'active' : '' }}">
+        <li
+            class="menu-item {{ request()->routeIs('verification.registration', 'verification.registration.show') ? 'active' : '' }}">
             <a href="{{ route('verification.registration') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-receipt"></i>
                 <div data-i18n="Pendaftaran">Pendaftaran</div>

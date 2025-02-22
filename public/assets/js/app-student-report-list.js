@@ -232,29 +232,6 @@ function tbl_student_report () {
     });
   }
 
-  // Delete Record
-  $(document).on('click', '#button-delete-tenant', function () {
-    let id = $(this).attr('data-id');
-    let formSelector = ".form-delete-tenant-" + id;
-
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonText: 'Cancel',
-      confirmButtonText: 'Yes, Delete!',
-      customClass: {
-        confirmButton: 'btn btn-primary me-3',
-        cancelButton: 'btn btn-label-secondary'
-      },
-      buttonsStyling: false
-    }).then(function (result) {
-      if (result.isConfirmed) {
-        $(formSelector).submit();
-      }
-    });
-  });
 
   setTimeout(() => {
     $('.dataTables_filter .form-control').removeClass('form-control-sm');
