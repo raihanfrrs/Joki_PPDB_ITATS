@@ -225,29 +225,28 @@ function tbl_verification_payment () {
     });
   }
 
-  // Delete Record
-  $(document).on('click', '#button-delete-tenant', function () {
+  $(document).on('click', '#button-trigger-modal-show-payment', function () {
     let id = $(this).attr('data-id');
-    let formSelector = ".form-delete-tenant-" + id;
 
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonText: 'Cancel',
-      confirmButtonText: 'Yes, Delete!',
-      customClass: {
-        confirmButton: 'btn btn-primary me-3',
-        cancelButton: 'btn btn-label-secondary'
-      },
-      buttonsStyling: false
-    }).then(function (result) {
-      if (result.isConfirmed) {
-        $(formSelector).submit();
-      }
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
     });
-  });
+
+    $.ajax({
+        url: "/ajax/payment/"+id+"/show",
+        method: "get",
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            $("#data-show-payment-modal").html(response);
+        },
+
+        error: function(xhr, status, error) {
+        }
+    });
+});
 
   setTimeout(() => {
     $('.dataTables_filter .form-control').removeClass('form-control-sm');
