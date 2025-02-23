@@ -12,7 +12,9 @@ Route::controller(LayoutController::class)->group(function () {
 });
 
 Route::middleware('guest')->group(function () {
-    Route::controller(GuestController::class)->group(function () {});
+    Route::controller(GuestController::class)->group(function () {
+        Route::get('guide', 'guide')->name('guide');
+    });
 
     Route::controller(RegisterController::class)->group(function () {
         Route::get('sign-up', 'index')->name('signup');
