@@ -44,7 +44,9 @@ class LayoutController extends Controller
                 'totalStudentCandidate' => $this->student->getStudentsWhereRegistrationAndPaymentWaiting()->count(),
             ]);
         } else if (Auth::check() && $this->role->find(auth()->user()->role_id)->role == 'principle') {
-            return view('pages.principle.dashboard.index');
+            return view('pages.principle.dashboard.index', [
+                'totalStudentPassed' => $this->student->getStudentsWhereRegistrationAndPaymentAccepted()->count(),
+            ]);
         } else {
             return view('pages.guest.dashboard.index');
         }

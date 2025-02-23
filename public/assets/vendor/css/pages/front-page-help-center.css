@@ -1,7 +1,31 @@
 .help-center-header {
-  background: url("../../../img/pages/header.png") no-repeat;
+  position: relative;
+  background: url("../../../img/backgrounds/mi-darussalam.jpeg") no-repeat;
   background-size: cover;
+  color: white; /* Pastikan teks tetap terbaca */
+  text-align: center;
 }
+
+.help-center-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Warna overlay dengan opacity 50% */
+  z-index: 1; /* Tetap di bawah teks */
+}
+
+.help-center-header h3,
+.help-center-header p,
+.help-center-header a {
+  position: relative; /* Pastikan teks berada di atas overlay */
+  z-index: 2;
+  color: white;
+}
+
+
 .help-center-header .input-wrapper {
   max-width: 31.25rem;
 }

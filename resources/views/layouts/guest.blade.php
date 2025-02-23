@@ -59,7 +59,7 @@
     @endguest
 
     <!-- Page CSS -->
-    @if (request()->routeIs('/'))
+    @if (request()->routeIs('/', 'guide'))
         <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/front-page-help-center.css') }}" />
     @else
         <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />

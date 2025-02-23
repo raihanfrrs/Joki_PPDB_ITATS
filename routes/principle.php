@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['cekUserLogin:principle']], function () {
     Route::controller(PrincipleReportingController::class)->group(function () {
         Route::get('principle/reporting-student', 'student_index')->name('principle.reporting.student');
+        Route::get('principle/reporting-student/{student}', 'student_show')->name('principle.reporting.student.show');
     });
 
     Route::controller(PrincipleProfileController::class)->group(function () {
