@@ -22,12 +22,11 @@
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
-                <div class="badge bg-label-primary rounded-pill ms-auto">3</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ request()->routeIs('/') ? 'active' : '' }}">
                     <a href="{{ route('/') }}" class="menu-link">
-                        <div data-i18n="Analytics">Analytics</div>
+                        <div data-i18n="Analitik">Analitik</div>
                     </a>
                 </li>
             </ul>
@@ -37,7 +36,8 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Laporan</span>
         </li>
-        <li class="menu-item {{ request()->routeIs('principle.reporting.student') ? 'active' : '' }}">
+        <li
+            class="menu-item {{ request()->routeIs('principle.reporting.student', 'principle.reporting.student.show') ? 'active' : '' }}">
             <a href="{{ route('principle.reporting.student') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-clipboard"></i>
                 <div data-i18n="Rekap Data Siswa">Rekap Data Siswa</div>
