@@ -2,10 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\Payment;
 use Ramsey\Uuid\Uuid;
+use App\Models\Payment;
+use App\Mail\PaymentMail;
 use App\Models\Registration;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class PaymentRepository
@@ -49,6 +51,8 @@ class PaymentRepository
                 'student_id' => auth()->user()->student->id
             ]);
 
+            $attachments = [];
+
             if ($data->hasFile('file')) {
                 $file = $data->file('file'); // Ambil file langsung
                 $media = $payment->addMedia($file)
@@ -60,7 +64,12 @@ class PaymentRepository
                     'model_id' => $payment_id,
                     'model_type' => Payment::class,
                 ]);
+
+                $attachments[] = $media->getPath();
             }
+
+            Mail::to(auth()->user()->student->email)->send(new PaymentMail($data, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.store', $attachments));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail($data, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.store', $attachments));
 
             return true;
         });
@@ -77,6 +86,8 @@ class PaymentRepository
                 if (!$media) {
                     throw new \Exception("Media tidak ditemukan");
                 }
+
+                $attachments = [];
 
                 // Ambil model yang memiliki media ini
                 $model = $media->model;
@@ -101,7 +112,12 @@ class PaymentRepository
                         'model_type' => get_class($model),
                     ]);
                 }
+
+                $attachments[] = $newMedia->getPath();
             }
+
+            Mail::to(auth()->user()->student->email)->send(new PaymentMail($data, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.update', $attachments));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail($data, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.update', $attachments));
 
             return true;
         });
