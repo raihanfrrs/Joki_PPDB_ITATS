@@ -38,6 +38,9 @@ class PaymentRepository
             Payment::where('id', $payment->id)->update([
                 'status' => $data['status'],
             ]);
+
+            Mail::to($payment->student->email)->send(new PaymentMail($data, 'VERIFIKASI PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.feedback'));
+
             return true;
         });
     }
@@ -68,8 +71,8 @@ class PaymentRepository
                 $attachments[] = $media->getPath();
             }
 
-            Mail::to(auth()->user()->student->email)->send(new PaymentMail($data, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.store', $attachments));
-            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail($data, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.store', $attachments));
+            Mail::to(auth()->user()->student->email)->send(new PaymentMail(auth()->user()->student, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.store', $attachments));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail(auth()->user()->student, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.store', $attachments));
 
             return true;
         });
@@ -116,8 +119,8 @@ class PaymentRepository
                 $attachments[] = $newMedia->getPath();
             }
 
-            Mail::to(auth()->user()->student->email)->send(new PaymentMail($data, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.update', $attachments));
-            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail($data, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.update', $attachments));
+            Mail::to(auth()->user()->student->email)->send(new PaymentMail(auth()->user()->student, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.update', $attachments));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail(auth()->user()->student, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.update', $attachments));
 
             return true;
         });
@@ -139,6 +142,9 @@ class PaymentRepository
             if ($payment) {
                 $payment->delete();
             }
+
+            Mail::to(auth()->user()->student->email)->send(new PaymentMail(auth()->user()->student, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.destroy'));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail(auth()->user()->student, 'PEMBAYARAN PPDB MI DARUSSALAM', 'components.mail.payment.destroy'));
 
             return true;
         });
