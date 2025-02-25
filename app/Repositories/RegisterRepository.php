@@ -2,11 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Student;
+use App\Mail\RegisterMail;
 use App\Models\User;
 use Ramsey\Uuid\Uuid;
+use App\Models\Student;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\RoleRepository;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterRepository
 {
