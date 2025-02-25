@@ -2,13 +2,15 @@
 
 namespace App\Repositories;
 
-use App\Models\Custodian;
+use Ramsey\Uuid\Uuid;
 use App\Models\Father;
 use App\Models\Mother;
-use App\Models\Registration;
 use App\Models\Student;
-use Ramsey\Uuid\Uuid;
+use App\Models\Custodian;
+use App\Models\Registration;
+use App\Mail\RegistrationMail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class RegistrationRepository
 {
@@ -217,6 +219,8 @@ class RegistrationRepository
                 'student_id' => $student->id,
             ]);
 
+            $attachments = [];
+
             if ($data->hasFile('image_akte_kelahiran')) {
 
                 foreach ($data->file('image_akte_kelahiran') as $key => $file) {
@@ -228,6 +232,8 @@ class RegistrationRepository
                         'model_id' => $registration_id,
                         'model_type' => Registration::class,
                     ]);
+
+                    $attachments[] = $media->getPath();
                 }
             }
 
@@ -241,6 +247,8 @@ class RegistrationRepository
                         'model_id' => $registration_id,
                         'model_type' => Registration::class,
                     ]);
+
+                    $attachments[] = $media->getPath();
                 }
             }
 
@@ -254,6 +262,8 @@ class RegistrationRepository
                         'model_id' => $registration_id,
                         'model_type' => Registration::class,
                     ]);
+
+                    $attachments[] = $media->getPath();
                 }
             }
 
@@ -267,8 +277,13 @@ class RegistrationRepository
                         'model_id' => $registration_id,
                         'model_type' => Registration::class,
                     ]);
+
+                    $attachments[] = $media->getPath();
                 }
             }
+
+            Mail::to($data['email'])->send(new RegistrationMail($data, 'PENDAFTARAN PPDB MI DARUSSALAM', 'components.mail.registration.store', $attachments));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new RegistrationMail($data, 'PENDAFTARAN PPDB MI DARUSSALAM', 'components.mail.registration.store', $attachments));
 
             return true;
         });
@@ -354,6 +369,8 @@ class RegistrationRepository
                 Registration::where('student_id', $student->id)->update(['status' => 'waiting', 'flag' => 'resubmit']);
             }
 
+            $attachments = [];
+
             // Handle image upload
             if ($data->hasFile('image_akte_kelahiran')) {
                 // Clear existing media collection
@@ -370,6 +387,8 @@ class RegistrationRepository
                     'model_id' => $student->registration->id,
                     'model_type' => Registration::class,
                 ]);
+
+                $attachments[] = $media->getPath();
             }
 
             // Handle image upload
@@ -388,6 +407,8 @@ class RegistrationRepository
                     'model_id' => $student->registration->id,
                     'model_type' => Registration::class,
                 ]);
+
+                $attachments[] = $media->getPath();
             }
 
             // Handle image upload
@@ -406,6 +427,8 @@ class RegistrationRepository
                     'model_id' => $student->registration->id,
                     'model_type' => Registration::class,
                 ]);
+
+                $attachments[] = $media->getPath();
             }
 
             // Handle image upload
@@ -424,7 +447,12 @@ class RegistrationRepository
                     'model_id' => $student->registration->id,
                     'model_type' => Registration::class,
                 ]);
+
+                $attachments[] = $media->getPath();
             }
+
+            Mail::to($data['email'])->send(new RegistrationMail($data, 'PENDAFTARAN PPDB MI DARUSSALAM', 'components.mail.registration.update', $attachments));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new RegistrationMail($data, 'PENDAFTARAN PPDB MI DARUSSALAM', 'components.mail.registration.update', $attachments));
 
             return true;
         });
@@ -436,6 +464,8 @@ class RegistrationRepository
             $registration->update([
                 'status' => $data['status'],
             ]);
+
+            Mail::to($registration->student->email)->send(new RegistrationMail($data, 'VERIFIKASI PENDAFTARAN PPDB MI DARUSSALAM', 'components.mail.registration.feedback'));
 
             return true;
         });
