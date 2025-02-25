@@ -19,9 +19,9 @@ class AdminSeeder extends Seeder
             [
                 'id' => Uuid::uuid4()->toString(),
                 'user_id' => User::where('username', 'adminppdb')->first()->id,
-                'name' => 'John Doe',
+                'name' => 'MI Darussalam',
                 'phone' => '1234567890',
-                'email' => 'vMxgM@example.com'
+                'email' => 'midarussalamppdb@gmail.com'
             ]
         ];
 
