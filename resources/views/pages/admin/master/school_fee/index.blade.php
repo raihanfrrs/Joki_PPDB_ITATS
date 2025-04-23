@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'PPDB - Master School Fee')
+@section('title', 'PPDB - Master Biaya Sekolah')
 
 @section('section-admin')
     <div class="container-xxl flex-grow-1 container-p-y">
