@@ -1,0 +1,1 @@
+@rupiah($model->scout_uniform)

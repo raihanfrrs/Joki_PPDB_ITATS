@@ -4,6 +4,8 @@
 
 @section('section-admin')
     <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Rekap /</span> Calon Siswa</h4>
+
         <div class="card">
             <div class="card-header border-bottom">
                 <h5 class="card-title mb-3">Laporan Calon Siswa</h5>

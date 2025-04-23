@@ -20,6 +20,7 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
 
         Route::get('master-school-fee', 'school_fee_index')->name('master.school.fee');
         Route::get('master-school-fee/add', 'school_fee_create')->name('master.school.fee.create');
+        Route::post('master-school-fee', 'school_fee_store')->name('master.school.fee.store');
     });
 
     Route::controller(AdminVerificationController::class)->group(function () {
@@ -37,6 +38,8 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
 
         Route::get('reporting/student-candidate', 'student_candidate_index')->name('reporting.student.candidate');
         Route::get('reporting/student-candidate/{student}', 'student_candidate_show')->name('reporting.student.candidate.show');
+
+        Route::get('reporting/finance-recap', 'finance_recap_index')->name('reporting.finance.recap');
     });
 
     Route::controller(TimerController::class)->group(function () {
