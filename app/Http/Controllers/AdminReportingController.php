@@ -30,4 +30,9 @@ class AdminReportingController extends Controller
             'registration' => $student->registration
         ]);
     }
+
+    public function finance_recap_index()
+    {
+        return view('pages.admin.reporting.finance.recap.index');
+    }
 }

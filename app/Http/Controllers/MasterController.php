@@ -4,18 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PrincipleStoreRequest;
 use App\Http\Requests\PrincipleUpdateRequest;
+use App\Http\Requests\SchoolFeeStoreRequest;
 use App\Models\Principle;
 use App\Models\Student;
 use App\Repositories\PrincipleRepository;
+use App\Repositories\SchoolFeeRepository;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
 {
-    protected $principle;
+    protected $principle, $schoolFee;
 
-    public function __construct(PrincipleRepository $principle)
+    public function __construct(PrincipleRepository $principle, SchoolFeeRepository $schoolFee)
     {
         $this->principle = $principle;
+        $this->schoolFee = $schoolFee;
     }
 
     public function student_index()
@@ -95,5 +98,26 @@ class MasterController extends Controller
     public function school_fee_create()
     {
         return view('pages.admin.master.school_fee.create');
+    }
+
+    public function school_fee_store(SchoolFeeStoreRequest $request)
+    {
+        if ($this->schoolFee->store($request)) {
+            return redirect()->back()->with([
+                'flash-type' => 'sweetalert',
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'success',
+                'message' => 'Tambah Biaya Sekolah Berhasil!'
+            ]);
+        } else {
+            return redirect()->back()->with([
+                'flash-type' => 'sweetalert',
+                'case' => 'default',
+                'position' => 'center',
+                'type' => 'error',
+                'message' => 'Tambah Biaya Sekolah Gagal!'
+            ]);
+        }
     }
 }

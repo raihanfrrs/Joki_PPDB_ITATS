@@ -100,5 +100,11 @@
                 <div data-i18n="Rekap Data Calon Siswa">Rekap Data Calon Siswa</div>
             </a>
         </li>
+        <li class="menu-item {{ request()->routeIs('reporting.finance.recap') ? 'active' : '' }}">
+            <a href="{{ route('reporting.finance.recap') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-clipboard"></i>
+                <div data-i18n="Rekap Keuangan">Rekap Keuangan</div>
+            </a>
+        </li>
     </ul>
 </aside>
