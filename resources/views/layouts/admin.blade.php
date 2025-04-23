@@ -175,6 +175,8 @@
         <script src="{{ asset('assets/js/forms-pickers.js') }}"></script>
     @elseif (request()->routeIs('admin.settings'))
         <script src="{{ asset('assets/js/pages-account-settings-security.js') }}"></script>
+    @elseif (request()->routeIs('master.school.fee'))
+        <script src="{{ asset('assets/js/app-school-fee-list.js') }}"></script>
     @endif
 
     @stack('scripts')

@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\PaymentRepository;
-use App\Repositories\PrincipleRepository;
-use App\Repositories\RegistrationRepository;
 use Illuminate\Http\Request;
+use App\Repositories\PaymentRepository;
 use App\Repositories\StudentRepository;
 use Yajra\DataTables\Facades\DataTables;
+use App\Repositories\PrincipleRepository;
+use App\Repositories\SchoolFeeRepository;
+use App\Repositories\RegistrationRepository;
 
 class YajraDatatablesController extends Controller
 {
-    protected $student, $principle, $registration, $payment;
+    protected $student, $principle, $registration, $payment, $schoolFee;
 
-    public function __construct(StudentRepository $student, PrincipleRepository $principle, RegistrationRepository $registration, PaymentRepository $payment)
+    public function __construct(StudentRepository $student, PrincipleRepository $principle, RegistrationRepository $registration, PaymentRepository $payment, SchoolFeeRepository $schoolFee)
     {
         $this->student = $student;
         $this->principle = $principle;
         $this->registration = $registration;
         $this->payment = $payment;
+        $this->schoolFee = $schoolFee;
     }
 
     public function student()
@@ -336,6 +338,39 @@ class YajraDatatablesController extends Controller
                 return view('components.data.yajra.data-reporting-student-candidate.action-column', compact('model'))->render();
             })
             ->rawColumns(['index', 'nisn', 'nik', 'name', 'phone', 'email', 'pob_dob', 'gender', 'address', 'created_at', 'action'])
+            ->make(true);
+    }
+
+    public function school_fee()
+    {
+        $schoolFees = $this->schoolFee->all();
+
+        return DataTables::of($schoolFees)
+            ->addColumn('index', function ($model) use ($schoolFees) {
+                return $schoolFees->search($model) + 1;
+            })
+            ->addColumn('form', function ($model) {
+                return view('components.data.yajra.data-school-fee.form-column', compact('model'))->render();
+            })
+            ->addColumn('development_fund', function ($model) {
+                return view('components.data.yajra.data-school-fee.development-fund-column', compact('model'))->render();
+            })
+            ->addColumn('education_development_donation', function ($model) {
+                return view('components.data.yajra.data-school-fee.education-development-donation-column', compact('model'))->render();
+            })
+            ->addColumn('batik_uniform', function ($model) {
+                return view('components.data.yajra.data-school-fee.batik-uniform-column', compact('model'))->render();
+            })
+            ->addColumn('scout_uniform', function ($model) {
+                return view('components.data.yajra.data-school-fee.scout-uniform-column', compact('model'))->render();
+            })
+            ->addColumn('total_fee', function ($model) {
+                return view('components.data.yajra.data-school-fee.total-fee-column', compact('model'))->render();
+            })
+            ->addColumn('created_at', function ($model) {
+                return view('components.data.yajra.data-school-fee.created-at-column', compact('model'))->render();
+            })
+            ->rawColumns(['index', 'form', 'development_fund', 'education_development_donation', 'batik_uniform', 'scout_uniform', 'total_fee', 'created_at'])
             ->make(true);
     }
 }

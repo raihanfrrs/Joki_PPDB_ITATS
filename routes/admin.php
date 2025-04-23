@@ -17,6 +17,9 @@ Route::group(['middleware' => ['cekUserLogin:admin']], function () {
         Route::post('master-principle', 'principle_store')->name('master.principle.store');
         Route::get('master-principle/{principle}/edit', 'principle_edit')->name('master.principle.edit');
         Route::patch('master-principle/{principle}', 'principle_update')->name('master.principle.update');
+
+        Route::get('master-school-fee', 'school_fee_index')->name('master.school.fee');
+        Route::get('master-school-fee/add', 'school_fee_create')->name('master.school.fee.create');
     });
 
     Route::controller(AdminVerificationController::class)->group(function () {

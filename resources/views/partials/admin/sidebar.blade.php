@@ -49,6 +49,12 @@
                 <div data-i18n="Kepala Sekolah">Kepala Sekolah</div>
             </a>
         </li>
+        <li class="menu-item {{ request()->routeIs('master.school.fee', 'master.school.fee.create') ? 'active' : '' }}">
+            <a href="{{ route('master.school.fee') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-credit-card"></i>
+                <div data-i18n="Biaya Sekolah">Biaya Sekolah</div>
+            </a>
+        </li>
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Verifikasi</span>

@@ -86,4 +86,14 @@ class MasterController extends Controller
             ]);
         }
     }
+
+    public function school_fee_index()
+    {
+        return view('pages.admin.master.school_fee.index');
+    }
+
+    public function school_fee_create()
+    {
+        return view('pages.admin.master.school_fee.create');
+    }
 }
