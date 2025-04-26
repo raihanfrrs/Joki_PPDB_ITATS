@@ -17,7 +17,6 @@
 
         .disabled-dropzone .dz-message {
             pointer-events: none;
-            /* Mencegah klik pada dz-message */
         }
     </style>
 @endpush
@@ -28,16 +27,69 @@
         $isRegisteredApproved = optional(auth()->user()->student->registration)->status == 'approved' ? true : false;
         $latestPayment = auth()->user()->student->payment()->where('status', '!=', 'rejected')->latest()->first();
         $isUploaded = $latestPayment ? false : true;
+        $schoolFeeExists = $school_fee ? true : false;
     @endphp
 
     <div class="container-xxl flex-grow-1 pt-0">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
+                    <h5 class="card-header">Total Biaya</h5>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Deskripsi</th>
+                                    <th>Biaya</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @if ($school_fee)
+                                    <tr>
+                                        <td>Formulir</td>
+                                        <td>@rupiah($school_fee->form ?? 0)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dana Pengembangan</td>
+                                        <td>@rupiah($school_fee->development_fund ?? 0)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SPP Bulan @bulanDepan</td>
+                                        <td>@rupiah($school_fee->education_development_donation ?? 0)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Seragam Batik</td>
+                                        <td>@rupiah($school_fee->batik_uniform ?? 0)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Seragam Pramuka</td>
+                                        <td>@rupiah($school_fee->scout_uniform ?? 0)</td>
+                                    </tr>
+                                    <tr class="bg-warning">
+                                        <td class="fw-bold" style="color: white !important">Total Biaya Yang Harus Dibayar
+                                        </td>
+                                        <td class="fw-bold" style="color: white !important">@rupiah($school_fee->total_fee ?? 0)</td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td colspan="2" class="text-center text-warning fw-bold">
+                                            Data biaya sekolah belum tersedia. Silakan hubungi Admin.
+                                        </td>
+                                    </tr>
+                                @endif
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card mb-4">
                     <h5 class="card-header">Upload Bukti Pembayaran</h5>
                     <div class="card-body">
                         <form action="{{ route('payment.store') }}" method="POST" enctype="multipart/form-data"
-                            class="dropzone position-relative @if (!$isRegistered || !$isUploaded || !$isRegisteredApproved) disabled-dropzone @endif"
+                            class="dropzone position-relative @if (!$isRegistered || !$isUploaded || !$isRegisteredApproved || !$schoolFeeExists) disabled-dropzone @endif"
                             id="dropzone-basic">
                             @csrf
                             <div class="dz-message needsclick" id="dzMessage">
@@ -45,15 +97,14 @@
                             </div>
                             <div class="fallback">
                                 <input name="file" type="file" accept="image/*" id="fileInput"
-                                    @if (!$isRegistered || !$isUploaded || !$isRegisteredApproved) disabled @endif />
+                                    @if (!$isRegistered || !$isUploaded || !$isRegisteredApproved || !$schoolFeeExists) disabled @endif />
                             </div>
 
                             <!-- Tambahkan overlay -->
-                            @if (!$isRegistered || !$isUploaded || !$isRegisteredApproved)
+                            @if (!$isRegistered || !$isUploaded || !$isRegisteredApproved || !$schoolFeeExists)
                                 <div class="dropzone-overlay"></div>
                             @endif
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -89,28 +140,27 @@
             let isRegistered = @json($isRegistered);
             let isRegisteredApproved = @json($isRegisteredApproved);
             let isUploaded = @json($isUploaded);
+            let schoolFeeExists = @json($schoolFeeExists);
 
-            if (!isRegistered || !isUploaded || !isRegisteredApproved) {
+            if (!isRegistered || !isUploaded || !isRegisteredApproved || !schoolFeeExists) {
                 let dropzoneElement = document.querySelector("#dropzone-basic");
                 let dzMessage = document.querySelector("#dzMessage");
                 let fileInput = document.querySelector("#fileInput");
 
-                // Cegah semua event pada Dropzone
                 [dropzoneElement, dzMessage].forEach(el => {
                     el.addEventListener("click", function(event) {
                         event.preventDefault();
-                        if (!isRegistered) {
+                        if (!schoolFeeExists) {
+                            alert("Data biaya sekolah belum tersedia. Silakan hubungi Admin.");
+                        } else if (!isRegistered) {
                             alert(
                                 "Anda harus mendaftar terlebih dahulu sebelum mengunggah bukti pembayaran."
                             );
                         } else if (!isUploaded) {
                             alert("Anda sudah mengunggah bukti pembayaran.");
                         } else if (!isRegisteredApproved) {
-                            alert(
-                                "Pendaftaran anda belum disetujui oleh Admin."
-                            );
+                            alert("Pendaftaran anda belum disetujui oleh Admin.");
                         }
-
                     });
 
                     el.addEventListener("dragover", function(event) {
@@ -125,21 +175,23 @@
                 // Pastikan input file juga dicegah
                 fileInput.addEventListener("click", function(event) {
                     event.preventDefault();
-                    if (!isRegistered) {
-                        alert(
-                            "Anda harus mendaftar terlebih dahulu sebelum mengunggah bukti pembayaran."
-                        );
+                    if (!schoolFeeExists) {
+                        alert("Data biaya sekolah belum tersedia. Silakan hubungi Admin.");
+                    } else if (!isRegistered) {
+                        alert("Anda harus mendaftar terlebih dahulu sebelum mengunggah bukti pembayaran.");
                     } else if (!isUploaded) {
                         alert("Anda sudah mengunggah bukti pembayaran.");
                     } else if (!isRegisteredApproved) {
-                        alert(
-                            "Pendaftaran anda belum disetujui oleh Admin."
-                        );
+                        alert("Pendaftaran anda belum disetujui oleh Admin.");
                     }
                 });
             }
+
+            tbl_payment();
         });
 
-        tbl_payment();
+        function tbl_payment() {
+            // isi fungsi ini sesuai kebutuhan datatable pembayaran kamu
+        }
     </script>
 @endpush

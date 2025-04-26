@@ -12,6 +12,13 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class PaymentRepository
 {
+    protected $school_fee;
+
+    public function __construct(SchoolFeeRepository $school_fee)
+    {
+        $this->school_fee = $school_fee;
+    }
+
     public function all()
     {
         return Payment::where('student_id', auth()->user()->student->id)->get();
@@ -51,7 +58,8 @@ class PaymentRepository
         return DB::transaction(function () use ($data, $payment_id) {
             $payment = Payment::create([
                 'id' => $payment_id,
-                'student_id' => auth()->user()->student->id
+                'student_id' => auth()->user()->student->id,
+                'school_fee_id' => $this->school_fee->latestLimit()->id,
             ]);
 
             $attachments = [];

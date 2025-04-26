@@ -9,13 +9,14 @@ use App\Repositories\PaymentRepository;
 use App\Repositories\PrincipleRepository;
 use App\Repositories\StudentRepository;
 use App\Repositories\RegistrationRepository;
+use App\Repositories\SchoolFeeRepository;
 use App\Repositories\TimerRepository;
 
 class LayoutController extends Controller
 {
-    protected $role, $student, $registration, $payment, $timer, $principle;
+    protected $role, $student, $registration, $payment, $timer, $principle, $school_fee;
 
-    public function __construct(RoleRepository $role, StudentRepository $student, RegistrationRepository $registration, PaymentRepository $payment, TimerRepository $timer, PrincipleRepository $principle)
+    public function __construct(RoleRepository $role, StudentRepository $student, RegistrationRepository $registration, PaymentRepository $payment, TimerRepository $timer, PrincipleRepository $principle, SchoolFeeRepository $school_fee)
     {
         $this->role = $role;
         $this->student = $student;
@@ -23,6 +24,7 @@ class LayoutController extends Controller
         $this->payment = $payment;
         $this->timer = $timer;
         $this->principle = $principle;
+        $this->school_fee = $school_fee;
     }
 
     public function index()
@@ -35,6 +37,7 @@ class LayoutController extends Controller
                 'motherFilled' => $this->registration->checkIfMotherFilled(auth()->user()->student->id),
                 'custodianFilled' => $this->registration->checkIfCustodianFilled(auth()->user()->student->id),
                 'payment' => $this->payment->getPaymentByStudentId(auth()->user()->student->id),
+                'school_fee' => $this->school_fee->latestLimit()
             ]);
         } else if (Auth::check() && $this->role->find(auth()->user()->role_id)->role == 'admin') {
             return view('pages.admin.dashboard.index', [

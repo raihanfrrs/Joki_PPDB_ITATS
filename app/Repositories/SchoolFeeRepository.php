@@ -13,6 +13,11 @@ class SchoolFeeRepository
         return SchoolFee::all();
     }
 
+    public function latestLimit()
+    {
+        return SchoolFee::latest()->limit(1)->first();
+    }
+
     public function store($data)
     {
         return DB::transaction(function () use ($data) {

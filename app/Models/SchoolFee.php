@@ -11,4 +11,9 @@ class SchoolFee extends Model
 
     protected $keyType = 'string';
     protected $guarded = [];
+
+    public function payment()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
