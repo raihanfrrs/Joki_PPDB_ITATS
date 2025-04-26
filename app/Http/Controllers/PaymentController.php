@@ -5,20 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\TimerRepository;
 use App\Repositories\PaymentRepository;
+use App\Repositories\SchoolFeeRepository;
 
 class PaymentController extends BaseController
 {
-    protected $payment;
+    protected $payment, $schoolFee;
 
-    public function __construct(TimerRepository $timer, PaymentRepository $payment)
+    public function __construct(TimerRepository $timer, PaymentRepository $payment, SchoolFeeRepository $schoolFee)
     {
         parent::__construct($timer);
         $this->payment = $payment;
+        $this->schoolFee = $schoolFee;
     }
 
     public function index()
     {
-        return view('pages.student.payment.index');
+        return view('pages.student.payment.index', [
+            'school_fee' => $this->schoolFee->latestLimit()
+        ]);
     }
 
     public function store(Request $request)

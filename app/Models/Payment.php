@@ -32,4 +32,9 @@ class Payment extends Model implements HasMedia
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function school_fee()
+    {
+        return $this->belongsTo(SchoolFee::class);
+    }
 }

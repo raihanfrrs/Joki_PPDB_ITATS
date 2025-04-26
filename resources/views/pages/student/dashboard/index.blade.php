@@ -43,7 +43,7 @@
                     </li>
 
                     @if ($student->registration)
-                        <li class="timeline-item {{ $student->payment->isNotEmpty() ? 'pb-md-4 pb-5' : 'mb-4 border-0' }}">
+                        <li class="timeline-item">
                             <span class="timeline-indicator timeline-indicator-success" data-aos="zoom-in"
                                 data-aos-delay="200">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -124,7 +124,36 @@
                                 </div>
                             </div>
                         </li>
+
+                        <li class="timeline-item {{ $student->payment->isNotEmpty() ? 'pb-md-4 pb-5' : 'mb-4 border-0' }}">
+                            <span class="timeline-indicator timeline-indicator-success" data-aos="zoom-in"
+                                data-aos-delay="200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-checklist {{ $student->registration->status == 'approved' ? 'text-success' : ($student->registration->status == 'rejected' ? 'text-danger' : 'text-warning') }}">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8" />
+                                    <path d="M14 19l2 2l4 -4" />
+                                    <path d="M9 8h4" />
+                                    <path d="M9 12h2" />
+                                </svg>`
+                            </span>
+                            <div class="timeline-event card p-0" data-aos="fade-left">
+                                <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="card-title mb-0">Administrasi</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-2">Segera Lakukan Pembayaran Administrasi Sejumlah <span
+                                            class="fw-bold">@rupiah($school_fee->total_fee)</span></p>
+                                    <a href="{{ route('payment') }}" class="btn btn-outline-primary btn-sm">Lanjut
+                                        Pembayaran</a>
+                                </div>
+                            </div>
+                        </li>
                     @endif
+
+
 
                     @if ($student->payment)
                         @php

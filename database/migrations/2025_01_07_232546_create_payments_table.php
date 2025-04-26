@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SchoolFee;
 use App\Models\Student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,6 +16,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignIdFor(Student::class);
+            $table->foreignIdFor(SchoolFee::class);
             $table->enum('status', ['waiting', 'approved', 'rejected'])->default('waiting');
             $table->timestamps();
         });

@@ -77,14 +77,8 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>#ID</th>
-                            <th><i class="ti ti-trending-up text-secondary"></i></th>
-                            <th>Client</th>
-                            <th>Total</th>
-                            <th class="text-truncate">Issued Date</th>
-                            <th>Balance</th>
-                            <th>Invoice Status</th>
-                            <th class="cell-fit">Actions</th>
+                            <th>Siswa</th>
+                            <th>Siswa</th>
                         </tr>
                     </thead>
                 </table>
