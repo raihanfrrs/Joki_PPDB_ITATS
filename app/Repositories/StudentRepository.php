@@ -37,6 +37,20 @@ class StudentRepository
             ->get();
     }
 
+    public function getStudentsRegistrationAndPayment()
+    {
+        return DB::table('students')
+            ->leftJoin('registrations', function ($join) {
+                $join->on('registrations.student_id', '=', 'students.id')
+                    ->where('registrations.status', 'approved');
+            })
+            ->leftJoin('payments', function ($join) {
+                $join->on('payments.student_id', '=', 'students.id')
+                    ->where('payments.status', 'approved');
+            })
+            ->get();
+    }
+
     public function update($data)
     {
         return DB::transaction(function () use ($data) {

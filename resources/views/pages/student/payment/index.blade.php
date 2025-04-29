@@ -189,9 +189,9 @@
 
             tbl_payment();
         });
+    </script>
 
-        function tbl_payment() {
-            // isi fungsi ini sesuai kebutuhan datatable pembayaran kamu
-        }
+    <script>
+        tbl_payment()
     </script>
 @endpush

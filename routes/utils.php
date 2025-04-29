@@ -14,6 +14,7 @@ Route::controller(YajraDatatablesController::class)->group(function () {
     Route::get('listReportingStudentPassedTable', 'reporting_student_passed');
     Route::get('listReportingStudentCandidateTable', 'reporting_student_candidate');
     Route::get('listSchoolFeesTable', 'school_fee');
+    Route::get('listReportingFinanceTable', 'reporting_finance');
 });
 
 Route::controller(AjaxController::class)->group(function () {
