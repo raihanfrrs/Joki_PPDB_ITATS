@@ -373,4 +373,34 @@ class YajraDatatablesController extends Controller
             ->rawColumns(['index', 'form', 'development_fund', 'education_development_donation', 'batik_uniform', 'scout_uniform', 'total_fee', 'created_at'])
             ->make(true);
     }
+
+    public function reporting_finance()
+    {
+        $students = $this->student->getStudentsRegistrationAndPayment();
+
+        return DataTables::of($students)
+            ->addColumn('index', function ($model) use ($students) {
+                return $students->search($model) + 1;
+            })
+            ->addColumn('student', function ($model) {
+                return view('components.data.yajra.data-finance-reporting.student-column', compact('model'))->render();
+            })
+            ->addColumn('registration_at', function ($model) {
+                return view('components.data.yajra.data-finance-reporting.registration-at-column', compact('model'))->render();
+            })
+            ->addColumn('payment_at', function ($model) {
+                return view('components.data.yajra.data-finance-reporting.payment-at-column', compact('model'))->render();
+            })
+            ->addColumn('total_cost', function ($model) {
+                return view('components.data.yajra.data-finance-reporting.total-cost-column', compact('model'))->render();
+            })
+            ->addColumn('payment_status', function ($model) {
+                return view('components.data.yajra.data-finance-reporting.payment-status', compact('model'))->render();
+            })
+            ->addColumn('receipt', function ($model) {
+                return view('components.data.yajra.data-finance-reporting.receipt-column', compact('model'))->render();
+            })
+            ->rawColumns(['index', 'student', 'registration_at', 'payment_at', 'total_cost', 'payment_status', 'receipt'])
+            ->make(true);
+    }
 }

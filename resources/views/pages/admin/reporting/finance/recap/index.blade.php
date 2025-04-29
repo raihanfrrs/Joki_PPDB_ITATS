@@ -16,7 +16,7 @@
                             <div
                                 class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
                                 <div>
-                                    <h3 class="mb-1">24</h3>
+                                    <h3 class="mb-1">0</h3>
                                     <p class="mb-0">Total Siswa Lulus</p>
                                 </div>
                                 <span class="avatar me-sm-4">
@@ -30,7 +30,7 @@
                             <div
                                 class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-3 pb-sm-0">
                                 <div>
-                                    <h3 class="mb-1">165</h3>
+                                    <h3 class="mb-1">0</h3>
                                     <p class="mb-0">Total Pembayaran Siswa</p>
                                 </div>
                                 <span class="avatar me-lg-4">
@@ -44,7 +44,7 @@
                             <div
                                 class="d-flex justify-content-between align-items-start border-end pb-3 pb-sm-0 card-widget-3">
                                 <div>
-                                    <h3 class="mb-1">$2.46k</h3>
+                                    <h3 class="mb-1">0</h3>
                                     <p class="mb-0">Total Lunas</p>
                                 </div>
                                 <span class="avatar me-sm-4">
@@ -56,7 +56,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
-                                    <h3 class="mb-1">$876</h3>
+                                    <h3 class="mb-1">0</h3>
                                     <p class="mb-0">Total Belum Lunas</p>
                                 </div>
                                 <span class="avatar">
@@ -73,12 +73,17 @@
         <!-- Invoice List Table -->
         <div class="card">
             <div class="card-datatable table-responsive">
-                <table class="invoice-list-table table border-top">
+                <table class="table border-top" id="listReportingFinanceTable">
                     <thead>
                         <tr>
                             <th></th>
+                            <th>No</th>
                             <th>Siswa</th>
-                            <th>Siswa</th>
+                            <th>Tanggal Pendaftaran</th>
+                            <th>Tanggal Pembayaran</th>
+                            <th>Total Biaya</th>
+                            <th>Status Pembayaran</th>
+                            <th>Bukti Pembayaran</th>
                         </tr>
                     </thead>
                 </table>
@@ -89,6 +94,6 @@
 
 @push('scripts')
     <script>
-        tbl_reporting_student_candidate()
+        tbl_finance_reporting()
     </script>
 @endpush
