@@ -43,6 +43,11 @@ class Student extends Model implements HasMedia
         return $this->hasMany(Payment::class);
     }
 
+    public function one_payment()
+    {
+        return $this->hasOne(Payment::class)->where('status', 'approved')->latestOfMany();
+    }
+
     public function father()
     {
         return $this->belongsTo(Father::class);
