@@ -378,6 +378,8 @@ class YajraDatatablesController extends Controller
     {
         $students = $this->student->getStudentsRegistrationAndPayment();
 
+        dd($students->one_payment);
+
         return DataTables::of($students)
             ->addColumn('index', function ($model) use ($students) {
                 return $students->search($model) + 1;
