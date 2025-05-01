@@ -377,8 +377,10 @@ class YajraDatatablesController extends Controller
     public function reporting_finance()
     {
         $students = $this->student->getStudentsRegistrationAndPayment();
-
-        dd($students->one_payment);
+        // dd($students);
+        // dd($students[0]->payment->first());
+        // dd($students[0]->payment[0]->getFirstMediaUrl('payment_images'));
+        // dd($students[0]->payment[0]->school_fee);
 
         return DataTables::of($students)
             ->addColumn('index', function ($model) use ($students) {

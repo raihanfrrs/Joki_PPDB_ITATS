@@ -136,6 +136,10 @@
 
 @push('scripts')
     <script>
+        tbl_payment();
+    </script>
+
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
             let isRegistered = @json($isRegistered);
             let isRegisteredApproved = @json($isRegisteredApproved);
@@ -186,12 +190,6 @@
                     }
                 });
             }
-
-            tbl_payment();
         });
-    </script>
-
-    <script>
-        tbl_payment()
     </script>
 @endpush
