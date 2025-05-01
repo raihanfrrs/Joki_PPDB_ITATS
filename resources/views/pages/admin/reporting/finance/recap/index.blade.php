@@ -16,8 +16,8 @@
                             <div
                                 class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
                                 <div>
-                                    <h3 class="mb-1">0</h3>
-                                    <p class="mb-0">Total Siswa Lulus</p>
+                                    <h3 class="mb-1">{{ count($totalApprovedPayment) }}</h3>
+                                    <p class="mb-0">Total Siswa Lunas</p>
                                 </div>
                                 <span class="avatar me-sm-4">
                                     <span class="avatar-initial bg-label-secondary rounded"><i
@@ -30,8 +30,8 @@
                             <div
                                 class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-3 pb-sm-0">
                                 <div>
-                                    <h3 class="mb-1">0</h3>
-                                    <p class="mb-0">Total Pembayaran Siswa</p>
+                                    <h3 class="mb-1">{{ count($totalUnapprovedPayment) }}</h3>
+                                    <p class="mb-0">Total Siswa Belum Lunas</p>
                                 </div>
                                 <span class="avatar me-lg-4">
                                     <span class="avatar-initial bg-label-secondary rounded"><i
@@ -44,8 +44,8 @@
                             <div
                                 class="d-flex justify-content-between align-items-start border-end pb-3 pb-sm-0 card-widget-3">
                                 <div>
-                                    <h3 class="mb-1">0</h3>
-                                    <p class="mb-0">Total Lunas</p>
+                                    <h3 class="mb-1">@rupiah($totalApprovedPayment->sum('total_fee'))</h3>
+                                    <p class="mb-0">Total Uang Pembayaran Masuk</p>
                                 </div>
                                 <span class="avatar me-sm-4">
                                     <span class="avatar-initial bg-label-secondary rounded"><i
@@ -56,8 +56,8 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
-                                    <h3 class="mb-1">0</h3>
-                                    <p class="mb-0">Total Belum Lunas</p>
+                                    <h3 class="mb-1">@rupiah($totalUnapprovedPayment->sum('total_fee'))</h3>
+                                    <p class="mb-0">Total Uang Pembayaran Belum Masuk</p>
                                 </div>
                                 <span class="avatar">
                                     <span class="avatar-initial bg-label-secondary rounded"><i
