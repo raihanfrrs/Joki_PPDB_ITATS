@@ -1,0 +1,1 @@
+{{ $model->academic_year }}

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigInteger('batik_uniform');
             $table->bigInteger('scout_uniform');
             $table->bigInteger('total_fee');
+            $table->year('academic_year');
             $table->timestamps();
         });
     }
