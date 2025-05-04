@@ -34,7 +34,8 @@ class SchoolFeeRepository
                     $data->education_development_donation +
                     $data->batik_uniform +
                     $data->scout_uniform
-                )
+                ),
+                'academic_year' => $data->academic_year
             ]);
         });
     }

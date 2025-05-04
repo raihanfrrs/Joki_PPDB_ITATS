@@ -78,6 +78,19 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="form" class="col-md-2 col-form-label">Tahun Ajaran</label>
+                                <div class="col-md-10">
+                                    <input class="form-control @error('academic_year') is-invalid @enderror" type="text"
+                                        id="academic_year" name="academic_year" required>
+                                    <img class="img-preview img-fluid mt-2 col-sm-5">
+                                    @error('academic_year')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="mt-3 row">
                                 <div class="col-md-10 offset-md-2">
@@ -92,3 +105,30 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            // Selector untuk semua input yang seharusnya angka
+            const numericFields = [
+                "#form",
+                "#development_fund",
+                "#education_development_donation",
+                "#batik_uniform",
+                "#scout_uniform",
+                "#academic_year"
+            ];
+
+            // Hanya izinkan angka
+            numericFields.forEach(function(selector) {
+                $(selector).on("input", function() {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+            });
+
+            // Set nilai default tahun ajaran (misalnya tahun sekarang)
+            const currentYear = new Date().getFullYear();
+            $('#academic_year').val(currentYear);
+        });
+    </script>
+@endpush

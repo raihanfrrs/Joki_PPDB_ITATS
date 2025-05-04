@@ -20,6 +20,7 @@
                             <th class="text-center">Seragam Batik</th>
                             <th class="text-center">Seragam Pramuka</th>
                             <th class="text-center">Total Biaya</th>
+                            <th class="text-center">Tahun Ajaran</th>
                             <th class="text-center">Dibuat Pada</th>
                         </tr>
                     </thead>

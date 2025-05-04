@@ -26,7 +26,8 @@ class SchoolFeeStoreRequest extends FormRequest
             'development_fund' => 'required|numeric',
             'education_development_donation' => 'required|numeric',
             'batik_uniform' => 'required|numeric',
-            'scout_uniform' => 'required|numeric'
+            'scout_uniform' => 'required|numeric',
+            'academic_year' => 'required',
         ];
     }
 }

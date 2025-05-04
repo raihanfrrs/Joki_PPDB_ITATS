@@ -370,6 +370,9 @@ class YajraDatatablesController extends Controller
             ->addColumn('created_at', function ($model) {
                 return view('components.data.yajra.data-school-fee.created-at-column', compact('model'))->render();
             })
+            ->addColumn('academic_year', function ($model) {
+                return view('components.data.yajra.data-school-fee.academic-year-column', compact('model'))->render();
+            })
             ->rawColumns(['index', 'form', 'development_fund', 'education_development_donation', 'batik_uniform', 'scout_uniform', 'total_fee', 'created_at'])
             ->make(true);
     }
