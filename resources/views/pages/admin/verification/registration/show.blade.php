@@ -970,7 +970,8 @@
                                             accept="image/*" disabled />
                                         @if ($registration && $registration->getFirstMediaUrl('akta_kelahiran_images'))
                                             <img src="{{ $registration->getFirstMediaUrl('akta_kelahiran_images') }}"
-                                                class="img-fluid mt-2 w-25">
+                                                class="img-fluid mt-2 w-25 preview-image cursor-pointer"
+                                                data-image="{{ $registration->getFirstMediaUrl('akta_kelahiran_images') }}">
                                         @endif
                                         @error('image_akte_kelahiran')
                                             <div class="invalid-feedback">
@@ -987,7 +988,8 @@
                                             accept="image/*" disabled />
                                         @if ($registration && $registration->getFirstMediaUrl('ktp_images'))
                                             <img src="{{ $registration->getFirstMediaUrl('ktp_images') }}"
-                                                class="img-fluid mt-2 w-25">
+                                                class="img-fluid mt-2 w-25 preview-image cursor-pointer"
+                                                data-image="{{ $registration->getFirstMediaUrl('ktp_images') }}">
                                         @endif
                                         @error('ktp_foto')
                                             <div class="invalid-feedback">
@@ -1004,7 +1006,8 @@
                                             accept="image/*" disabled />
                                         @if ($registration && $registration->getFirstMediaUrl('pasfoto_images'))
                                             <img src="{{ $registration->getFirstMediaUrl('pasfoto_images') }}"
-                                                class="img-fluid mt-2 w-25">
+                                                class="img-fluid mt-2 w-25 preview-image cursor-pointer"
+                                                data-image="{{ $registration->getFirstMediaUrl('pasfoto_images') }}">
                                         @endif
                                         @error('image_pas_foto')
                                             <div class="invalid-feedback">
@@ -1021,7 +1024,8 @@
                                             accept="image/*" disabled />
                                         @if ($registration && $registration->getFirstMediaUrl('ijasah_tk_images'))
                                             <img src="{{ $registration->getFirstMediaUrl('ijasah_tk_images') }}"
-                                                class="img-fluid mt-2 w-25">
+                                                class="img-fluid mt-2 w-25 preview-image cursor-pointer"
+                                                data-image="{{ $registration->getFirstMediaUrl('ijasah_tk_images') }}">
                                         @endif
                                         @error('image_ijasah')
                                             <div class="invalid-feedback">
@@ -1055,3 +1059,13 @@
 
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.preview-image').on('click', function() {
+            var imageUrl = $(this).data('image');
+            $('#modalImage').attr('src', imageUrl);
+            $('#imageModal').modal('show');
+        });
+    </script>
+@endpush

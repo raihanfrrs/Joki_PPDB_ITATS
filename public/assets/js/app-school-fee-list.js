@@ -32,7 +32,8 @@ function tbl_school_fee () {
         { data: 'batik_uniform', class: 'text-center' },
         { data: 'scout_uniform', class: 'text-center' },
         { data: 'total_fee', class: 'text-center' },
-        { data: 'created_at', class: 'text-center' }
+        { data: 'created_at', class: 'text-center' },
+        { data: 'academic_year', class: 'text-center' }
       ],
       columnDefs: [
         {
@@ -93,6 +94,12 @@ function tbl_school_fee () {
           render: function (data, type, full, meta) {
             return full.created_at;
           }
+        },
+        {
+          targets: 9,
+          render: function (data, type, full, meta) {
+            return full.academic_year;
+          }
         }
       ],
       order: [[1, 'asc']],
@@ -122,7 +129,7 @@ function tbl_school_fee () {
               text: '<i class="ti ti-printer me-2" ></i>Print',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               },
               customize: function (win) {
                 $(win.document.body)
@@ -142,7 +149,7 @@ function tbl_school_fee () {
               text: '<i class="ti ti-file-text me-2" ></i>Csv',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               }
             },
             {
@@ -150,7 +157,7 @@ function tbl_school_fee () {
               text: '<i class="ti ti-file-spreadsheet me-2"></i>Excel',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               }
             },
             {
@@ -158,7 +165,7 @@ function tbl_school_fee () {
               text: '<i class="ti ti-file-code-2 me-2"></i>Pdf',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               }
             },
             {
@@ -166,7 +173,7 @@ function tbl_school_fee () {
               text: '<i class="ti ti-copy me-2" ></i>Copy',
               className: 'dropdown-item',
               exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
               }
             }
           ]
