@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Student;
 use App\Models\Registration;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Repositories\PaymentRepository;
 use App\Repositories\RegistrationRepository;
-use Illuminate\Http\Request;
 
 class AdminVerificationController extends Controller
 {
@@ -49,6 +51,26 @@ class AdminVerificationController extends Controller
         return view('pages.admin.verification.registration.show', [
             'registration' => $registration
         ]);
+    }
+
+    public function registration_pdf(Student $student)
+    {
+        $imagePath = public_path('assets/img/branding/tut-wuri-handayani.png');
+
+        if (file_exists($imagePath)) {
+            $imageData = base64_encode(file_get_contents($imagePath));
+            $imageMime = mime_content_type($imagePath);
+            $imageBase64 = 'data:' . $imageMime . ';base64,' . $imageData;
+        } else {
+            $imageBase64 = null; // atau berikan placeholder jika tidak ditemukan
+        }
+
+        $pdf = Pdf::loadView('pages.admin.verification.registration.pdf', [
+            'student' => $student,
+            'imageBase64' => $imageBase64,
+        ]);
+
+        return $pdf->stream();
     }
 
     public function payment_index()
