@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Repositories\RegistrationRepository;
 use App\Http\Requests\StudentRegistrationStoreRequest;
 use App\Http\Requests\StudentRegistrationUpdateRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RegistrationController extends BaseController
 {
@@ -96,5 +97,27 @@ class RegistrationController extends BaseController
                 'message' => 'Pendaftaran Gagal Dikirim Ulang!'
             ]);
         }
+    }
+
+    public function pdf()
+    {
+        $student = auth()->user()->student;
+
+        $imagePath = public_path('assets/img/branding/tut-wuri-handayani.png');
+
+        if (file_exists($imagePath)) {
+            $imageData = base64_encode(file_get_contents($imagePath));
+            $imageMime = mime_content_type($imagePath);
+            $imageBase64 = 'data:' . $imageMime . ';base64,' . $imageData;
+        } else {
+            $imageBase64 = null; // atau berikan placeholder jika tidak ditemukan
+        }
+
+        $pdf = Pdf::loadView('pages.student.registration.pdf', [
+            'student' => $student,
+            'imageBase64' => $imageBase64,
+        ]);
+
+        return $pdf->stream();
     }
 }
