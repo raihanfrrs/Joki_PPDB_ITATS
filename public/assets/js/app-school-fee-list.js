@@ -32,8 +32,8 @@ function tbl_school_fee () {
         { data: 'batik_uniform', class: 'text-center' },
         { data: 'scout_uniform', class: 'text-center' },
         { data: 'total_fee', class: 'text-center' },
-        { data: 'created_at', class: 'text-center' },
-        { data: 'academic_year', class: 'text-center' }
+        { data: 'academic_year', class: 'text-center' },
+        { data: 'created_at', class: 'text-center' }
       ],
       columnDefs: [
         {
@@ -92,13 +92,13 @@ function tbl_school_fee () {
         {
           targets: 8,
           render: function (data, type, full, meta) {
-            return full.created_at;
+            return full.academic_year;
           }
         },
         {
           targets: 9,
           render: function (data, type, full, meta) {
-            return full.academic_year;
+            return full.created_at;
           }
         }
       ],
