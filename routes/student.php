@@ -12,6 +12,7 @@ Route::group(['middleware' => ['cekUserLogin:student']], function () {
         Route::patch('registration/{student}', 'update')->name('registration.update');
         Route::put('registration/{student}/resubmit', 'resubmit')->name('registration.resubmit');
         Route::post('registration/{student}', 'store')->name('registration.store');
+        Route::get('registration/pdf', 'pdf')->name('registration.pdf');
     });
 
     Route::controller(PaymentController::class)->group(function () {
