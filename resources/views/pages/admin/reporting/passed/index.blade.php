@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'PPDB - Laporan Siswa Lolos')
+@section('title', 'PPDB - Laporan Siswa')
 
 @section('section-admin')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Rekap /</span> Siswa Lulus</h4>
+        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Rekap /</span> Siswa</h4>
         <div class="card">
             <div class="card-header border-bottom">
-                <h5 class="card-title mb-3">Laporan Siswa Lolos</h5>
+                <h5 class="card-title mb-3">Laporan Siswa</h5>
             </div>
             <div class="card-datatable table-responsive">
                 <table class="table border-top" id="listReportingStudentPassedTable">
