@@ -33,7 +33,8 @@ function tbl_school_fee () {
         { data: 'scout_uniform', class: 'text-center' },
         { data: 'total_fee', class: 'text-center' },
         { data: 'academic_year', class: 'text-center' },
-        { data: 'created_at', class: 'text-center' }
+        { data: 'created_at', class: 'text-center' },
+        { data: 'action', class: 'text-center' }
       ],
       columnDefs: [
         {
@@ -100,7 +101,16 @@ function tbl_school_fee () {
           render: function (data, type, full, meta) {
             return full.created_at;
           }
-        }
+        },
+        {
+          targets: -1,
+          title: 'Actions',
+          searchable: false,
+          orderable: false,
+          render: function (data, type, full, meta) {
+              return full.action;
+          }
+        },
       ],
       order: [[1, 'asc']],
       dom:

@@ -22,11 +22,11 @@
                             <th class="text-center">Total Biaya</th>
                             <th class="text-center">Tahun Ajaran</th>
                             <th class="text-center">Dibuat Pada</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                 </table>
             </div>
-
         </div>
     </div>
 @endsection

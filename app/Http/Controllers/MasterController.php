@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PrincipleStoreRequest;
-use App\Http\Requests\PrincipleUpdateRequest;
-use App\Http\Requests\SchoolFeeStoreRequest;
-use App\Models\Principle;
 use App\Models\Student;
+use App\Models\Principle;
+use App\Models\SchoolFee;
+use Illuminate\Http\Request;
 use App\Repositories\PrincipleRepository;
 use App\Repositories\SchoolFeeRepository;
-use Illuminate\Http\Request;
+use App\Http\Requests\PrincipleStoreRequest;
+use App\Http\Requests\SchoolFeeStoreRequest;
+use App\Http\Requests\PrincipleUpdateRequest;
 
 class MasterController extends Controller
 {
@@ -120,4 +121,11 @@ class MasterController extends Controller
             ]);
         }
     }
+
+    public function school_fee_edit(SchoolFee $school_fee)
+    {
+        return view('pages.admin.master.school_fee.edit', compact('school_fee'));
+    }
+
+    public function school_fee_update(SchoolFeeStoreRequest $request, SchoolFee $school_fee) {}
 }
