@@ -83,7 +83,8 @@
                             <th>Tanggal Pembayaran</th>
                             <th>Total Biaya</th>
                             <th>Status Pembayaran</th>
-                            <th>Bukti Pembayaran</th>
+                            {{-- <th>Bukti Pembayaran</th> --}}
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                 </table>
