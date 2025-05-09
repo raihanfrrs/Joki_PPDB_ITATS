@@ -407,10 +407,13 @@ class YajraDatatablesController extends Controller
             ->addColumn('payment_status', function ($model) {
                 return view('components.data.yajra.data-finance-reporting.payment-status', compact('model'))->render();
             })
-            ->addColumn('receipt', function ($model) {
-                return view('components.data.yajra.data-finance-reporting.receipt-column', compact('model'))->render();
+            // ->addColumn('receipt', function ($model) {
+            //     return view('components.data.yajra.data-finance-reporting.receipt-column', compact('model'))->render();
+            // })
+            ->addColumn('action', function ($model) {
+                return view('components.data.yajra.data-finance-reporting.action-column', compact('model'))->render();
             })
-            ->rawColumns(['index', 'student', 'registration_at', 'payment_at', 'total_cost', 'payment_status', 'receipt'])
+            ->rawColumns(['index', 'student', 'registration_at', 'payment_at', 'total_cost', 'payment_status', 'action'])
             ->make(true);
     }
 }
