@@ -31,7 +31,8 @@ function tbl_finance_reporting () {
         { data: 'payment_at', class: 'text-center' },
         { data: 'total_cost', class: 'text-center' },
         { data: 'payment_status', class: 'text-center' },
-        { data: 'receipt', class: 'text-center' }
+        // { data: 'receipt', class: 'text-center' }
+        { data: 'action', class: 'text-center' }
       ],
       columnDefs: [
         {
@@ -81,12 +82,21 @@ function tbl_finance_reporting () {
             return full.payment_status;
           }
         },
+        // {
+        //   targets: 7,
+        //   render: function (data, type, full, meta) {
+        //     return full.receipt;
+        //   }
+        // }
         {
-          targets: 7,
+          targets: -1,
+          title: 'Actions',
+          searchable: false,
+          orderable: false,
           render: function (data, type, full, meta) {
-            return full.receipt;
+              return full.action;
           }
-        }
+        },
       ],
       order: [[1, 'asc']],
       dom:
@@ -200,6 +210,29 @@ function tbl_finance_reporting () {
       }
     });
   }
+
+  $(document).on('click', '#button-trigger-modal-show-payment', function () {
+    let id = $(this).attr('data-id');
+
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+
+    $.ajax({
+        url: "/ajax/payment/"+id+"/show",
+        method: "get",
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            $("#data-show-payment-modal").html(response);
+        },
+
+        error: function(xhr, status, error) {
+        }
+    });
+  });
 
   setTimeout(() => {
     $('.dataTables_filter .form-control').removeClass('form-control-sm');

@@ -2,8 +2,8 @@
     img {
         max-width: 100%;
         max-height: 100%;
-        height: auto;
-        width: auto;
+        height: 100%;
+        width: 100%;
         display: block;
         margin-left: auto;
         margin-right: auto;
